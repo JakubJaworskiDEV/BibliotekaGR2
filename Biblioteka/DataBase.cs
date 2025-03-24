@@ -49,7 +49,7 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Uzytkownik";
+                    string query = "SELECT Uzytkownik_id, Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik";
 
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                     {
@@ -200,6 +200,12 @@ namespace Biblioteka
                 MessageBox.Show($"Błąd podczas pobierania danych: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
+        }
+
+        private void AddUser_Click(object sender, EventArgs e)
+        {
+            AddUser addUserForm = new AddUser();
+            addUserForm.Show(); // Otwiera nowe okno
         }
     }
 }
