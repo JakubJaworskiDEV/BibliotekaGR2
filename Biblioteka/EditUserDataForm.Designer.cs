@@ -87,18 +87,18 @@
             lblName.AutoSize = true;
             lblName.Location = new Point(96, 265);
             lblName.Name = "lblName";
-            lblName.Size = new Size(43, 17);
+            lblName.Size = new Size(32, 17);
             lblName.TabIndex = 5;
-            lblName.Text = "Name";
+            lblName.Text = "Imię";
             // 
             // lblSurname
             // 
             lblSurname.AutoSize = true;
             lblSurname.Location = new Point(96, 318);
             lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(59, 17);
+            lblSurname.Size = new Size(63, 17);
             lblSurname.TabIndex = 6;
-            lblSurname.Text = "Surname";
+            lblSurname.Text = "Nazwisko";
             // 
             // lblPesel
             // 
@@ -123,18 +123,18 @@
             label5.AutoSize = true;
             label5.Location = new Point(95, 478);
             label5.Name = "label5";
-            label5.Size = new Size(65, 17);
+            label5.Size = new Size(97, 17);
             label5.TabIndex = 9;
-            label5.Text = "Birth Date";
+            label5.Text = "Data urodzenia";
             // 
             // lblPlec
             // 
             lblPlec.AutoSize = true;
             lblPlec.Location = new Point(96, 535);
             lblPlec.Name = "lblPlec";
-            lblPlec.Size = new Size(51, 17);
+            lblPlec.Size = new Size(31, 17);
             lblPlec.TabIndex = 10;
-            lblPlec.Text = "Gender";
+            lblPlec.Text = "Płeć";
             // 
             // txtEditGender
             // 
@@ -162,18 +162,18 @@
             lblAddress.AutoSize = true;
             lblAddress.Location = new Point(95, 652);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(56, 17);
+            lblAddress.Size = new Size(42, 17);
             lblAddress.TabIndex = 14;
-            lblAddress.Text = "Address";
+            lblAddress.Text = "Adres";
             // 
             // lblPhoneNumber
             // 
             lblPhoneNumber.AutoSize = true;
             lblPhoneNumber.Location = new Point(95, 591);
             lblPhoneNumber.Name = "lblPhoneNumber";
-            lblPhoneNumber.Size = new Size(96, 17);
+            lblPhoneNumber.Size = new Size(99, 17);
             lblPhoneNumber.TabIndex = 15;
-            lblPhoneNumber.Text = "Phone Number";
+            lblPhoneNumber.Text = "Numer telefonu";
             // 
             // btnSaveEditUserData
             // 

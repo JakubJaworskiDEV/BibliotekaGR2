@@ -50,7 +50,7 @@ namespace Biblioteka
         private void btnEditUserData_Click(object sender, EventArgs e)
         {
 
-            EditUserDataForm editForm = new EditUserDataForm(userData, connectionString);
+            EditUserDataForm editForm = new EditUserDataForm(userData, connectionString, this);
             editForm.Show();
         }
     }

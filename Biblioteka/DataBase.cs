@@ -157,7 +157,12 @@ namespace Biblioteka
                 MessageBox.Show("Proszę wprowadzić wszystkie kryteria wyszukiwania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            else if (pesel.Length != 11)
+            {
+                MessageBox.Show("Wprowadź poprawny numer PESEL", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            
             DataTable userData = GetUserProfile(login, pesel, nazwisko);
             if (userData.Rows.Count > 0) // sprawdzamy czy otrzymaliśmy przynajmniej 1 rekord z bazy
             {
