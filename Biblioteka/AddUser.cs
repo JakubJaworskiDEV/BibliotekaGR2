@@ -16,10 +16,11 @@ namespace Biblioteka
 {
     public partial class AddUser : Form
     {
-        private string connectionString = "Data Source=database.db;Version=3;";
+        private string connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\BazaDanychProjekt.db") + ";Version=3;";
         public AddUser()
         {
             InitializeComponent();
+            connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\BazaDanychProjekt.db") + ";Version=3;";
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -72,11 +73,13 @@ namespace Biblioteka
             {
                 conn.Open();
 
+                
 
                 string checkEmailQuery = "SELECT COUNT(*) FROM Uzytkownik WHERE Email = @Email";
                 using (SQLiteCommand checkCmd = new SQLiteCommand(checkEmailQuery, conn))
                 {
                     checkCmd.Parameters.AddWithValue("@Email", email);
+                 
                     if (Convert.ToInt32(checkCmd.ExecuteScalar()) > 0)
                     {
                         MessageBox.Show("Użytkownik o podanym e-mailu już istnieje.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
