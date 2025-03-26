@@ -16,11 +16,11 @@ namespace Biblioteka
 {
     public partial class AddUser : Form
     {
-        private string connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\BazaDanychProjekt.db") + ";Version=3;";
+        private string connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\..\BazaDanychProjekt.db") + ";Version=3;";
         public AddUser()
         {
             InitializeComponent();
-            connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\BazaDanychProjekt.db") + ";Version=3;";
+            connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\..\BazaDanychProjekt.db") + ";Version=3;";
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -40,6 +40,10 @@ namespace Biblioteka
             string email = txtEmail.Text.Trim();
             string telefon = txtTelefon.Text.Trim();
             bool aktywny = chkAktywny.Checked;
+            string adres = txtAdres.Text.Trim();
+            string statlog = txtstLog.Text.Trim();
+            string rodzaj = txtRodzaj.Text.Trim();
+            string ksiazka = txtKsiazka.Text.Trim();
 
 
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(imie) || string.IsNullOrEmpty(nazwisko) ||
@@ -101,8 +105,8 @@ namespace Biblioteka
                 try 
                 {
                     string insertUserQuery = @"
-                        INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_akt) 
-                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_akt);
+                        INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt,Adres, Rodzaj, Ksiazka ) 
+                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel,@Status_log, @Status_akt, @Adres, @Rodzaj, @Ksiazka);
                         SELECT last_insert_rowid();";
 
                     long userId;
@@ -117,13 +121,18 @@ namespace Biblioteka
                         insertUserCmd.Parameters.AddWithValue("@Email", email);
                         insertUserCmd.Parameters.AddWithValue("@Nr_tel", telefon);
                         insertUserCmd.Parameters.AddWithValue("@Status_akt", aktywny ? 1 : 0);
+                        insertUserCmd.Parameters.AddWithValue("@Status_log", statlog);
+                        insertUserCmd.Parameters.AddWithValue("@Rodzaj", rodzaj);
+                        insertUserCmd.Parameters.AddWithValue("@Ksiazka", ksiazka);
+                        insertUserCmd.Parameters.AddWithValue("@Adres", adres);
+                        
 
                         userId = (long)insertUserCmd.ExecuteScalar(); 
                     }
 
                     
                     string insertAddressQuery = @"
-                        INSERT INTO Adre_zamieszkania (Adres_id, Miejscowosc, Kod_pocztowy, Nr_posesji, Ulica, Nr_lokalu) 
+                        INSERT INTO Adres_zamieszkania (Adres_id, Miejscowosc, Kod_pocztowy, Nr_posesji, Ulica, Nr_lokalu) 
                         VALUES (@Adres_id, @Miejscowosc, @Kod_pocztowy, @Nr_posesji, @Ulica, @Nr_lokalu)";
 
                     using (SQLiteCommand insertAddressCmd = new SQLiteCommand(insertAddressQuery, conn))

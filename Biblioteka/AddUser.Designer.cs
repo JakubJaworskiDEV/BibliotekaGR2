@@ -58,6 +58,10 @@
             chkAktywny = new CheckBox();
             ExitBtn = new Button();
             dtpDataUrodzenia = new DateTimePicker();
+            txtAdres = new TextBox();
+            txtstLog = new TextBox();
+            txtRodzaj = new TextBox();
+            txtKsiazka = new TextBox();
             SuspendLayout();
             // 
             // AddBtn
@@ -310,11 +314,43 @@
             dtpDataUrodzenia.Size = new Size(200, 23);
             dtpDataUrodzenia.TabIndex = 30;
             // 
+            // txtAdres
+            // 
+            txtAdres.Location = new Point(550, 267);
+            txtAdres.Name = "txtAdres";
+            txtAdres.Size = new Size(100, 23);
+            txtAdres.TabIndex = 31;
+            // 
+            // txtstLog
+            // 
+            txtstLog.Location = new Point(550, 296);
+            txtstLog.Name = "txtstLog";
+            txtstLog.Size = new Size(100, 23);
+            txtstLog.TabIndex = 32;
+            // 
+            // txtRodzaj
+            // 
+            txtRodzaj.Location = new Point(550, 325);
+            txtRodzaj.Name = "txtRodzaj";
+            txtRodzaj.Size = new Size(100, 23);
+            txtRodzaj.TabIndex = 33;
+            // 
+            // txtKsiazka
+            // 
+            txtKsiazka.Location = new Point(550, 354);
+            txtKsiazka.Name = "txtKsiazka";
+            txtKsiazka.Size = new Size(100, 23);
+            txtKsiazka.TabIndex = 34;
+            // 
             // AddUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtKsiazka);
+            Controls.Add(txtRodzaj);
+            Controls.Add(txtstLog);
+            Controls.Add(txtAdres);
             Controls.Add(dtpDataUrodzenia);
             Controls.Add(ExitBtn);
             Controls.Add(chkAktywny);
@@ -383,5 +419,9 @@
         private CheckBox chkAktywny;
         private Button ExitBtn;
         private DateTimePicker dtpDataUrodzenia;
+        private TextBox txtAdres;
+        private TextBox txtstLog;
+        private TextBox txtRodzaj;
+        private TextBox txtKsiazka;
     }
 }
