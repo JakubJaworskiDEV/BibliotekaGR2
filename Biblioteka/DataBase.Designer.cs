@@ -41,38 +41,42 @@
             label3 = new Label();
             btnShowProfile = new Button();
             AddUser = new Button();
+            btnShowNonActiveUsers = new Button();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            comboBox3 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewUser
             // 
             dataGridViewUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUser.Location = new Point(11, 88);
+            dataGridViewUser.Location = new Point(11, 149);
             dataGridViewUser.Margin = new Padding(2);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewUser.RowHeadersWidth = 62;
-            dataGridViewUser.Size = new Size(834, 403);
+            dataGridViewUser.Size = new Size(917, 403);
             dataGridViewUser.TabIndex = 0;
             // 
             // cmbSearchCriteria
             // 
             cmbSearchCriteria.FormattingEnabled = true;
-            cmbSearchCriteria.Items.AddRange(new object[] { "Nazwisko", "PESEL", "Login", "Email", "Telefon" });
-            cmbSearchCriteria.Location = new Point(337, 36);
+            cmbSearchCriteria.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
+            cmbSearchCriteria.Location = new Point(337, 12);
             cmbSearchCriteria.Name = "cmbSearchCriteria";
             cmbSearchCriteria.Size = new Size(138, 23);
             cmbSearchCriteria.TabIndex = 1;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(481, 36);
+            txtSearch.Location = new Point(495, 12);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(207, 23);
             txtSearch.TabIndex = 2;
             // 
             // btnSearchUser
             // 
-            btnSearchUser.Location = new Point(708, 31);
+            btnSearchUser.Location = new Point(728, 12);
             btnSearchUser.Name = "btnSearchUser";
             btnSearchUser.Size = new Size(118, 23);
             btnSearchUser.TabIndex = 3;
@@ -82,7 +86,7 @@
             // 
             // btnResetSearch
             // 
-            btnResetSearch.Location = new Point(709, 60);
+            btnResetSearch.Location = new Point(729, 41);
             btnResetSearch.Name = "btnResetSearch";
             btnResetSearch.Size = new Size(117, 23);
             btnResetSearch.TabIndex = 4;
@@ -92,21 +96,21 @@
             // 
             // txtSurnameProfile
             // 
-            txtSurnameProfile.Location = new Point(39, 551);
+            txtSurnameProfile.Location = new Point(22, 633);
             txtSurnameProfile.Name = "txtSurnameProfile";
             txtSurnameProfile.Size = new Size(187, 23);
             txtSurnameProfile.TabIndex = 5;
             // 
             // txtLoginProfile
             // 
-            txtLoginProfile.Location = new Point(481, 551);
+            txtLoginProfile.Location = new Point(471, 633);
             txtLoginProfile.Name = "txtLoginProfile";
             txtLoginProfile.Size = new Size(188, 23);
             txtLoginProfile.TabIndex = 6;
             // 
             // txtPeselProfile
             // 
-            txtPeselProfile.Location = new Point(260, 551);
+            txtPeselProfile.Location = new Point(252, 633);
             txtPeselProfile.Name = "txtPeselProfile";
             txtPeselProfile.Size = new Size(185, 23);
             txtPeselProfile.TabIndex = 7;
@@ -114,7 +118,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(102, 520);
+            label1.Location = new Point(86, 605);
             label1.Name = "label1";
             label1.Size = new Size(57, 15);
             label1.TabIndex = 8;
@@ -124,7 +128,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(337, 520);
+            label2.Location = new Point(318, 605);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 9;
@@ -133,7 +137,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(564, 520);
+            label3.Location = new Point(542, 605);
             label3.Name = "label3";
             label3.Size = new Size(37, 15);
             label3.TabIndex = 10;
@@ -142,7 +146,7 @@
             // 
             // btnShowProfile
             // 
-            btnShowProfile.Location = new Point(688, 511);
+            btnShowProfile.Location = new Point(689, 593);
             btnShowProfile.Name = "btnShowProfile";
             btnShowProfile.Size = new Size(157, 63);
             btnShowProfile.TabIndex = 11;
@@ -152,7 +156,7 @@
             // 
             // AddUser
             // 
-            AddUser.Location = new Point(22, 31);
+            AddUser.Location = new Point(11, 60);
             AddUser.Name = "AddUser";
             AddUser.Size = new Size(150, 23);
             AddUser.TabIndex = 12;
@@ -160,11 +164,49 @@
             AddUser.UseVisualStyleBackColor = true;
             AddUser.Click += AddUser_Click;
             // 
+            // btnShowNonActiveUsers
+            // 
+            btnShowNonActiveUsers.Location = new Point(12, 109);
+            btnShowNonActiveUsers.Name = "btnShowNonActiveUsers";
+            btnShowNonActiveUsers.Size = new Size(204, 23);
+            btnShowNonActiveUsers.TabIndex = 13;
+            btnShowNonActiveUsers.Text = "Pokaż użytkowników nieaktywnych";
+            btnShowNonActiveUsers.UseVisualStyleBackColor = true;
+            btnShowNonActiveUsers.Click += btnShowNonActiveUsers_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(337, 42);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(138, 23);
+            comboBox1.TabIndex = 14;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(337, 71);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(138, 23);
+            comboBox2.TabIndex = 15;
+            // 
+            // comboBox3
+            // 
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(337, 100);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(138, 23);
+            comboBox3.TabIndex = 16;
+            // 
             // DataBase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(856, 584);
+            ClientSize = new Size(952, 668);
+            Controls.Add(comboBox3);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
+            Controls.Add(btnShowNonActiveUsers);
             Controls.Add(AddUser);
             Controls.Add(btnShowProfile);
             Controls.Add(label3);
@@ -202,5 +244,9 @@
         private Label label3;
         private Button btnShowProfile;
         private Button AddUser;
+        private Button btnShowNonActiveUsers;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private ComboBox comboBox3;
     }
 }

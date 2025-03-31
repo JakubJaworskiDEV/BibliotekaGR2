@@ -15,6 +15,7 @@ namespace Biblioteka
             InitializeComponent();
             connectionString = $"Data Source={dbPath};Version=3;";
         }
+
         private void DataBase_Load(object sender, EventArgs e)
         {
             try
@@ -28,10 +29,9 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-
                     MessageBox.Show("Połączono z bazą danych!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    LoadUsers(); // Załaduj użytkowników do DataGridView
+                    LoadUsers();
+                    AddProfileButtonColumn();
                 }
             }
             catch (Exception ex)
@@ -40,8 +40,6 @@ namespace Biblioteka
             }
         }
 
-
-
         private void LoadUsers()
         {
             try
@@ -49,13 +47,13 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Uzytkownik_id, Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik";
+                    string query = "SELECT Uzytkownik_id, Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt = 1";
 
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-                        dataGridViewUser.DataSource = dt; // Wyświetlenie danych w DataGridView
+                        dataGridViewUser.DataSource = dt;
                     }
                 }
             }
@@ -63,6 +61,73 @@ namespace Biblioteka
             {
                 MessageBox.Show($"Błąd podczas pobierania danych: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void AddProfileButtonColumn()
+        {
+            if (dataGridViewUser.Columns.Contains("ProfileButton")) return;
+
+            DataGridViewButtonColumn profileButton = new DataGridViewButtonColumn();
+            profileButton.Name = "ProfileButton";
+            profileButton.HeaderText = "Profil";
+            profileButton.Text = "Pokaż profil";
+            profileButton.UseColumnTextForButtonValue = true;
+
+            dataGridViewUser.Columns.Add(profileButton);
+            dataGridViewUser.CellClick += DataGridViewUser_CellClick;
+        }
+
+        private void DataGridViewUser_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridViewUser.Columns["ProfileButton"].Index && e.RowIndex >= 0)
+            {
+                string login = dataGridViewUser.Rows[e.RowIndex].Cells["Login"].Value.ToString();
+                string pesel = dataGridViewUser.Rows[e.RowIndex].Cells["PESEL"].Value.ToString();
+                string nazwisko = dataGridViewUser.Rows[e.RowIndex].Cells["Nazwisko"].Value.ToString();
+                ShowUserProfile(login, pesel, nazwisko);
+            }
+        }
+
+        private void ShowUserProfile(string login, string pesel, string nazwisko)
+        {
+            DataTable userData = GetUserProfile(login, pesel, nazwisko);
+            if (userData.Rows.Count > 0)
+            {
+                UserProfileForm profileForm = new UserProfileForm(userData, connectionString);
+                profileForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private DataTable GetUserProfile(string login, string pesel, string nazwisko)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Uzytkownik WHERE Login = @login AND PESEL = @pesel AND Nazwisko = @nazwisko";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@login", login);
+                        command.Parameters.AddWithValue("@pesel", pesel);
+                        command.Parameters.AddWithValue("@nazwisko", nazwisko);
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas pobierania danych: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return dt;
         }
 
         private void btnSearchUser_Click(object sender, EventArgs e)
@@ -97,6 +162,9 @@ namespace Biblioteka
                 string column;
                 switch (criteria)
                 {
+                    case "Imie":
+                        column = "Imie";
+                        break;
                     case "Nazwisko":
                         column = "Nazwisko";
                         break;
@@ -106,12 +174,6 @@ namespace Biblioteka
                     case "Login":
                         column = "Login";
                         break;
-                    case "Email":
-                        column = "Email";
-                        break;
-                    case "Telefon":
-                        column = "Telefon";
-                        break;
                     default:
                         MessageBox.Show("Nieprawidłowe kryterium wyszukiwania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
@@ -120,7 +182,7 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = $"SELECT * FROM Uzytkownik WHERE {column} LIKE @searchText";
+                    string query = $"SELECT * FROM Uzytkownik WHERE {column} LIKE @searchText AND Status_akt = 1";
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                     {
                         adapter.SelectCommand.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
@@ -148,50 +210,30 @@ namespace Biblioteka
 
         private void btnShowProfile_Click(object sender, EventArgs e)
         {
-            string login = txtLoginProfile.Text.Trim();
-            string pesel = txtPeselProfile.Text.Trim();
-            string nazwisko = txtSurnameProfile.Text.Trim();
-
-            if (string.IsNullOrEmpty(login) && string.IsNullOrEmpty(pesel) && string.IsNullOrEmpty(nazwisko))
-            {
-                MessageBox.Show("Proszę wprowadzić wszystkie kryteria wyszukiwania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else if (pesel.Length != 11)
-            {
-                MessageBox.Show("Wprowadź poprawny numer PESEL", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             
-            DataTable userData = GetUserProfile(login, pesel, nazwisko);
-            if (userData.Rows.Count > 0) // sprawdzamy czy otrzymaliśmy przynajmniej 1 rekord z bazy
-            {
-                UserProfileForm profileForm = new UserProfileForm(userData, connectionString);
-                profileForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
-        private DataTable GetUserProfile(string login, string pesel, string nazwisko)
+        
+
+        private void AddUser_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            AddUser addUserForm = new AddUser();
+            addUserForm.Show(); // Otwiera nowe okno
+        }
+
+        private void btnShowNonActiveUsers_Click(object sender, EventArgs e)
+        {
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Uzytkownik WHERE Login = @login AND PESEL = @pesel AND Nazwisko = @nazwisko";
-                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    string query = "SELECT Uzytkownik_id, Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt Is NULL";
+
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                     {
-                        command.Parameters.AddWithValue("@login", login);
-                        command.Parameters.AddWithValue("@pesel", pesel);
-                        command.Parameters.AddWithValue("@nazwisko", nazwisko);
-                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
-                        {
-                            adapter.Fill(dt);
-                        }
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dataGridViewUser.DataSource = dt; // Wyświetlenie danych w DataGridView
                     }
                 }
             }
@@ -199,13 +241,6 @@ namespace Biblioteka
             {
                 MessageBox.Show($"Błąd podczas pobierania danych: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return dt;
-        }
-
-        private void AddUser_Click(object sender, EventArgs e)
-        {
-            AddUser addUserForm = new AddUser();
-            addUserForm.Show(); // Otwiera nowe okno
         }
     }
 }
