@@ -16,16 +16,20 @@ namespace Biblioteka
 {
     public partial class AddUser : Form
     {
-        private string connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\..\BazaDanychProjekt.db") + ";Version=3;";
-        public AddUser()
+        private DataTable userData;
+        private string connectionString;
+        private PeselValidator peselValidator;
+
+        public AddUser(DataTable userData, string connectionString)
         {
             InitializeComponent();
-            connectionString = "Data Source=" + Path.GetFullPath(@"..\..\..\..\BazaDanychProjekt.db") + ";Version=3;";
+            this.userData = userData;
+            this.connectionString = connectionString;
+            this.peselValidator = new PeselValidator(userData);
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-
             string login = txtLogin.Text.Trim();
             string imie = txtImie.Text.Trim();
             string nazwisko = txtNazwisko.Text.Trim();
@@ -44,7 +48,6 @@ namespace Biblioteka
             string statlog = txtstLog.Text.Trim();
             string rodzaj = txtRodzaj.Text.Trim();
             string ksiazka = txtKsiazka.Text.Trim();
-
 
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(imie) || string.IsNullOrEmpty(nazwisko) ||
                 string.IsNullOrEmpty(miejscowosc) || string.IsNullOrEmpty(kodPocztowy) || string.IsNullOrEmpty(numerPosesji) ||
@@ -67,9 +70,8 @@ namespace Biblioteka
                 return;
             }
 
-            if (!Regex.IsMatch(pesel, @"^\d{11}$"))
+            if (!peselValidator.ValidatePesel(pesel))
             {
-                MessageBox.Show("Niepoprawny numer PESEL.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -77,20 +79,16 @@ namespace Biblioteka
             {
                 conn.Open();
 
-                
-
                 string checkEmailQuery = "SELECT COUNT(*) FROM Uzytkownik WHERE Email = @Email";
                 using (SQLiteCommand checkCmd = new SQLiteCommand(checkEmailQuery, conn))
                 {
                     checkCmd.Parameters.AddWithValue("@Email", email);
-                 
                     if (Convert.ToInt32(checkCmd.ExecuteScalar()) > 0)
                     {
                         MessageBox.Show("Użytkownik o podanym e-mailu już istnieje.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
-
 
                 string checkPeselQuery = "SELECT COUNT(*) FROM Uzytkownik WHERE PESEL = @PESEL";
                 using (SQLiteCommand checkCmd = new SQLiteCommand(checkPeselQuery, conn))
@@ -102,11 +100,12 @@ namespace Biblioteka
                         return;
                     }
                 }
-                try 
+
+                try
                 {
                     string insertUserQuery = @"
-                        INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt,Adres, Rodzaj, Ksiazka ) 
-                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel,@Status_log, @Status_akt, @Adres, @Rodzaj, @Ksiazka);
+                        INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt, Adres, Rodzaj, Ksiazka) 
+                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_log, @Status_akt, @Adres, @Rodzaj, @Ksiazka);
                         SELECT last_insert_rowid();";
 
                     long userId;
@@ -125,41 +124,17 @@ namespace Biblioteka
                         insertUserCmd.Parameters.AddWithValue("@Rodzaj", rodzaj);
                         insertUserCmd.Parameters.AddWithValue("@Ksiazka", ksiazka);
                         insertUserCmd.Parameters.AddWithValue("@Adres", adres);
-                        
-
-                        userId = (long)insertUserCmd.ExecuteScalar(); 
+                        userId = (long)insertUserCmd.ExecuteScalar();
                     }
 
-                    
-                    string insertAddressQuery = @"
-                        INSERT INTO Adres_zamieszkania (Adres_id, Miejscowosc, Kod_pocztowy, Nr_posesji, Ulica, Nr_lokalu) 
-                        VALUES (@Adres_id, @Miejscowosc, @Kod_pocztowy, @Nr_posesji, @Ulica, @Nr_lokalu)";
-
-                    using (SQLiteCommand insertAddressCmd = new SQLiteCommand(insertAddressQuery, conn))
-                    {
-                        insertAddressCmd.Parameters.AddWithValue("@Adres_id", userId);
-                        insertAddressCmd.Parameters.AddWithValue("@Miejscowosc", miejscowosc);
-                        insertAddressCmd.Parameters.AddWithValue("@Kod_pocztowy", kodPocztowy);
-                        insertAddressCmd.Parameters.AddWithValue("@Nr_posesji", numerPosesji);
-                        insertAddressCmd.Parameters.AddWithValue("@Ulica", string.IsNullOrEmpty(ulica) ? (object)DBNull.Value : ulica);
-                        insertAddressCmd.Parameters.AddWithValue("@Nr_lokalu", string.IsNullOrEmpty(numerLokalu) ? (object)DBNull.Value : numerLokalu);
-
-                        insertAddressCmd.ExecuteNonQuery();
-                    }
-
-
-                    MessageBox.Show("Pomyślnie dodano użytkownika i jego adres.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pomyślnie dodano użytkownika.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearForm();
                 }
                 catch (Exception ex)
                 {
-                    
                     MessageBox.Show($"Wystąpił błąd: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
-
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -176,7 +151,6 @@ namespace Biblioteka
             txtKodPocztowy.Clear();
             txtNumerPosesji.Clear();
             txtUlica.Clear();
-            txtUlica.Clear();
             txtPESEL.Clear();
             txtEmail.Clear();
             txtTelefon.Clear();
@@ -186,7 +160,6 @@ namespace Biblioteka
 
         private void cmbPlec_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
     }
 }
