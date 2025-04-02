@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             dataGridViewUser = new DataGridView();
-            cmbSearchCriteria = new ComboBox();
-            txtSearch = new TextBox();
+            cmbSearchCriteria1 = new ComboBox();
+            txtSearch1 = new TextBox();
             btnSearchUser = new Button();
             btnResetSearch = new Button();
             txtSurnameProfile = new TextBox();
@@ -42,9 +42,12 @@
             btnShowProfile = new Button();
             AddUser = new Button();
             btnShowNonActiveUsers = new Button();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
+            cmbSearchCriteria2 = new ComboBox();
+            cmbSearchCriteria3 = new ComboBox();
+            cmbSearchCriteria4 = new ComboBox();
+            txtSearch2 = new TextBox();
+            txtSearch3 = new TextBox();
+            txtSearch4 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
             SuspendLayout();
             // 
@@ -58,21 +61,21 @@
             dataGridViewUser.Size = new Size(917, 403);
             dataGridViewUser.TabIndex = 0;
             // 
-            // cmbSearchCriteria
+            // cmbSearchCriteria1
             // 
-            cmbSearchCriteria.FormattingEnabled = true;
-            cmbSearchCriteria.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
-            cmbSearchCriteria.Location = new Point(337, 12);
-            cmbSearchCriteria.Name = "cmbSearchCriteria";
-            cmbSearchCriteria.Size = new Size(138, 23);
-            cmbSearchCriteria.TabIndex = 1;
+            cmbSearchCriteria1.FormattingEnabled = true;
+            cmbSearchCriteria1.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
+            cmbSearchCriteria1.Location = new Point(337, 12);
+            cmbSearchCriteria1.Name = "cmbSearchCriteria1";
+            cmbSearchCriteria1.Size = new Size(138, 23);
+            cmbSearchCriteria1.TabIndex = 1;
             // 
-            // txtSearch
+            // txtSearch1
             // 
-            txtSearch.Location = new Point(495, 12);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(207, 23);
-            txtSearch.TabIndex = 2;
+            txtSearch1.Location = new Point(495, 12);
+            txtSearch1.Name = "txtSearch1";
+            txtSearch1.Size = new Size(207, 23);
+            txtSearch1.TabIndex = 2;
             // 
             // btnSearchUser
             // 
@@ -174,38 +177,65 @@
             btnShowNonActiveUsers.UseVisualStyleBackColor = true;
             btnShowNonActiveUsers.Click += btnShowNonActiveUsers_Click;
             // 
-            // comboBox1
+            // cmbSearchCriteria2
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(337, 42);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(138, 23);
-            comboBox1.TabIndex = 14;
+            cmbSearchCriteria2.FormattingEnabled = true;
+            cmbSearchCriteria2.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
+            cmbSearchCriteria2.Location = new Point(337, 42);
+            cmbSearchCriteria2.Name = "cmbSearchCriteria2";
+            cmbSearchCriteria2.Size = new Size(138, 23);
+            cmbSearchCriteria2.TabIndex = 14;
             // 
-            // comboBox2
+            // cmbSearchCriteria3
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(337, 71);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(138, 23);
-            comboBox2.TabIndex = 15;
+            cmbSearchCriteria3.FormattingEnabled = true;
+            cmbSearchCriteria3.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
+            cmbSearchCriteria3.Location = new Point(337, 71);
+            cmbSearchCriteria3.Name = "cmbSearchCriteria3";
+            cmbSearchCriteria3.Size = new Size(138, 23);
+            cmbSearchCriteria3.TabIndex = 15;
             // 
-            // comboBox3
+            // cmbSearchCriteria4
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(337, 100);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(138, 23);
-            comboBox3.TabIndex = 16;
+            cmbSearchCriteria4.FormattingEnabled = true;
+            cmbSearchCriteria4.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
+            cmbSearchCriteria4.Location = new Point(337, 100);
+            cmbSearchCriteria4.Name = "cmbSearchCriteria4";
+            cmbSearchCriteria4.Size = new Size(138, 23);
+            cmbSearchCriteria4.TabIndex = 16;
+            // 
+            // txtSearch2
+            // 
+            txtSearch2.Location = new Point(495, 42);
+            txtSearch2.Name = "txtSearch2";
+            txtSearch2.Size = new Size(207, 23);
+            txtSearch2.TabIndex = 17;
+            // 
+            // txtSearch3
+            // 
+            txtSearch3.Location = new Point(495, 71);
+            txtSearch3.Name = "txtSearch3";
+            txtSearch3.Size = new Size(207, 23);
+            txtSearch3.TabIndex = 18;
+            // 
+            // txtSearch4
+            // 
+            txtSearch4.Location = new Point(495, 100);
+            txtSearch4.Name = "txtSearch4";
+            txtSearch4.Size = new Size(207, 23);
+            txtSearch4.TabIndex = 19;
             // 
             // DataBase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(952, 668);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(txtSearch4);
+            Controls.Add(txtSearch3);
+            Controls.Add(txtSearch2);
+            Controls.Add(cmbSearchCriteria4);
+            Controls.Add(cmbSearchCriteria3);
+            Controls.Add(cmbSearchCriteria2);
             Controls.Add(btnShowNonActiveUsers);
             Controls.Add(AddUser);
             Controls.Add(btnShowProfile);
@@ -217,8 +247,8 @@
             Controls.Add(txtSurnameProfile);
             Controls.Add(btnResetSearch);
             Controls.Add(btnSearchUser);
-            Controls.Add(txtSearch);
-            Controls.Add(cmbSearchCriteria);
+            Controls.Add(txtSearch1);
+            Controls.Add(cmbSearchCriteria1);
             Controls.Add(dataGridViewUser);
             Margin = new Padding(2);
             Name = "DataBase";
@@ -232,8 +262,8 @@
         #endregion
 
         private DataGridView dataGridViewUser;
-        private ComboBox cmbSearchCriteria;
-        private TextBox txtSearch;
+        private ComboBox cmbSearchCriteria1;
+        private TextBox txtSearch1;
         private Button btnSearchUser;
         private Button btnResetSearch;
         private TextBox txtSurnameProfile;
@@ -245,8 +275,11 @@
         private Button btnShowProfile;
         private Button AddUser;
         private Button btnShowNonActiveUsers;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
+        private ComboBox cmbSearchCriteria2;
+        private ComboBox cmbSearchCriteria3;
+        private ComboBox cmbSearchCriteria4;
+        private TextBox txtSearch2;
+        private TextBox txtSearch3;
+        private TextBox txtSearch4;
     }
 }

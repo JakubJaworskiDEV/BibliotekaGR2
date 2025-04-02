@@ -9,6 +9,7 @@ namespace Biblioteka
     {
         private string dbPath = @"..\..\..\..\BazaDanychProjekt.db";
         private string connectionString;
+        private DataTable userData;
 
         public DataBase()
         {
@@ -98,7 +99,7 @@ namespace Biblioteka
             }
             else
             {
-                MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nie znaleziono użytkownika.");
             }
         }
 
@@ -132,63 +133,83 @@ namespace Biblioteka
 
         private void btnSearchUser_Click(object sender, EventArgs e)
         {
-            if (cmbSearchCriteria.SelectedItem != null)
+            List<string> conditions = new List<string>();
+            List<SQLiteParameter> parameters = new List<SQLiteParameter>();
+            int selectedCriteriaCount = 0;
+            int filledCriteriaCount = 0;
+
+            ValidateCriteria(cmbSearchCriteria1, txtSearch1, "@param1", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCriteria(cmbSearchCriteria2, txtSearch2, "@param2", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCriteria(cmbSearchCriteria3, txtSearch3, "@param3", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCriteria(cmbSearchCriteria4, txtSearch4, "@param4", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+
+            if (selectedCriteriaCount > 1 && filledCriteriaCount < selectedCriteriaCount)
             {
-                if (string.IsNullOrWhiteSpace(txtSearch.Text))
-                {
-                    MessageBox.Show("Proszę wpisać wartość do wyszukiwania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                string selectedCriteria = cmbSearchCriteria.SelectedItem.ToString();
-                SearchUsers(txtSearch.Text, selectedCriteria);
+                MessageBox.Show("Proszę wypełnić wszystkie wybrane pola");
+                return;
             }
-            else
+
+            if (selectedCriteriaCount > 0 && selectedCriteriaCount < 2 && filledCriteriaCount < selectedCriteriaCount)
             {
-                MessageBox.Show("Proszę wybrać kryterium wyszukiwania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Proszę wypełnić wybrane pole");
+                return;
+            }
+
+            if (conditions.Count == 0)
+            {
+                MessageBox.Show("Proszę wybrać przynajmniej jedno kryterium wyszukiwania.");
+                return;
+            }
+
+            string query = "SELECT * FROM Uzytkownik WHERE Status_akt = 1 AND " + string.Join(" AND ", conditions);
+            SearchUsers(query, parameters);
+        }
+
+        private void ValidateCriteria(ComboBox comboBox, TextBox textBox, string paramName, List<string> conditions, List<SQLiteParameter> parameters, ref int selectedCount, ref int filledCount)
+        {
+            if (comboBox.SelectedItem != null)
+            {
+                selectedCount++;
+                if (!string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    conditions.Add($"{comboBox.SelectedItem} LIKE {paramName}");
+                    parameters.Add(new SQLiteParameter(paramName, "%" + textBox.Text + "%"));
+                    filledCount++;
+                }
             }
         }
 
         private void btnResetSearch_Click(object sender, EventArgs e)
         {
-            txtSearch.Text = "";
-            cmbSearchCriteria.SelectedIndex = -1;
+            txtSearch1.Text = "";
+            txtSearch2.Text = "";
+            txtSearch3.Text = "";
+            txtSearch4.Text = "";
+
+            cmbSearchCriteria1.SelectedIndex = -1;
+            cmbSearchCriteria2.SelectedIndex = -1;
+            cmbSearchCriteria3.SelectedIndex = -1;
+            cmbSearchCriteria4.SelectedIndex = -1;
+
             LoadUsers();
         }
 
-        private void SearchUsers(string searchText, string criteria)
+        private void SearchUsers(string query, List<SQLiteParameter> parameters)
         {
             try
             {
-                string column;
-                switch (criteria)
-                {
-                    case "Imie":
-                        column = "Imie";
-                        break;
-                    case "Nazwisko":
-                        column = "Nazwisko";
-                        break;
-                    case "PESEL":
-                        column = "PESEL";
-                        break;
-                    case "Login":
-                        column = "Login";
-                        break;
-                    default:
-                        MessageBox.Show("Nieprawidłowe kryterium wyszukiwania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                }
-
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = $"SELECT * FROM Uzytkownik WHERE {column} LIKE @searchText AND Status_akt = 1";
-                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        adapter.SelectCommand.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        dataGridViewUser.DataSource = dt;
+                        command.Parameters.AddRange(parameters.ToArray());
+                        using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                        {
+                            DataTable dt = new DataTable();
+                            adapter.Fill(dt);
+                            dataGridViewUser.DataSource = dt;
+                        }
                     }
                 }
             }
@@ -216,7 +237,7 @@ namespace Biblioteka
 
         private void AddUser_Click(object sender, EventArgs e)
         {
-            AddUser addUserForm = new AddUser();
+            AddUser addUserForm = new AddUser(userData, connectionString);
             addUserForm.Show(); // Otwiera nowe okno
         }
 
