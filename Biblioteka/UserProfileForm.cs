@@ -15,6 +15,8 @@ namespace Biblioteka
         public UserProfileForm(DataTable userData)
         {
             InitializeComponent();
+            this.userData = userData;
+            this.connectionString = connectionString;
             LoadUserData(userData);
         }
         private void LoadUserData(DataTable userData)
@@ -22,12 +24,26 @@ namespace Biblioteka
             if (userData.Rows.Count > 0) // sprawdzamy czy otrzymaliśmy przynajmniej 1 rekord z bazy
             {
                 DataRow row = userData.Rows[0];
-                lblName.Text = $"Imię: {row["Imie"]}";
-                lblSurname.Text = $"Nazwisko: {row["Nazwisko"]}";
-                lblLogin.Text = $"Login: {row["Login"]}";
-                lblPesel.Text = $"PESEL: {row["PESEL"]}";
-                lblEmail.Text = $"Email: {row["Email"]}";
-                lblPhone.Text = $"Telefon: {row["Nr_tel"]}";
+                lblUserID.Text = $"{row["Uzytkownik_id"]}";
+                lblName.Text = $"{row["Imie"]}";
+                lblSurname.Text = $"{row["Nazwisko"]}";
+                lblUserPesel.Text = $"{row["PESEL"]}";
+                lblUserAdrsID.Text = $"{row["Adres_id"]}";
+                lblUserEmail.Text = $"{row["Email"]}";
+                lblUserAdresPostalCode.Text = $"{row["Kod_pocztowy"]}";
+                lblUserLogin.Text = $"{row["Login"]}";
+                lblUserLogin.Text = $"{row["Miejscowosc"]}";
+                lblUserPhoneNr.Text = $"{row["Nr_tel"]}";
+                lblUserAdresStreet.Text = $"{row["Ulica"]}";
+                lblUserAdresBldNr.Text = $"{row["Nr_posesji"]}";
+                lblUserAdresFlatNr.Text = $"{row["Nr_lokalu"]}";
+                if (Convert.ToInt32($"{row["Plec"]}") == 0)
+                {
+                    lblGender.Text = "Mężczyzna";
+                }
+                else { lblGender.Text = "Kobieta"; }
+                lblUserStatus.Text = row["Status_akt"] != DBNull.Value && Convert.ToInt32(row["Status_akt"]) == 1 ? "Aktywny" : "Nieaktywny";
+                lblUserStatus.ForeColor = row["Status_akt"] != DBNull.Value && Convert.ToInt32(row["Status_akt"]) == 1 ? Color.Green : Color.Red;
             }
         }
         private DataTable userData;
@@ -52,6 +68,11 @@ namespace Biblioteka
 
             EditUserDataForm editForm = new EditUserDataForm(userData, connectionString, this);
             editForm.Show();
+        }
+
+        private void btnBackToList_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

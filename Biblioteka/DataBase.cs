@@ -111,7 +111,28 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Uzytkownik WHERE Login = @login AND PESEL = @pesel AND Nazwisko = @nazwisko";
+                    string query = @"SELECT 
+                        Uzytkownik.Uzytkownik_id, 
+                        Uzytkownik.Imie, 
+                        Uzytkownik.Nazwisko, 
+                        Uzytkownik.PESEL, 
+                        Uzytkownik.Login,
+                        Uzytkownik.Email,
+                        Uzytkownik.Data_ur, 
+                        Uzytkownik.Plec, 
+                        Uzytkownik.Nr_tel, 
+                        Uzytkownik.Status_log,
+                        Uzytkownik.Status_akt,
+                        Uzytkownik.Rodzaj,
+                        Uzytkownik.Ksiazka,
+                        Uzytkownik.Adres,
+                        Adres_zamieszkania.Adres_id, 
+                        Adres_zamieszkania.Kod_pocztowy, 
+                        Adres_zamieszkania.Miejscowosc, 
+                        Adres_zamieszkania.Ulica, 
+                        Adres_zamieszkania.Nr_posesji, 
+                        Adres_zamieszkania.Nr_lokalu FROM Uzytkownik INNER JOIN Adres_zamieszkania ON Uzytkownik.Adres = Adres_zamieszkania.Adres_id  
+                        WHERE Login = @login AND PESEL = @pesel AND Nazwisko = @nazwisko";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@login", login);

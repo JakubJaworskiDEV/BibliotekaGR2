@@ -36,9 +36,13 @@ namespace Biblioteka
             txtEditPesel.Text = userRow["PESEL"].ToString();
             txtEditEmail.Text = userRow["Email"].ToString();
             txtEditBirthDate.Text = userRow["Data_ur"].ToString();
-            txtEditGender.Text = userRow["Plec"].ToString();
             txtEditPhone.Text = userRow["Nr_tel"].ToString();
-            txtEditAddress.Text = userRow["Adres"].ToString();
+            txtEditPlace.Text = userRow["Miejscowosc"].ToString();
+            txtPostalCode.Text = userRow["Kod_pocztowy"].ToString();
+            txtStreet.Text = userRow["Ulica"].ToString();
+            txtBldNumber.Text = userRow["Nr_posesji"].ToString();
+            txtFlatNumber.Text = userRow["Nr_lokalu"].ToString();
+            cmbEditGender.SelectedItem = Convert.ToInt32(userRow["Plec"]) == 0 ? "Mężczyzna" : "Kobieta";
         }
 
         private void btnSaveEditUserData_Click(object sender, EventArgs e)
@@ -48,12 +52,22 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Uzytkownik SET Imie = @Imie, Nazwisko = @Nazwisko, PESEL = @PESEL, Email = @Email, Data_ur = @Data_ur, Plec = @Plec, Nr_tel = @Nr_tel, Adres = @Adres WHERE Login = @Login";
+                    string query = @"
+                    UPDATE Uzytkownik 
+                    SET Imie = @Imie, Nazwisko = @Nazwisko, PESEL = @PESEL, Email = @Email, Data_ur = @Data_ur, Plec = @Plec, Nr_tel = @Nr_tel 
+                    WHERE Login = @Login;
+                    
+                    UPDATE Adres_zamieszkania 
+                    SET Miejscowosc = @Miejscowosc, Kod_pocztowy = @Kod_pocztowy, Ulica = @Ulica, Nr_posesji = @Nr_posesji, Nr_lokalu = @Nr_lokalu
+                    WHERE Adres_id = @Adres_id";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        if (string.IsNullOrEmpty(txtEditAddress.Text) || string.IsNullOrEmpty(txtEditBirthDate.Text) || string.IsNullOrEmpty(txtEditEmail.Text) || string.IsNullOrEmpty(txtEditGender.Text
-                            ) || string.IsNullOrEmpty(txtEditAddress.Text) || string.IsNullOrEmpty(txtEditName.Text) || string.IsNullOrEmpty(txtEditPesel.Text) || string.IsNullOrEmpty(txtEditPhone.Text)
-                                || string.IsNullOrEmpty(txtEditSurname.Text))
+                        if (string.IsNullOrEmpty(txtEditName.Text) || string.IsNullOrEmpty(txtEditSurname.Text)
+                            || string.IsNullOrEmpty(txtEditPesel.Text) || string.IsNullOrEmpty(txtEditEmail.Text)
+                            || string.IsNullOrEmpty(txtEditBirthDate.Text) || string.IsNullOrEmpty(txtEditPhone.Text)
+                            || string.IsNullOrEmpty(txtEditPlace.Text) || string.IsNullOrEmpty(txtPostalCode.Text)
+                            || string.IsNullOrEmpty(txtStreet.Text) || string.IsNullOrEmpty(txtBldNumber.Text)
+                            || string.IsNullOrEmpty(txtFlatNumber.Text))
                         {
                             MessageBox.Show("Wprowadź wszytkie dane do zapisu", "Błąd wprowadzania", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
@@ -102,15 +116,15 @@ namespace Biblioteka
                             command.Parameters.AddWithValue("@PESEL", txtEditPesel.Text);
                             command.Parameters.AddWithValue("@Email", txtEditEmail.Text);
                             command.Parameters.AddWithValue("@Data_ur", txtEditBirthDate.Text);
-                            command.Parameters.AddWithValue("@Plec", txtEditGender.Text);
+                            command.Parameters.AddWithValue("@Plec", cmbEditGender.SelectedItem.ToString() == "Mężczyzna" ? 0 : 1);
                             command.Parameters.AddWithValue("@Nr_tel", txtEditPhone.Text);
-                            command.Parameters.AddWithValue("@Adres", txtEditAddress.Text);
+                            command.Parameters.AddWithValue("@Miejscowosc", txtEditPlace.Text);
+                            command.Parameters.AddWithValue("@Kod_pocztowy", txtPostalCode.Text);
+                            command.Parameters.AddWithValue("@Ulica", txtStreet.Text);
+                            command.Parameters.AddWithValue("@Nr_posesji", txtBldNumber.Text);
+                            command.Parameters.AddWithValue("@Nr_lokalu", txtFlatNumber.Text);
                             command.Parameters.AddWithValue("@Login", userRow["Login"].ToString());
-                            /// dodać tutaj: 
-                            /// sprawdzanie pooprawnoći danych z ramek
-                            /// czy wpisane są jakiekolwiek dane i wyświetlenie komunikatu
-                            /// chcemy widzieć id ale nie edytować
-                            /// idotoodporne 
+                            command.Parameters.AddWithValue("@Adres_id", userRow["Adres_id"]);
                             command.ExecuteNonQuery();
                         }
                     }
@@ -119,7 +133,7 @@ namespace Biblioteka
                 MessageBox.Show("Dane użytkownika zostały zaktualizowane.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 userProfileForm.Close();
-                
+
             }
             catch (Exception ex)
             {
@@ -172,8 +186,33 @@ namespace Biblioteka
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-        
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "UPDATE Uzytkownik SET Status = 0 WHERE Login = @Login";
+                    using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Login", userRow["Login"].ToString());
+                        command.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Użytkownik został oznaczony jako nieaktywny.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                userProfileForm.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas aktualizacji statusu użytkownika: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
