@@ -29,52 +29,37 @@
         private void InitializeComponent()
         {
             dataGridViewUser = new DataGridView();
-            cmbSearchCriteria1 = new ComboBox();
-            txtSearch1 = new TextBox();
             btnSearchUser = new Button();
             btnResetSearch = new Button();
             AddUser = new Button();
             btnShowNonActiveUsers = new Button();
-            cmbSearchCriteria2 = new ComboBox();
-            cmbSearchCriteria3 = new ComboBox();
-            cmbSearchCriteria4 = new ComboBox();
-            txtSearch2 = new TextBox();
-            txtSearch3 = new TextBox();
-            txtSearch4 = new TextBox();
+            txtName = new TextBox();
+            txtSurname = new TextBox();
+            txtEmail = new TextBox();
+            txtLogin = new TextBox();
+            chkName = new CheckBox();
+            chkSurname = new CheckBox();
+            chkEmail = new CheckBox();
+            chkLogin = new CheckBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewUser
             // 
             dataGridViewUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUser.Location = new Point(11, 169);
+            dataGridViewUser.Location = new Point(11, 149);
             dataGridViewUser.Margin = new Padding(2);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewUser.RowHeadersWidth = 62;
-            dataGridViewUser.Size = new Size(917, 457);
+            dataGridViewUser.Size = new Size(917, 403);
             dataGridViewUser.TabIndex = 0;
-            // 
-            // cmbSearchCriteria1
-            // 
-            cmbSearchCriteria1.FormattingEnabled = true;
-            cmbSearchCriteria1.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
-            cmbSearchCriteria1.Location = new Point(337, 14);
-            cmbSearchCriteria1.Name = "cmbSearchCriteria1";
-            cmbSearchCriteria1.Size = new Size(138, 25);
-            cmbSearchCriteria1.TabIndex = 1;
-            // 
-            // txtSearch1
-            // 
-            txtSearch1.Location = new Point(495, 14);
-            txtSearch1.Name = "txtSearch1";
-            txtSearch1.Size = new Size(207, 25);
-            txtSearch1.TabIndex = 2;
             // 
             // btnSearchUser
             // 
-            btnSearchUser.Location = new Point(728, 14);
+            btnSearchUser.Location = new Point(728, 12);
             btnSearchUser.Name = "btnSearchUser";
-            btnSearchUser.Size = new Size(118, 26);
+            btnSearchUser.Size = new Size(118, 23);
             btnSearchUser.TabIndex = 3;
             btnSearchUser.Text = "Wyszukaj";
             btnSearchUser.UseVisualStyleBackColor = true;
@@ -82,9 +67,9 @@
             // 
             // btnResetSearch
             // 
-            btnResetSearch.Location = new Point(729, 46);
+            btnResetSearch.Location = new Point(729, 41);
             btnResetSearch.Name = "btnResetSearch";
-            btnResetSearch.Size = new Size(117, 26);
+            btnResetSearch.Size = new Size(117, 23);
             btnResetSearch.TabIndex = 4;
             btnResetSearch.Text = "Reset";
             btnResetSearch.UseVisualStyleBackColor = true;
@@ -92,9 +77,9 @@
             // 
             // AddUser
             // 
-            AddUser.Location = new Point(11, 68);
+            AddUser.Location = new Point(11, 60);
             AddUser.Name = "AddUser";
-            AddUser.Size = new Size(150, 26);
+            AddUser.Size = new Size(150, 23);
             AddUser.TabIndex = 12;
             AddUser.Text = "Dodaj użytkownika";
             AddUser.UseVisualStyleBackColor = true;
@@ -102,79 +87,117 @@
             // 
             // btnShowNonActiveUsers
             // 
-            btnShowNonActiveUsers.Location = new Point(12, 124);
+            btnShowNonActiveUsers.Location = new Point(12, 109);
             btnShowNonActiveUsers.Name = "btnShowNonActiveUsers";
-            btnShowNonActiveUsers.Size = new Size(204, 26);
+            btnShowNonActiveUsers.Size = new Size(204, 23);
             btnShowNonActiveUsers.TabIndex = 13;
             btnShowNonActiveUsers.Text = "Pokaż użytkowników nieaktywnych";
             btnShowNonActiveUsers.UseVisualStyleBackColor = true;
             btnShowNonActiveUsers.Click += btnShowNonActiveUsers_Click;
             // 
-            // cmbSearchCriteria2
+            // txtName
             // 
-            cmbSearchCriteria2.FormattingEnabled = true;
-            cmbSearchCriteria2.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
-            cmbSearchCriteria2.Location = new Point(337, 48);
-            cmbSearchCriteria2.Name = "cmbSearchCriteria2";
-            cmbSearchCriteria2.Size = new Size(138, 25);
-            cmbSearchCriteria2.TabIndex = 14;
+            txtName.Location = new Point(501, 25);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(152, 23);
+            txtName.TabIndex = 14;
+            txtName.Visible = false;
             // 
-            // cmbSearchCriteria3
+            // txtSurname
             // 
-            cmbSearchCriteria3.FormattingEnabled = true;
-            cmbSearchCriteria3.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
-            cmbSearchCriteria3.Location = new Point(337, 80);
-            cmbSearchCriteria3.Name = "cmbSearchCriteria3";
-            cmbSearchCriteria3.Size = new Size(138, 25);
-            cmbSearchCriteria3.TabIndex = 15;
+            txtSurname.Location = new Point(501, 52);
+            txtSurname.Name = "txtSurname";
+            txtSurname.Size = new Size(152, 23);
+            txtSurname.TabIndex = 15;
+            txtSurname.Visible = false;
             // 
-            // cmbSearchCriteria4
+            // txtEmail
             // 
-            cmbSearchCriteria4.FormattingEnabled = true;
-            cmbSearchCriteria4.Items.AddRange(new object[] { "Imie", "Nazwisko", "PESEL", "Login" });
-            cmbSearchCriteria4.Location = new Point(337, 113);
-            cmbSearchCriteria4.Name = "cmbSearchCriteria4";
-            cmbSearchCriteria4.Size = new Size(138, 25);
-            cmbSearchCriteria4.TabIndex = 16;
+            txtEmail.Location = new Point(501, 81);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(152, 23);
+            txtEmail.TabIndex = 16;
+            txtEmail.Visible = false;
             // 
-            // txtSearch2
+            // txtLogin
             // 
-            txtSearch2.Location = new Point(495, 48);
-            txtSearch2.Name = "txtSearch2";
-            txtSearch2.Size = new Size(207, 25);
-            txtSearch2.TabIndex = 17;
+            txtLogin.Location = new Point(501, 110);
+            txtLogin.Name = "txtLogin";
+            txtLogin.Size = new Size(152, 23);
+            txtLogin.TabIndex = 17;
+            txtLogin.Visible = false;
             // 
-            // txtSearch3
+            // chkName
             // 
-            txtSearch3.Location = new Point(495, 80);
-            txtSearch3.Name = "txtSearch3";
-            txtSearch3.Size = new Size(207, 25);
-            txtSearch3.TabIndex = 18;
+            chkName.AutoSize = true;
+            chkName.Location = new Point(412, 27);
+            chkName.Name = "chkName";
+            chkName.Size = new Size(49, 19);
+            chkName.TabIndex = 18;
+            chkName.Text = "Imie";
+            chkName.UseVisualStyleBackColor = true;
+            chkName.CheckedChanged += chkName_CheckedChanged;
             // 
-            // txtSearch4
+            // chkSurname
             // 
-            txtSearch4.Location = new Point(495, 113);
-            txtSearch4.Name = "txtSearch4";
-            txtSearch4.Size = new Size(207, 25);
-            txtSearch4.TabIndex = 19;
+            chkSurname.AutoSize = true;
+            chkSurname.Location = new Point(412, 54);
+            chkSurname.Name = "chkSurname";
+            chkSurname.Size = new Size(76, 19);
+            chkSurname.TabIndex = 19;
+            chkSurname.Text = "Nazwisko";
+            chkSurname.UseVisualStyleBackColor = true;
+            chkSurname.CheckedChanged += chkSurname_CheckedChanged;
+            // 
+            // chkEmail
+            // 
+            chkEmail.AutoSize = true;
+            chkEmail.Location = new Point(412, 83);
+            chkEmail.Name = "chkEmail";
+            chkEmail.Size = new Size(55, 19);
+            chkEmail.TabIndex = 20;
+            chkEmail.Text = "Email";
+            chkEmail.UseVisualStyleBackColor = true;
+            chkEmail.CheckedChanged += chkEmail_CheckedChanged;
+            // 
+            // chkLogin
+            // 
+            chkLogin.AutoSize = true;
+            chkLogin.Location = new Point(412, 112);
+            chkLogin.Name = "chkLogin";
+            chkLogin.Size = new Size(56, 19);
+            chkLogin.TabIndex = 21;
+            chkLogin.Text = "Login";
+            chkLogin.UseVisualStyleBackColor = true;
+            chkLogin.CheckedChanged += chkLogin_CheckedChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(412, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(181, 15);
+            label1.TabIndex = 22;
+            label1.Text = "Wybierz Kryterium Wyszukiwania";
             // 
             // DataBase
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(952, 635);
-            Controls.Add(txtSearch4);
-            Controls.Add(txtSearch3);
-            Controls.Add(txtSearch2);
-            Controls.Add(cmbSearchCriteria4);
-            Controls.Add(cmbSearchCriteria3);
-            Controls.Add(cmbSearchCriteria2);
+            ClientSize = new Size(952, 560);
+            Controls.Add(label1);
+            Controls.Add(chkLogin);
+            Controls.Add(chkEmail);
+            Controls.Add(chkSurname);
+            Controls.Add(chkName);
+            Controls.Add(txtLogin);
+            Controls.Add(txtEmail);
+            Controls.Add(txtSurname);
+            Controls.Add(txtName);
             Controls.Add(btnShowNonActiveUsers);
             Controls.Add(AddUser);
             Controls.Add(btnResetSearch);
             Controls.Add(btnSearchUser);
-            Controls.Add(txtSearch1);
-            Controls.Add(cmbSearchCriteria1);
             Controls.Add(dataGridViewUser);
             Margin = new Padding(2);
             Name = "DataBase";
@@ -188,17 +211,18 @@
         #endregion
 
         private DataGridView dataGridViewUser;
-        private ComboBox cmbSearchCriteria1;
-        private TextBox txtSearch1;
         private Button btnSearchUser;
         private Button btnResetSearch;
         private Button AddUser;
         private Button btnShowNonActiveUsers;
-        private ComboBox cmbSearchCriteria2;
-        private ComboBox cmbSearchCriteria3;
-        private ComboBox cmbSearchCriteria4;
-        private TextBox txtSearch2;
-        private TextBox txtSearch3;
-        private TextBox txtSearch4;
+        private TextBox txtName;
+        private TextBox txtSurname;
+        private TextBox txtEmail;
+        private TextBox txtLogin;
+        private CheckBox chkName;
+        private CheckBox chkSurname;
+        private CheckBox chkEmail;
+        private CheckBox chkLogin;
+        private Label label1;
     }
 }

@@ -48,7 +48,7 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Uzytkownik_id, Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt = 1";
+                    string query = "SELECT Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt = 1";
 
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                     {
@@ -85,6 +85,24 @@ namespace Biblioteka
                 string login = dataGridViewUser.Rows[e.RowIndex].Cells["Login"].Value.ToString();
                 string pesel = dataGridViewUser.Rows[e.RowIndex].Cells["PESEL"].Value.ToString();
                 string nazwisko = dataGridViewUser.Rows[e.RowIndex].Cells["Nazwisko"].Value.ToString();
+
+                //sprawdzanie czy status aktywności jest = 0 w bazie danych - jeżeli tak to tylko wyświetlamy komunikat
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string checkStatusQuery = "SELECT Status_akt FROM Uzytkownik WHERE Login = @login";
+                    using (SQLiteCommand command = new SQLiteCommand(checkStatusQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@login", login);
+                        object result = command.ExecuteScalar();
+                        if (result != null && Convert.ToInt32(result) == 0)
+                        {
+                            MessageBox.Show("Użytkownik jest nieaktywny.");
+                            return;
+                        }
+                    }
+                }
+
                 ShowUserProfile(login, pesel, nazwisko);
             }
         }
@@ -159,10 +177,10 @@ namespace Biblioteka
             int selectedCriteriaCount = 0;
             int filledCriteriaCount = 0;
 
-            ValidateCriteria(cmbSearchCriteria1, txtSearch1, "@param1", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
-            ValidateCriteria(cmbSearchCriteria2, txtSearch2, "@param2", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
-            ValidateCriteria(cmbSearchCriteria3, txtSearch3, "@param3", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
-            ValidateCriteria(cmbSearchCriteria4, txtSearch4, "@param4", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCheckboxCriteria(chkName, txtName, "Imie", "@name", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCheckboxCriteria(chkSurname, txtSurname, "Nazwisko", "@surname", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCheckboxCriteria(chkEmail, txtEmail, "Email", "@email", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
+            ValidateCheckboxCriteria(chkLogin, txtLogin, "Login", "@login", conditions, parameters, ref selectedCriteriaCount, ref filledCriteriaCount);
 
             if (selectedCriteriaCount > 1 && filledCriteriaCount < selectedCriteriaCount)
             {
@@ -182,18 +200,18 @@ namespace Biblioteka
                 return;
             }
 
-            string query = "SELECT * FROM Uzytkownik WHERE Status_akt = 1 AND " + string.Join(" AND ", conditions);
+            string query = "SELECT Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt = 1 AND " + string.Join(" AND ", conditions);
             SearchUsers(query, parameters);
         }
 
-        private void ValidateCriteria(ComboBox comboBox, TextBox textBox, string paramName, List<string> conditions, List<SQLiteParameter> parameters, ref int selectedCount, ref int filledCount)
+        private void ValidateCheckboxCriteria(CheckBox checkBox, TextBox textBox, string columnName, string paramName, List<string> conditions, List<SQLiteParameter> parameters, ref int selectedCount, ref int filledCount)
         {
-            if (comboBox.SelectedItem != null)
+            if (checkBox.Checked)
             {
                 selectedCount++;
                 if (!string.IsNullOrWhiteSpace(textBox.Text))
                 {
-                    conditions.Add($"{comboBox.SelectedItem} LIKE {paramName}");
+                    conditions.Add($"{columnName} LIKE {paramName}");
                     parameters.Add(new SQLiteParameter(paramName, "%" + textBox.Text + "%"));
                     filledCount++;
                 }
@@ -202,15 +220,15 @@ namespace Biblioteka
 
         private void btnResetSearch_Click(object sender, EventArgs e)
         {
-            txtSearch1.Text = "";
-            txtSearch2.Text = "";
-            txtSearch3.Text = "";
-            txtSearch4.Text = "";
+            chkName.Checked = false;
+            chkSurname.Checked = false;
+            chkEmail.Checked = false;
+            chkLogin.Checked = false;
 
-            cmbSearchCriteria1.SelectedIndex = -1;
-            cmbSearchCriteria2.SelectedIndex = -1;
-            cmbSearchCriteria3.SelectedIndex = -1;
-            cmbSearchCriteria4.SelectedIndex = -1;
+            txtName.Text = "";
+            txtSurname.Text = "";
+            txtEmail.Text = "";
+            txtLogin.Text = "";
 
             LoadUsers();
         }
@@ -240,26 +258,10 @@ namespace Biblioteka
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnShowProfile_Click(object sender, EventArgs e)
-        {
-            
-        }
-        
-
         private void AddUser_Click(object sender, EventArgs e)
         {
             AddUser addUserForm = new AddUser(userData, connectionString);
-            addUserForm.Show(); // Otwiera nowe okno
+            addUserForm.Show();
         }
 
         private void btnShowNonActiveUsers_Click(object sender, EventArgs e)
@@ -269,13 +271,13 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Uzytkownik_id, Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt Is NULL";
+                    string query = "SELECT Imie, Nazwisko, PESEL, Login, Email, Nr_tel FROM Uzytkownik WHERE Status_akt = 0";
 
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-                        dataGridViewUser.DataSource = dt; // Wyświetlenie danych w DataGridView
+                        dataGridViewUser.DataSource = dt;
                     }
                 }
             }
@@ -283,6 +285,30 @@ namespace Biblioteka
             {
                 MessageBox.Show($"Błąd podczas pobierania danych: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void chkName_CheckedChanged(object sender, EventArgs e)
+        {
+            txtName.Visible = chkName.Checked;
+            if (!chkName.Checked) txtName.Text = "";
+        }
+
+        private void chkSurname_CheckedChanged(object sender, EventArgs e)
+        {
+            txtSurname.Visible = chkSurname.Checked;
+            if (!chkSurname.Checked) txtSurname.Text = "";
+        }
+
+        private void chkEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            txtEmail.Visible = chkEmail.Checked;
+            if (!chkEmail.Checked) txtEmail.Text = "";
+        }
+
+        private void chkLogin_CheckedChanged(object sender, EventArgs e)
+        {
+            txtLogin.Visible = chkLogin.Checked;
+            if (!chkLogin.Checked) txtLogin.Text = "";
         }
     }
 }

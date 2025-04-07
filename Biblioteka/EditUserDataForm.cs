@@ -198,7 +198,7 @@ namespace Biblioteka
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "UPDATE Uzytkownik SET Status = 0 WHERE Login = @Login";
+                    string query = "UPDATE Uzytkownik SET Status_akt = 0 WHERE Login = @Login";
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Login", userRow["Login"].ToString());
