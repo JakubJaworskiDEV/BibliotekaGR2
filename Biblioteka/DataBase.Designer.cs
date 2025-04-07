@@ -48,18 +48,18 @@
             // dataGridViewUser
             // 
             dataGridViewUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUser.Location = new Point(11, 149);
+            dataGridViewUser.Location = new Point(11, 169);
             dataGridViewUser.Margin = new Padding(2);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewUser.RowHeadersWidth = 62;
-            dataGridViewUser.Size = new Size(917, 403);
+            dataGridViewUser.Size = new Size(917, 457);
             dataGridViewUser.TabIndex = 0;
             // 
             // btnSearchUser
             // 
-            btnSearchUser.Location = new Point(728, 12);
+            btnSearchUser.Location = new Point(728, 14);
             btnSearchUser.Name = "btnSearchUser";
-            btnSearchUser.Size = new Size(118, 23);
+            btnSearchUser.Size = new Size(118, 26);
             btnSearchUser.TabIndex = 3;
             btnSearchUser.Text = "Wyszukaj";
             btnSearchUser.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // btnResetSearch
             // 
-            btnResetSearch.Location = new Point(729, 41);
+            btnResetSearch.Location = new Point(729, 46);
             btnResetSearch.Name = "btnResetSearch";
-            btnResetSearch.Size = new Size(117, 23);
+            btnResetSearch.Size = new Size(117, 26);
             btnResetSearch.TabIndex = 4;
             btnResetSearch.Text = "Reset";
             btnResetSearch.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // 
             // AddUser
             // 
-            AddUser.Location = new Point(11, 60);
+            AddUser.Location = new Point(11, 68);
             AddUser.Name = "AddUser";
-            AddUser.Size = new Size(150, 23);
+            AddUser.Size = new Size(150, 26);
             AddUser.TabIndex = 12;
             AddUser.Text = "Dodaj użytkownika";
             AddUser.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@
             // 
             // btnShowNonActiveUsers
             // 
-            btnShowNonActiveUsers.Location = new Point(12, 109);
+            btnShowNonActiveUsers.Location = new Point(12, 124);
             btnShowNonActiveUsers.Name = "btnShowNonActiveUsers";
-            btnShowNonActiveUsers.Size = new Size(204, 23);
+            btnShowNonActiveUsers.Size = new Size(204, 26);
             btnShowNonActiveUsers.TabIndex = 13;
             btnShowNonActiveUsers.Text = "Pokaż użytkowników nieaktywnych";
             btnShowNonActiveUsers.UseVisualStyleBackColor = true;
@@ -97,42 +97,42 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(501, 25);
+            txtName.Location = new Point(501, 28);
             txtName.Name = "txtName";
-            txtName.Size = new Size(152, 23);
+            txtName.Size = new Size(152, 25);
             txtName.TabIndex = 14;
             txtName.Visible = false;
             // 
             // txtSurname
             // 
-            txtSurname.Location = new Point(501, 52);
+            txtSurname.Location = new Point(501, 59);
             txtSurname.Name = "txtSurname";
-            txtSurname.Size = new Size(152, 23);
+            txtSurname.Size = new Size(152, 25);
             txtSurname.TabIndex = 15;
             txtSurname.Visible = false;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(501, 81);
+            txtEmail.Location = new Point(501, 92);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(152, 23);
+            txtEmail.Size = new Size(152, 25);
             txtEmail.TabIndex = 16;
             txtEmail.Visible = false;
             // 
             // txtLogin
             // 
-            txtLogin.Location = new Point(501, 110);
+            txtLogin.Location = new Point(501, 125);
             txtLogin.Name = "txtLogin";
-            txtLogin.Size = new Size(152, 23);
+            txtLogin.Size = new Size(152, 25);
             txtLogin.TabIndex = 17;
             txtLogin.Visible = false;
             // 
             // chkName
             // 
             chkName.AutoSize = true;
-            chkName.Location = new Point(412, 27);
+            chkName.Location = new Point(412, 31);
             chkName.Name = "chkName";
-            chkName.Size = new Size(49, 19);
+            chkName.Size = new Size(51, 21);
             chkName.TabIndex = 18;
             chkName.Text = "Imie";
             chkName.UseVisualStyleBackColor = true;
@@ -141,9 +141,9 @@
             // chkSurname
             // 
             chkSurname.AutoSize = true;
-            chkSurname.Location = new Point(412, 54);
+            chkSurname.Location = new Point(412, 61);
             chkSurname.Name = "chkSurname";
-            chkSurname.Size = new Size(76, 19);
+            chkSurname.Size = new Size(82, 21);
             chkSurname.TabIndex = 19;
             chkSurname.Text = "Nazwisko";
             chkSurname.UseVisualStyleBackColor = true;
@@ -152,9 +152,9 @@
             // chkEmail
             // 
             chkEmail.AutoSize = true;
-            chkEmail.Location = new Point(412, 83);
+            chkEmail.Location = new Point(412, 94);
             chkEmail.Name = "chkEmail";
-            chkEmail.Size = new Size(55, 19);
+            chkEmail.Size = new Size(58, 21);
             chkEmail.TabIndex = 20;
             chkEmail.Text = "Email";
             chkEmail.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             // chkLogin
             // 
             chkLogin.AutoSize = true;
-            chkLogin.Location = new Point(412, 112);
+            chkLogin.Location = new Point(412, 127);
             chkLogin.Name = "chkLogin";
-            chkLogin.Size = new Size(56, 19);
+            chkLogin.Size = new Size(59, 21);
             chkLogin.TabIndex = 21;
             chkLogin.Text = "Login";
             chkLogin.UseVisualStyleBackColor = true;
@@ -174,17 +174,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(412, 7);
+            label1.Location = new Point(412, 8);
             label1.Name = "label1";
-            label1.Size = new Size(181, 15);
+            label1.Size = new Size(198, 17);
             label1.TabIndex = 22;
             label1.Text = "Wybierz Kryterium Wyszukiwania";
             // 
             // DataBase
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(952, 560);
+            ClientSize = new Size(942, 635);
             Controls.Add(label1);
             Controls.Add(chkLogin);
             Controls.Add(chkEmail);

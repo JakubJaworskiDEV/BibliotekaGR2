@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             btnSaveEditUserData = new Button();
-            button1 = new Button();
             btnEiditUserDataAbort = new Button();
             txtEditName = new TextBox();
             txtEditSurname = new TextBox();
             txtEditPesel = new TextBox();
-            txtEditBirthDate = new TextBox();
             txtEditEmail = new TextBox();
             txtEditPhone = new TextBox();
             txtEditPlace = new TextBox();
@@ -55,11 +53,13 @@
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
+            dtpEditBirthDate = new DateTimePicker();
+            btnForgetUser = new Button();
             SuspendLayout();
             // 
             // btnSaveEditUserData
             // 
-            btnSaveEditUserData.Location = new Point(364, 958);
+            btnSaveEditUserData.Location = new Point(363, 416);
             btnSaveEditUserData.Name = "btnSaveEditUserData";
             btnSaveEditUserData.Size = new Size(193, 49);
             btnSaveEditUserData.TabIndex = 16;
@@ -67,19 +67,9 @@
             btnSaveEditUserData.UseVisualStyleBackColor = true;
             btnSaveEditUserData.Click += btnSaveEditUserData_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(21, 958);
-            button1.Name = "button1";
-            button1.Size = new Size(122, 49);
-            button1.TabIndex = 17;
-            button1.Text = "Zapomnij użytkownika";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // btnEiditUserDataAbort
             // 
-            btnEiditUserDataAbort.Location = new Point(236, 958);
+            btnEiditUserDataAbort.Location = new Point(235, 416);
             btnEiditUserDataAbort.Name = "btnEiditUserDataAbort";
             btnEiditUserDataAbort.Size = new Size(122, 49);
             btnEiditUserDataAbort.TabIndex = 18;
@@ -89,77 +79,70 @@
             // 
             // txtEditName
             // 
-            txtEditName.Location = new Point(262, 66);
+            txtEditName.Location = new Point(261, 25);
             txtEditName.Name = "txtEditName";
             txtEditName.Size = new Size(295, 25);
             txtEditName.TabIndex = 19;
             // 
             // txtEditSurname
             // 
-            txtEditSurname.Location = new Point(262, 123);
+            txtEditSurname.Location = new Point(261, 56);
             txtEditSurname.Name = "txtEditSurname";
             txtEditSurname.Size = new Size(295, 25);
             txtEditSurname.TabIndex = 20;
             // 
             // txtEditPesel
             // 
-            txtEditPesel.Location = new Point(262, 181);
+            txtEditPesel.Location = new Point(261, 87);
             txtEditPesel.Name = "txtEditPesel";
             txtEditPesel.Size = new Size(295, 25);
             txtEditPesel.TabIndex = 21;
             // 
-            // txtEditBirthDate
-            // 
-            txtEditBirthDate.Location = new Point(262, 243);
-            txtEditBirthDate.Name = "txtEditBirthDate";
-            txtEditBirthDate.Size = new Size(295, 25);
-            txtEditBirthDate.TabIndex = 22;
-            // 
             // txtEditEmail
             // 
-            txtEditEmail.Location = new Point(262, 301);
+            txtEditEmail.Location = new Point(261, 149);
             txtEditEmail.Name = "txtEditEmail";
             txtEditEmail.Size = new Size(295, 25);
             txtEditEmail.TabIndex = 23;
             // 
             // txtEditPhone
             // 
-            txtEditPhone.Location = new Point(262, 433);
+            txtEditPhone.Location = new Point(261, 216);
             txtEditPhone.Name = "txtEditPhone";
             txtEditPhone.Size = new Size(295, 25);
             txtEditPhone.TabIndex = 24;
             // 
             // txtEditPlace
             // 
-            txtEditPlace.Location = new Point(262, 562);
+            txtEditPlace.Location = new Point(262, 247);
             txtEditPlace.Name = "txtEditPlace";
             txtEditPlace.Size = new Size(295, 25);
             txtEditPlace.TabIndex = 25;
             // 
             // txtStreet
             // 
-            txtStreet.Location = new Point(262, 614);
+            txtStreet.Location = new Point(262, 278);
             txtStreet.Name = "txtStreet";
             txtStreet.Size = new Size(295, 25);
             txtStreet.TabIndex = 26;
             // 
             // txtBldNumber
             // 
-            txtBldNumber.Location = new Point(262, 669);
+            txtBldNumber.Location = new Point(262, 309);
             txtBldNumber.Name = "txtBldNumber";
             txtBldNumber.Size = new Size(295, 25);
             txtBldNumber.TabIndex = 27;
             // 
             // txtFlatNumber
             // 
-            txtFlatNumber.Location = new Point(262, 726);
+            txtFlatNumber.Location = new Point(262, 340);
             txtFlatNumber.Name = "txtFlatNumber";
             txtFlatNumber.Size = new Size(295, 25);
             txtFlatNumber.TabIndex = 28;
             // 
             // txtPostalCode
             // 
-            txtPostalCode.Location = new Point(262, 786);
+            txtPostalCode.Location = new Point(261, 371);
             txtPostalCode.Name = "txtPostalCode";
             txtPostalCode.Size = new Size(295, 25);
             txtPostalCode.TabIndex = 29;
@@ -168,15 +151,15 @@
             // 
             cmbEditGender.FormattingEnabled = true;
             cmbEditGender.Items.AddRange(new object[] { "Mężczyzna", "Kobieta" });
-            cmbEditGender.Location = new Point(391, 375);
+            cmbEditGender.Location = new Point(384, 180);
             cmbEditGender.Name = "cmbEditGender";
-            cmbEditGender.Size = new Size(166, 25);
+            cmbEditGender.Size = new Size(173, 25);
             cmbEditGender.TabIndex = 30;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(67, 69);
+            label1.Location = new Point(66, 28);
             label1.Name = "label1";
             label1.Size = new Size(35, 17);
             label1.TabIndex = 31;
@@ -185,7 +168,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(67, 126);
+            label2.Location = new Point(66, 59);
             label2.Name = "label2";
             label2.Size = new Size(66, 17);
             label2.TabIndex = 32;
@@ -194,7 +177,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(67, 184);
+            label3.Location = new Point(66, 90);
             label3.Name = "label3";
             label3.Size = new Size(42, 17);
             label3.TabIndex = 33;
@@ -203,7 +186,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(67, 251);
+            label4.Location = new Point(66, 126);
             label4.Name = "label4";
             label4.Size = new Size(100, 17);
             label4.TabIndex = 34;
@@ -212,7 +195,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(67, 304);
+            label5.Location = new Point(66, 152);
             label5.Name = "label5";
             label5.Size = new Size(42, 17);
             label5.TabIndex = 35;
@@ -221,7 +204,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(67, 375);
+            label6.Location = new Point(66, 188);
             label6.Name = "label6";
             label6.Size = new Size(34, 17);
             label6.TabIndex = 36;
@@ -230,7 +213,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(67, 565);
+            label7.Location = new Point(67, 250);
             label7.Name = "label7";
             label7.Size = new Size(51, 17);
             label7.TabIndex = 37;
@@ -239,7 +222,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(67, 622);
+            label8.Location = new Point(67, 286);
             label8.Name = "label8";
             label8.Size = new Size(39, 17);
             label8.TabIndex = 38;
@@ -248,7 +231,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(67, 672);
+            label9.Location = new Point(67, 312);
             label9.Name = "label9";
             label9.Size = new Size(89, 17);
             label9.TabIndex = 39;
@@ -257,7 +240,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(67, 729);
+            label10.Location = new Point(67, 343);
             label10.Name = "label10";
             label10.Size = new Size(118, 17);
             label10.TabIndex = 40;
@@ -266,7 +249,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(67, 789);
+            label11.Location = new Point(66, 374);
             label11.Name = "label11";
             label11.Size = new Size(94, 17);
             label11.TabIndex = 41;
@@ -275,17 +258,38 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(67, 436);
+            label12.Location = new Point(66, 219);
             label12.Name = "label12";
             label12.Size = new Size(102, 17);
             label12.TabIndex = 42;
             label12.Text = "Numer telefonu:";
             // 
+            // dtpEditBirthDate
+            // 
+            dtpEditBirthDate.CustomFormat = "dd-MM-rrrr";
+            dtpEditBirthDate.Format = DateTimePickerFormat.Short;
+            dtpEditBirthDate.Location = new Point(384, 120);
+            dtpEditBirthDate.Name = "dtpEditBirthDate";
+            dtpEditBirthDate.Size = new Size(172, 25);
+            dtpEditBirthDate.TabIndex = 43;
+            // 
+            // btnForgetUser
+            // 
+            btnForgetUser.Location = new Point(60, 416);
+            btnForgetUser.Name = "btnForgetUser";
+            btnForgetUser.Size = new Size(96, 49);
+            btnForgetUser.TabIndex = 44;
+            btnForgetUser.Text = "Zapomnij użytkownika";
+            btnForgetUser.UseVisualStyleBackColor = true;
+            btnForgetUser.Click += btnForgetUser_Click;
+            // 
             // EditUserDataForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(584, 1033);
+            ClientSize = new Size(584, 482);
+            Controls.Add(btnForgetUser);
+            Controls.Add(dtpEditBirthDate);
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
@@ -306,12 +310,10 @@
             Controls.Add(txtEditPlace);
             Controls.Add(txtEditPhone);
             Controls.Add(txtEditEmail);
-            Controls.Add(txtEditBirthDate);
             Controls.Add(txtEditPesel);
             Controls.Add(txtEditSurname);
             Controls.Add(txtEditName);
             Controls.Add(btnEiditUserDataAbort);
-            Controls.Add(button1);
             Controls.Add(btnSaveEditUserData);
             Name = "EditUserDataForm";
             Text = "EditUserDataForm";
@@ -323,12 +325,10 @@
         #endregion
 
         private Button btnSaveEditUserData;
-        private Button button1;
         private Button btnEiditUserDataAbort;
         private TextBox txtEditName;
         private TextBox txtEditSurname;
         private TextBox txtEditPesel;
-        private TextBox txtEditBirthDate;
         private TextBox txtEditEmail;
         private TextBox txtEditPhone;
         private TextBox txtEditPlace;
@@ -349,5 +349,7 @@
         private Label label10;
         private Label label11;
         private Label label12;
+        private DateTimePicker dtpEditBirthDate;
+        private Button btnForgetUser;
     }
 }
