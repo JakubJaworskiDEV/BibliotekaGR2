@@ -47,92 +47,101 @@
             // 
             // dataGridViewUser
             // 
+            dataGridViewUser.BackgroundColor = SystemColors.Control;
             dataGridViewUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewUser.Location = new Point(11, 169);
+            dataGridViewUser.Location = new Point(11, 152);
             dataGridViewUser.Margin = new Padding(2);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewUser.RowHeadersWidth = 62;
-            dataGridViewUser.Size = new Size(917, 457);
+            dataGridViewUser.Size = new Size(917, 400);
             dataGridViewUser.TabIndex = 0;
             // 
             // btnSearchUser
             // 
-            btnSearchUser.Location = new Point(728, 14);
+            btnSearchUser.BackColor = Color.FromArgb(64, 64, 64);
+            btnSearchUser.ForeColor = SystemColors.Control;
+            btnSearchUser.Location = new Point(810, 7);
             btnSearchUser.Name = "btnSearchUser";
-            btnSearchUser.Size = new Size(118, 26);
+            btnSearchUser.Size = new Size(118, 23);
             btnSearchUser.TabIndex = 3;
             btnSearchUser.Text = "Wyszukaj";
-            btnSearchUser.UseVisualStyleBackColor = true;
+            btnSearchUser.UseVisualStyleBackColor = false;
             btnSearchUser.Click += btnSearchUser_Click;
             // 
             // btnResetSearch
             // 
-            btnResetSearch.Location = new Point(729, 46);
+            btnResetSearch.BackColor = Color.FromArgb(64, 64, 64);
+            btnResetSearch.ForeColor = SystemColors.Control;
+            btnResetSearch.Location = new Point(810, 36);
             btnResetSearch.Name = "btnResetSearch";
-            btnResetSearch.Size = new Size(117, 26);
+            btnResetSearch.Size = new Size(117, 23);
             btnResetSearch.TabIndex = 4;
             btnResetSearch.Text = "Reset";
-            btnResetSearch.UseVisualStyleBackColor = true;
+            btnResetSearch.UseVisualStyleBackColor = false;
             btnResetSearch.Click += btnResetSearch_Click;
             // 
             // AddUser
             // 
-            AddUser.Location = new Point(11, 68);
+            AddUser.BackColor = Color.FromArgb(64, 64, 64);
+            AddUser.ForeColor = SystemColors.Control;
+            AddUser.Location = new Point(12, 54);
             AddUser.Name = "AddUser";
-            AddUser.Size = new Size(150, 26);
+            AddUser.Size = new Size(204, 36);
             AddUser.TabIndex = 12;
             AddUser.Text = "Dodaj użytkownika";
-            AddUser.UseVisualStyleBackColor = true;
+            AddUser.UseVisualStyleBackColor = false;
             AddUser.Click += AddUser_Click;
             // 
             // btnShowNonActiveUsers
             // 
-            btnShowNonActiveUsers.Location = new Point(12, 124);
+            btnShowNonActiveUsers.BackColor = Color.FromArgb(64, 64, 64);
+            btnShowNonActiveUsers.ForeColor = SystemColors.Control;
+            btnShowNonActiveUsers.Location = new Point(12, 96);
             btnShowNonActiveUsers.Name = "btnShowNonActiveUsers";
-            btnShowNonActiveUsers.Size = new Size(204, 26);
+            btnShowNonActiveUsers.Size = new Size(204, 36);
             btnShowNonActiveUsers.TabIndex = 13;
             btnShowNonActiveUsers.Text = "Pokaż użytkowników nieaktywnych";
-            btnShowNonActiveUsers.UseVisualStyleBackColor = true;
+            btnShowNonActiveUsers.UseVisualStyleBackColor = false;
             btnShowNonActiveUsers.Click += btnShowNonActiveUsers_Click;
             // 
             // txtName
             // 
-            txtName.Location = new Point(501, 28);
+            txtName.Location = new Point(612, 23);
             txtName.Name = "txtName";
-            txtName.Size = new Size(152, 25);
+            txtName.Size = new Size(152, 23);
             txtName.TabIndex = 14;
             txtName.Visible = false;
             // 
             // txtSurname
             // 
-            txtSurname.Location = new Point(501, 59);
+            txtSurname.Location = new Point(612, 50);
             txtSurname.Name = "txtSurname";
-            txtSurname.Size = new Size(152, 25);
+            txtSurname.Size = new Size(152, 23);
             txtSurname.TabIndex = 15;
             txtSurname.Visible = false;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(501, 92);
+            txtEmail.Location = new Point(612, 79);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(152, 25);
+            txtEmail.Size = new Size(152, 23);
             txtEmail.TabIndex = 16;
             txtEmail.Visible = false;
             // 
             // txtLogin
             // 
-            txtLogin.Location = new Point(501, 125);
+            txtLogin.Location = new Point(612, 108);
             txtLogin.Name = "txtLogin";
-            txtLogin.Size = new Size(152, 25);
+            txtLogin.Size = new Size(152, 23);
             txtLogin.TabIndex = 17;
             txtLogin.Visible = false;
             // 
             // chkName
             // 
             chkName.AutoSize = true;
-            chkName.Location = new Point(412, 31);
+            chkName.Location = new Point(530, 25);
             chkName.Name = "chkName";
-            chkName.Size = new Size(51, 21);
+            chkName.Size = new Size(49, 19);
             chkName.TabIndex = 18;
             chkName.Text = "Imie";
             chkName.UseVisualStyleBackColor = true;
@@ -141,9 +150,9 @@
             // chkSurname
             // 
             chkSurname.AutoSize = true;
-            chkSurname.Location = new Point(412, 61);
+            chkSurname.Location = new Point(530, 54);
             chkSurname.Name = "chkSurname";
-            chkSurname.Size = new Size(82, 21);
+            chkSurname.Size = new Size(76, 19);
             chkSurname.TabIndex = 19;
             chkSurname.Text = "Nazwisko";
             chkSurname.UseVisualStyleBackColor = true;
@@ -152,9 +161,9 @@
             // chkEmail
             // 
             chkEmail.AutoSize = true;
-            chkEmail.Location = new Point(412, 94);
+            chkEmail.Location = new Point(530, 79);
             chkEmail.Name = "chkEmail";
-            chkEmail.Size = new Size(58, 21);
+            chkEmail.Size = new Size(55, 19);
             chkEmail.TabIndex = 20;
             chkEmail.Text = "Email";
             chkEmail.UseVisualStyleBackColor = true;
@@ -163,9 +172,9 @@
             // chkLogin
             // 
             chkLogin.AutoSize = true;
-            chkLogin.Location = new Point(412, 127);
+            chkLogin.Location = new Point(530, 110);
             chkLogin.Name = "chkLogin";
-            chkLogin.Size = new Size(59, 21);
+            chkLogin.Size = new Size(56, 19);
             chkLogin.TabIndex = 21;
             chkLogin.Text = "Login";
             chkLogin.UseVisualStyleBackColor = true;
@@ -174,17 +183,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(412, 8);
+            label1.Location = new Point(530, 5);
             label1.Name = "label1";
-            label1.Size = new Size(198, 17);
+            label1.Size = new Size(181, 15);
             label1.TabIndex = 22;
             label1.Text = "Wybierz Kryterium Wyszukiwania";
+            label1.Click += label1_Click;
             // 
             // DataBase
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(942, 635);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(942, 560);
             Controls.Add(label1);
             Controls.Add(chkLogin);
             Controls.Add(chkEmail);

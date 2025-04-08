@@ -26,6 +26,7 @@ namespace Biblioteka
             this.userData = userData;
             this.connectionString = connectionString;
             this.peselValidator = new PeselValidator(userData);
+
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -39,11 +40,10 @@ namespace Biblioteka
             string ulica = txtUlica.Text.Trim();
             string numerLokalu = txtNumerLokalu.Text.Trim();
             string pesel = txtPESEL.Text.Trim();
-            string dataUrodzenia = dtpDataUrodzenia.Value.ToString("yyyy-MM-dd");
+            string dataUrodzenia = textDataUrodzenia.Text.Trim();
             string plec = cmbPlec.SelectedItem?.ToString();
             string email = txtEmail.Text.Trim();
             string telefon = txtTelefon.Text.Trim();
-            bool aktywny = chkAktywny.Checked;
             string adres = txtAdres.Text.Trim();
             string statlog = txtstLog.Text.Trim();
             string rodzaj = txtRodzaj.Text.Trim();
@@ -72,7 +72,7 @@ namespace Biblioteka
 
             //if (!peselValidator.ValidatePesel(pesel))
             //{
-                //return;
+            //return;
             //}
 
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -105,7 +105,7 @@ namespace Biblioteka
                 {
                     string insertUserQuery = @"
                         INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt, Adres, Rodzaj, Ksiazka) 
-                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_log, @Status_akt, @Adres, @Rodzaj, @Ksiazka);
+                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_log, 1, @Adres, @Rodzaj, @Ksiazka);
                         SELECT last_insert_rowid();";
 
                     long userId;
@@ -171,12 +171,32 @@ namespace Biblioteka
             txtPESEL.Clear();
             txtEmail.Clear();
             txtTelefon.Clear();
-            chkAktywny.Checked = true;
+
             cmbPlec.SelectedIndex = -1;
         }
 
         private void cmbPlec_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void town_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddUser_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ZipCode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void propertyNumber_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Biblioteka
         public DataBase()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
             connectionString = $"Data Source={dbPath};Version=3;";
         }
 
@@ -309,6 +310,11 @@ namespace Biblioteka
         {
             txtLogin.Visible = chkLogin.Checked;
             if (!chkLogin.Checked) txtLogin.Text = "";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
