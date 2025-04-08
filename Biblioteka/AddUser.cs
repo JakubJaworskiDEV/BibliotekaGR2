@@ -70,10 +70,10 @@ namespace Biblioteka
                 return;
             }
 
-            if (!peselValidator.ValidatePesel(pesel))
-            {
-                return;
-            }
+            //if (!peselValidator.ValidatePesel(pesel))
+            //{
+                //return;
+            //}
 
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
@@ -125,6 +125,23 @@ namespace Biblioteka
                         insertUserCmd.Parameters.AddWithValue("@Ksiazka", ksiazka);
                         insertUserCmd.Parameters.AddWithValue("@Adres", adres);
                         userId = (long)insertUserCmd.ExecuteScalar();
+                    }
+
+                    long adresId;
+                    string insertAdresQuery = @"
+                        INSERT INTO Adres_zamieszkania (Miejscowosc, Kod_pocztowy, Ulica, Nr_posesji, Nr_lokalu) 
+                        VALUES (@Miejscowosc, @Kod_pocztowy, @Ulica, @Nr_posesji, @Nr_lokalu);
+                        SELECT last_insert_rowid();";
+
+                    using (SQLiteCommand insertAdresCmd = new SQLiteCommand(insertAdresQuery, conn))
+                    {
+                        insertAdresCmd.Parameters.AddWithValue("@Miejscowosc", miejscowosc);
+                        insertAdresCmd.Parameters.AddWithValue("@Kod_pocztowy", kodPocztowy);
+                        insertAdresCmd.Parameters.AddWithValue("@Ulica", ulica);
+                        insertAdresCmd.Parameters.AddWithValue("@Nr_posesji", numerPosesji);
+                        insertAdresCmd.Parameters.AddWithValue("@Nr_lokalu", string.IsNullOrEmpty(numerLokalu) ? DBNull.Value : numerLokalu);
+
+                        adresId = (long)insertAdresCmd.ExecuteScalar();
                     }
 
                     MessageBox.Show("Pomyślnie dodano użytkownika.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
