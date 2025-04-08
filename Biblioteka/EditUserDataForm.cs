@@ -29,7 +29,7 @@ namespace Biblioteka
             {
                 userRow = userData.Rows[0];
                 LoadUserData();
-                UpdateForgetButton();
+
 
             }
             else { MessageBox.Show("Błąd podczas ładowania danych. Nie znaleziono danych użytkownika."); }
@@ -50,17 +50,6 @@ namespace Biblioteka
             txtBldNumber.Text = userRow["Nr_posesji"].ToString();
             txtFlatNumber.Text = userRow["Nr_lokalu"].ToString();
             cmbEditGender.SelectedItem = Convert.ToInt32(userRow["Plec"]) == 0 ? "Mężczyzna" : "Kobieta";
-        }
-        private void UpdateForgetButton()
-        {
-            if (Convert.ToInt32(userRow["Status_akt"]) == 0)
-            {
-                btnForgetUser.Text = "Przywróć użytkownika";
-            }
-            else
-            {
-                btnForgetUser.Text = "Zapomnij użytkownika";
-            }
         }
         private string HashData(string input)
         {
@@ -103,32 +92,19 @@ namespace Biblioteka
         }
         private void btnSaveEditUserData_Click(object sender, EventArgs e)
         {
-            string nowyPesel = txtEditPesel.Text;
-            string staryPesel = userRow["PESEL"].ToString();
-
+            if (!HasUserChangedData())
+            {
+                MessageBox.Show("Nie wykryto zmian w danych.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             var result = MessageBox.Show("Czy na pewno chcesz zaktualizować dane użytkownika?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
             {
                 return;
             }
-            else if (!HasUserChangedData())
-            {
-                MessageBox.Show("Dane są takie same jak wcześniej. Proszę podać inne dane.", "Brak zmian", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            else if (nowyPesel != staryPesel)
-            {
-                if (!peselValidator.ValidatePesel(txtEditPesel.Text))
-                {
-                    return;
-                }
-            }
-            
-            else try
-            {
 
                 // Proceed with validation only if data has changed
-                if (string.IsNullOrEmpty(txtEditName.Text) ||
+            if (string.IsNullOrEmpty(txtEditName.Text) ||
                     string.IsNullOrEmpty(txtEditSurname.Text) ||
                     string.IsNullOrEmpty(txtEditPesel.Text) ||
                     string.IsNullOrEmpty(txtEditEmail.Text) ||
@@ -139,10 +115,10 @@ namespace Biblioteka
                     string.IsNullOrEmpty(txtStreet.Text) ||
                     string.IsNullOrEmpty(txtBldNumber.Text) ||
                     string.IsNullOrEmpty(txtFlatNumber.Text))
-                {
-                    MessageBox.Show("Wprowadź wszytkie dane do zapisu", "Błąd wprowadzania", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+            {
+                MessageBox.Show("Wprowadź wszytkie dane do zapisu", "Błąd wprowadzania", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
                 else if (!IsValidEmail(txtEditEmail.Text))
                 {
                     MessageBox.Show("Podany email jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -163,25 +139,30 @@ namespace Biblioteka
                     MessageBox.Show("Podany numer telefonu już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 if (dtpEditBirthDate.Value > DateTime.Now)
                 {
                     MessageBox.Show("Data urodzenia nie może być z przyszłości.");
                     return;
                 }
+            
+            if (!peselValidator.ValidatePesel(txtEditPesel.Text.Trim()))
+            {
+                return;
+            }
 
-                // Proceed with the update if all validations pass
+            try
+            {  
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     string query = @"
-            UPDATE Uzytkownik 
-            SET Imie = @Imie, Nazwisko = @Nazwisko, PESEL = @PESEL, Email = @Email, Data_ur = @Data_ur, Plec = @Plec, Nr_tel = @Nr_tel 
-            WHERE Login = @Login;
+                        UPDATE Uzytkownik 
+                        SET Imie = @Imie, Nazwisko = @Nazwisko, PESEL = @PESEL, Email = @Email, Data_ur = @Data_ur, Plec = @Plec, Nr_tel = @Nr_tel 
+                        WHERE Login = @Login;
             
-            UPDATE Adres_zamieszkania 
-            SET Miejscowosc = @Miejscowosc, Kod_pocztowy = @Kod_pocztowy, Ulica = @Ulica, Nr_posesji = @Nr_posesji, Nr_lokalu = @Nr_lokalu
-            WHERE Adres_id = @Adres_id";
+                        UPDATE Adres_zamieszkania 
+                        SET Miejscowosc = @Miejscowosc, Kod_pocztowy = @Kod_pocztowy, Ulica = @Ulica, Nr_posesji = @Nr_posesji, Nr_lokalu = @Nr_lokalu
+                        WHERE Adres_id = @Adres_id";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
@@ -271,40 +252,42 @@ namespace Biblioteka
                 {
                     connection.Open();
                     string query = @"
-                UPDATE Uzytkownik 
-                SET Status_akt = 0,
-                    Imie = @Imie,
-                    Nazwisko = @Nazwisko,
-                    PESEL = @PESEL,
-                    Login = @Login,
-                    Email = @Email,
-                    Data_ur = @Data_ur,
-                    Nr_tel = @Nr_tel
-                WHERE Login = @Login;
+        UPDATE Uzytkownik 
+        SET Status_akt = 0,
+            Imie = @Imie,
+            Nazwisko = @Nazwisko,
+            PESEL = @PESEL,
+            Login = @Login,
+            Email = @Email,
+            Data_ur = @Data_ur,
+            Nr_tel = @Nr_tel
+        WHERE Login = @LoginCurrent;
 
-                UPDATE Adres_zamieszkania 
-                SET Miejscowosc = @Miejscowosc,
-                    Kod_pocztowy = @Kod_pocztowy,
-                    Ulica = @Ulica,
-                    Nr_posesji = @Nr_posesji,
-                    Nr_lokalu = @Nr_lokalu
-                WHERE Adres_id IN (SELECT Adres_id FROM Uzytkownik WHERE Login=@Login);
-            ";
+        UPDATE Adres_zamieszkania 
+        SET Miejscowosc = @Miejscowosc,
+            Kod_pocztowy = @Kod_pocztowy,
+            Ulica = @Ulica,
+            Nr_posesji = @Nr_posesji,
+            Nr_lokalu = @Nr_lokalu
+        WHERE Adres_id IN (SELECT Adres FROM Uzytkownik WHERE Login = @LoginCurrent);";
 
                     using (SQLiteCommand command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Login", userRow["Login"].ToString());
+                        string loginCurrent = userRow["Login"].ToString();
 
-                        // Hashing user data fields
+                        // Parametr do WHERE
+                        command.Parameters.AddWithValue("@LoginCurrent", loginCurrent);
+
+                        // Hashowane dane użytkownika
                         command.Parameters.AddWithValue("@Imie", HashData(userRow["Imie"].ToString()));
                         command.Parameters.AddWithValue("@Nazwisko", HashData(userRow["Nazwisko"].ToString()));
                         command.Parameters.AddWithValue("@PESEL", HashData(userRow["PESEL"].ToString()));
-                        command.Parameters.AddWithValue("@Login", HashData(userRow["Login"].ToString()));
+                        command.Parameters.AddWithValue("@Login", HashData(loginCurrent));
                         command.Parameters.AddWithValue("@Email", HashData(userRow["Email"].ToString()));
                         command.Parameters.AddWithValue("@Data_ur", HashData(userRow["Data_ur"].ToString()));
                         command.Parameters.AddWithValue("@Nr_tel", HashData(userRow["Nr_tel"].ToString()));
 
-                        // Hashing address fields
+                        // Hashowane dane adresowe
                         command.Parameters.AddWithValue("@Miejscowosc", HashData(userRow["Miejscowosc"].ToString()));
                         command.Parameters.AddWithValue("@Kod_pocztowy", HashData(userRow["Kod_pocztowy"].ToString()));
                         command.Parameters.AddWithValue("@Ulica", HashData(userRow["Ulica"].ToString()));
@@ -314,6 +297,7 @@ namespace Biblioteka
                         command.ExecuteNonQuery();
                     }
                 }
+
                 MessageBox.Show("Użytkownik został oznaczony jako nieaktywny i jego dane zostały zahashowane.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 userProfileForm.Close();
