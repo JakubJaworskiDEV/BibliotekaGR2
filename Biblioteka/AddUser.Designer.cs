@@ -59,8 +59,8 @@
             txtstLog = new TextBox();
             txtRodzaj = new TextBox();
             txtKsiazka = new TextBox();
-            textDataUrodzenia = new TextBox();
             label1 = new Label();
+            DateTimePickers = new DateTimePicker();
             SuspendLayout();
             // 
             // AddBtn
@@ -322,13 +322,6 @@
             txtKsiazka.TabIndex = 34;
             txtKsiazka.Visible = false;
             // 
-            // textDataUrodzenia
-            // 
-            textDataUrodzenia.Location = new Point(24, 308);
-            textDataUrodzenia.Name = "textDataUrodzenia";
-            textDataUrodzenia.Size = new Size(100, 23);
-            textDataUrodzenia.TabIndex = 35;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -338,13 +331,20 @@
             label1.TabIndex = 36;
             label1.Text = "* pola wymagane";
             // 
+            // DateTimePickers
+            // 
+            DateTimePickers.Location = new Point(24, 308);
+            DateTimePickers.Name = "DateTimePickers";
+            DateTimePickers.Size = new Size(200, 23);
+            DateTimePickers.TabIndex = 37;
+            // 
             // AddUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(DateTimePickers);
             Controls.Add(label1);
-            Controls.Add(textDataUrodzenia);
             Controls.Add(txtKsiazka);
             Controls.Add(txtRodzaj);
             Controls.Add(txtstLog);
@@ -416,7 +416,7 @@
         private TextBox txtstLog;
         private TextBox txtRodzaj;
         private TextBox txtKsiazka;
-        private TextBox textDataUrodzenia;
         private Label label1;
+        private DateTimePicker DateTimePickers;
     }
 }

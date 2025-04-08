@@ -35,6 +35,10 @@ namespace Biblioteka
                 txtStreetName.Text = $"{row["Ulica"]}";
                 txtBldNr.Text = $"{row["Nr_posesji"]}";
                 txtFlatNr.Text = $"{row["Nr_lokalu"]}";
+                DateTime parsed;
+                DateTime.TryParse(row["Data_ur"].ToString(), out parsed);
+                txtBirthDate.Text = parsed.ToString("dd.MM.yyyy");
+
                 if (Convert.ToInt32($"{row["Plec"]}") == 0)
                 {
                     txtGender.Text = "Mężczyzna";
