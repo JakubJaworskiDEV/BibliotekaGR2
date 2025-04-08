@@ -103,29 +103,6 @@ namespace Biblioteka
 
                 try
                 {
-                    string insertUserQuery = @"
-                        INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt, Adres, Rodzaj, Ksiazka) 
-                        VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_log, 1, @Adres, @Rodzaj, @Ksiazka);
-                        SELECT last_insert_rowid();";
-
-                    long userId;
-                    using (SQLiteCommand insertUserCmd = new SQLiteCommand(insertUserQuery, conn))
-                    {
-                        insertUserCmd.Parameters.AddWithValue("@Login", login);
-                        insertUserCmd.Parameters.AddWithValue("@Imie", imie);
-                        insertUserCmd.Parameters.AddWithValue("@Nazwisko", nazwisko);
-                        insertUserCmd.Parameters.AddWithValue("@PESEL", pesel);
-                        insertUserCmd.Parameters.AddWithValue("@Data_ur", dataUrodzenia);
-                        insertUserCmd.Parameters.AddWithValue("@Plec", plec);
-                        insertUserCmd.Parameters.AddWithValue("@Email", email);
-                        insertUserCmd.Parameters.AddWithValue("@Nr_tel", telefon);
-                        insertUserCmd.Parameters.AddWithValue("@Status_akt", aktywny ? 1 : 0);
-                        insertUserCmd.Parameters.AddWithValue("@Status_log", statlog);
-                        insertUserCmd.Parameters.AddWithValue("@Rodzaj", rodzaj);
-                        insertUserCmd.Parameters.AddWithValue("@Ksiazka", ksiazka);
-                        insertUserCmd.Parameters.AddWithValue("@Adres", adres);
-                        userId = (long)insertUserCmd.ExecuteScalar();
-                    }
 
                     long adresId;
                     string insertAdresQuery = @"
@@ -143,6 +120,45 @@ namespace Biblioteka
 
                         adresId = (long)insertAdresCmd.ExecuteScalar();
                     }
+
+                    string insertUserQuery = @"
+                        INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt, Adres, Rodzaj, Ksiazka) 
+                        VALUES
+                            (@Login,
+                            @Imie,
+                            @Nazwisko,
+                            @PESEL,
+                            @Data_ur,
+                            @Plec,
+                            @Email,
+                            @Nr_tel,
+                            @Status_log,
+                            1,
+                            (SELECT Adres_id FROM Adres_zamieszkania WHERE Uzytkownik_id = Adres_id),
+                            @Rodzaj,
+                            @Ksiazka);
+                        SELECT last_insert_rowid();";
+
+                    long userId;
+                    using (SQLiteCommand insertUserCmd = new SQLiteCommand(insertUserQuery, conn))
+                    {
+                        insertUserCmd.Parameters.AddWithValue("@Login", login);
+                        insertUserCmd.Parameters.AddWithValue("@Imie", imie);
+                        insertUserCmd.Parameters.AddWithValue("@Nazwisko", nazwisko);
+                        insertUserCmd.Parameters.AddWithValue("@PESEL", pesel);
+                        insertUserCmd.Parameters.AddWithValue("@Data_ur", dataUrodzenia);
+                        insertUserCmd.Parameters.AddWithValue("@Plec", plec);
+                        insertUserCmd.Parameters.AddWithValue("@Email", email);
+                        insertUserCmd.Parameters.AddWithValue("@Nr_tel", telefon);
+                        insertUserCmd.Parameters.AddWithValue("@Status_akt", 1);
+                        insertUserCmd.Parameters.AddWithValue("@Status_log", statlog);
+                        insertUserCmd.Parameters.AddWithValue("@Rodzaj", rodzaj);
+                        insertUserCmd.Parameters.AddWithValue("@Ksiazka", ksiazka);
+                        insertUserCmd.Parameters.AddWithValue("@Adres", adres);
+                        userId = (long)insertUserCmd.ExecuteScalar();
+                    }
+
+                    
 
                     MessageBox.Show("Pomyślnie dodano użytkownika.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearForm();

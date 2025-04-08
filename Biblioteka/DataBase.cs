@@ -14,7 +14,7 @@ namespace Biblioteka
         public DataBase()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
+            
             connectionString = $"Data Source={dbPath};Version=3;";
         }
 
