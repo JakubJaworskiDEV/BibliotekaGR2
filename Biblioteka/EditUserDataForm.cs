@@ -259,7 +259,6 @@ namespace Biblioteka
             Imie = @Imie,
             Nazwisko = @Nazwisko,
             PESEL = @PESEL,
-            Login = @Login,
             Email = @Email,
             Data_ur = @Data_ur,
             Nr_tel = @Nr_tel
@@ -284,11 +283,10 @@ namespace Biblioteka
                         command.Parameters.AddWithValue("@Imie", HashData(userRow["Imie"].ToString()));
                         command.Parameters.AddWithValue("@Nazwisko", HashData(userRow["Nazwisko"].ToString()));
                         command.Parameters.AddWithValue("@PESEL", HashData(userRow["PESEL"].ToString()));
-                        command.Parameters.AddWithValue("@Login", HashData(loginCurrent));
                         command.Parameters.AddWithValue("@Email", HashData(userRow["Email"].ToString()));
                         command.Parameters.AddWithValue("@Data_ur", HashData(userRow["Data_ur"].ToString()));
                         command.Parameters.AddWithValue("@Nr_tel", HashData(userRow["Nr_tel"].ToString()));
-
+                        
                         // Hashowane dane adresowe
                         command.Parameters.AddWithValue("@Miejscowosc", HashData(userRow["Miejscowosc"].ToString()));
                         command.Parameters.AddWithValue("@Kod_pocztowy", HashData(userRow["Kod_pocztowy"].ToString()));
