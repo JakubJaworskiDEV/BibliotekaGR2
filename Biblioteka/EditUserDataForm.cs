@@ -105,7 +105,7 @@ namespace Biblioteka
                 return;
             }
 
-                // Proceed with validation only if data has changed
+            // Proceed with validation only if data has changed
             if (string.IsNullOrEmpty(txtEditName.Text) ||
                     string.IsNullOrEmpty(txtEditSurname.Text) ||
                     string.IsNullOrEmpty(txtEditPesel.Text) ||
@@ -121,39 +121,39 @@ namespace Biblioteka
                 MessageBox.Show("Wprowadź wszytkie dane do zapisu", "Błąd wprowadzania", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-                else if (!IsValidEmail(txtEditEmail.Text))
-                {
-                    MessageBox.Show("Podany email jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else if (!IsValidPhone(txtEditPhone.Text))
-                {
-                    MessageBox.Show("Podany numer telefonu jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else if (!IsUnique("Email", txtEditEmail.Text))
-                {
-                    MessageBox.Show("Podany email już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else if (!IsUnique("Nr_tel", txtEditPhone.Text))
-                {
-                    MessageBox.Show("Podany numer telefonu już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (dtpEditBirthDate.Value > DateTime.Now)
-                {
-                    MessageBox.Show("Data urodzenia nie może być z przyszłości.");
-                    return;
-                }
-            
+            else if (!IsValidEmail(txtEditEmail.Text))
+            {
+                MessageBox.Show("Podany email jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (!IsValidPhone(txtEditPhone.Text))
+            {
+                MessageBox.Show("Podany numer telefonu jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (!IsUnique("Email", txtEditEmail.Text))
+            {
+                MessageBox.Show("Podany email już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (!IsUnique("Nr_tel", txtEditPhone.Text))
+            {
+                MessageBox.Show("Podany numer telefonu już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (dtpEditBirthDate.Value > DateTime.Now)
+            {
+                MessageBox.Show("Data urodzenia nie może być z przyszłości.");
+                return;
+            }
+
             if (!peselValidator.ValidatePesel(txtEditPesel.Text.Trim()))
             {
                 return;
             }
 
             try
-            {  
+            {
                 using (SQLiteConnection connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
@@ -226,7 +226,7 @@ namespace Biblioteka
 
         private bool IsValidPhone(string phone)
         {
-            var phonePattern = @"^\d{9,15}$"; // Zakładając, że numer telefonu ma od 9 do 15 cyfr
+            var phonePattern = @"^\d{9,15}$"; // numer telefonu ma od 9 do 15 cyfr
             return System.Text.RegularExpressions.Regex.IsMatch(phone, phonePattern);
         }
 
@@ -286,7 +286,7 @@ namespace Biblioteka
                         command.Parameters.AddWithValue("@Email", HashData(userRow["Email"].ToString()));
                         command.Parameters.AddWithValue("@Data_ur", HashData(userRow["Data_ur"].ToString()));
                         command.Parameters.AddWithValue("@Nr_tel", HashData(userRow["Nr_tel"].ToString()));
-                        
+
                         // Hashowane dane adresowe
                         command.Parameters.AddWithValue("@Miejscowosc", HashData(userRow["Miejscowosc"].ToString()));
                         command.Parameters.AddWithValue("@Kod_pocztowy", HashData(userRow["Kod_pocztowy"].ToString()));
@@ -298,15 +298,20 @@ namespace Biblioteka
                     }
                 }
 
-                MessageBox.Show("Użytkownik został oznaczony jako nieaktywny i jego dane zostały zahashowane.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Użytkownik został zapomniany.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
                 userProfileForm.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Błąd podczas aktualizacji statusu użytkownika: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Błąd podczas zapominania użytkownika.: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    
+
 }

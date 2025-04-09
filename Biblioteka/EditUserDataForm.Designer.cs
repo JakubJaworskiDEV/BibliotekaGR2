@@ -80,6 +80,7 @@
             // txtEditName
             // 
             txtEditName.Location = new Point(261, 25);
+            txtEditName.MaxLength = 20;
             txtEditName.Name = "txtEditName";
             txtEditName.Size = new Size(295, 25);
             txtEditName.TabIndex = 19;
@@ -87,6 +88,7 @@
             // txtEditSurname
             // 
             txtEditSurname.Location = new Point(261, 56);
+            txtEditSurname.MaxLength = 60;
             txtEditSurname.Name = "txtEditSurname";
             txtEditSurname.Size = new Size(295, 25);
             txtEditSurname.TabIndex = 20;
@@ -94,6 +96,7 @@
             // txtEditPesel
             // 
             txtEditPesel.Location = new Point(261, 87);
+            txtEditPesel.MaxLength = 11;
             txtEditPesel.Name = "txtEditPesel";
             txtEditPesel.Size = new Size(295, 25);
             txtEditPesel.TabIndex = 21;
@@ -101,6 +104,7 @@
             // txtEditEmail
             // 
             txtEditEmail.Location = new Point(261, 149);
+            txtEditEmail.MaxLength = 255;
             txtEditEmail.Name = "txtEditEmail";
             txtEditEmail.Size = new Size(295, 25);
             txtEditEmail.TabIndex = 23;
@@ -108,6 +112,7 @@
             // txtEditPhone
             // 
             txtEditPhone.Location = new Point(261, 216);
+            txtEditPhone.MaxLength = 15;
             txtEditPhone.Name = "txtEditPhone";
             txtEditPhone.Size = new Size(295, 25);
             txtEditPhone.TabIndex = 24;
@@ -115,6 +120,7 @@
             // txtEditPlace
             // 
             txtEditPlace.Location = new Point(262, 247);
+            txtEditPlace.MaxLength = 25;
             txtEditPlace.Name = "txtEditPlace";
             txtEditPlace.Size = new Size(295, 25);
             txtEditPlace.TabIndex = 25;
@@ -122,6 +128,7 @@
             // txtStreet
             // 
             txtStreet.Location = new Point(262, 278);
+            txtStreet.MaxLength = 40;
             txtStreet.Name = "txtStreet";
             txtStreet.Size = new Size(295, 25);
             txtStreet.TabIndex = 26;
@@ -129,6 +136,7 @@
             // txtBldNumber
             // 
             txtBldNumber.Location = new Point(262, 309);
+            txtBldNumber.MaxLength = 10;
             txtBldNumber.Name = "txtBldNumber";
             txtBldNumber.Size = new Size(295, 25);
             txtBldNumber.TabIndex = 27;
@@ -136,6 +144,7 @@
             // txtFlatNumber
             // 
             txtFlatNumber.Location = new Point(262, 340);
+            txtFlatNumber.MaxLength = 10;
             txtFlatNumber.Name = "txtFlatNumber";
             txtFlatNumber.Size = new Size(295, 25);
             txtFlatNumber.TabIndex = 28;
@@ -143,6 +152,7 @@
             // txtPostalCode
             // 
             txtPostalCode.Location = new Point(261, 371);
+            txtPostalCode.MaxLength = 6;
             txtPostalCode.Name = "txtPostalCode";
             txtPostalCode.Size = new Size(295, 25);
             txtPostalCode.TabIndex = 29;
@@ -215,14 +225,15 @@
             label7.AutoSize = true;
             label7.Location = new Point(67, 250);
             label7.Name = "label7";
-            label7.Size = new Size(51, 17);
+            label7.Size = new Size(85, 17);
             label7.TabIndex = 37;
-            label7.Text = "Miasto:";
+            label7.Text = "Miejscowość:";
+            label7.Click += label7_Click;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(67, 286);
+            label8.Location = new Point(66, 281);
             label8.Name = "label8";
             label8.Size = new Size(39, 17);
             label8.TabIndex = 38;
@@ -233,18 +244,18 @@
             label9.AutoSize = true;
             label9.Location = new Point(67, 312);
             label9.Name = "label9";
-            label9.Size = new Size(89, 17);
+            label9.Size = new Size(96, 17);
             label9.TabIndex = 39;
-            label9.Text = "Numer domu:";
+            label9.Text = "Numer posesji:";
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Location = new Point(67, 343);
             label10.Name = "label10";
-            label10.Size = new Size(118, 17);
+            label10.Size = new Size(89, 17);
             label10.TabIndex = 40;
-            label10.Text = "Numer mieszkania:";
+            label10.Text = "Numer lokalu:";
             // 
             // label11
             // 
