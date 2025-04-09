@@ -118,32 +118,32 @@ namespace Biblioteka
                     string.IsNullOrEmpty(txtBldNumber.Text) ||
                     string.IsNullOrEmpty(txtFlatNumber.Text))
             {
-                MessageBox.Show("Wprowadź wszytkie dane do zapisu", "Błąd wprowadzania", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Brak wymaganych pól", "Błąd wprowadzania", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (!IsValidEmail(txtEditEmail.Text))
             {
-                MessageBox.Show("Podany email jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Niepoprawny adres email", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (!IsValidPhone(txtEditPhone.Text))
             {
-                MessageBox.Show("Podany numer telefonu jest nieprawidłowy.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Niepoprawny numer telefonu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (!IsUnique("Email", txtEditEmail.Text))
             {
-                MessageBox.Show("Podany email już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Użytkownik o podanym emailu już istnieje", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (!IsUnique("Nr_tel", txtEditPhone.Text))
             {
-                MessageBox.Show("Podany numer telefonu już istnieje w bazie danych.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Niepoprawny numer telefonu", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (dtpEditBirthDate.Value > DateTime.Now)
             {
-                MessageBox.Show("Data urodzenia nie może być z przyszłości.");
+                MessageBox.Show("Niepoprawna data urodzenia");
                 return;
             }
 

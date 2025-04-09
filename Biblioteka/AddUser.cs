@@ -71,10 +71,16 @@ namespace Biblioteka
                 return;
             }
 
-            //if (!peselValidator.ValidatePesel(pesel))
-            //{
-            //return;
-            //}
+            if (!peselValidator.ValidatePesel(pesel))
+            {
+            return;
+            }
+            
+            if (DateTimePickers.Value > DateTime.Now)
+            {
+                MessageBox.Show("Niepoprawna data urodzenia");
+                return;
+            }
 
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {

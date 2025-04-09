@@ -218,7 +218,7 @@
             // txtName
             // 
             txtName.BackColor = Color.White;
-            txtName.ForeColor = SystemColors.Window;
+            txtName.ForeColor = Color.Black;
             txtName.Location = new Point(182, 17);
             txtName.Margin = new Padding(3, 4, 3, 4);
             txtName.Name = "txtName";
@@ -229,7 +229,7 @@
             // txtSurname
             // 
             txtSurname.BackColor = Color.White;
-            txtSurname.ForeColor = SystemColors.Window;
+            txtSurname.ForeColor = Color.Black;
             txtSurname.Location = new Point(182, 55);
             txtSurname.Margin = new Padding(3, 4, 3, 4);
             txtSurname.Name = "txtSurname";
@@ -240,7 +240,7 @@
             // txtGender
             // 
             txtGender.BackColor = Color.White;
-            txtGender.ForeColor = SystemColors.Window;
+            txtGender.ForeColor = Color.Black;
             txtGender.Location = new Point(182, 91);
             txtGender.Margin = new Padding(3, 4, 3, 4);
             txtGender.Name = "txtGender";
@@ -251,7 +251,7 @@
             // txtPesel
             // 
             txtPesel.BackColor = Color.White;
-            txtPesel.ForeColor = SystemColors.Window;
+            txtPesel.ForeColor = Color.Black;
             txtPesel.Location = new Point(182, 164);
             txtPesel.Margin = new Padding(3, 4, 3, 4);
             txtPesel.Name = "txtPesel";
@@ -262,7 +262,7 @@
             // txtLogin
             // 
             txtLogin.BackColor = Color.White;
-            txtLogin.ForeColor = SystemColors.Window;
+            txtLogin.ForeColor = Color.Black;
             txtLogin.Location = new Point(182, 200);
             txtLogin.Margin = new Padding(3, 4, 3, 4);
             txtLogin.Name = "txtLogin";
@@ -273,7 +273,7 @@
             // txtBldNr
             // 
             txtBldNr.BackColor = Color.White;
-            txtBldNr.ForeColor = SystemColors.Window;
+            txtBldNr.ForeColor = Color.Black;
             txtBldNr.Location = new Point(182, 396);
             txtBldNr.Margin = new Padding(3, 4, 3, 4);
             txtBldNr.Name = "txtBldNr";
@@ -284,7 +284,7 @@
             // txtStreetName
             // 
             txtStreetName.BackColor = Color.White;
-            txtStreetName.ForeColor = SystemColors.Window;
+            txtStreetName.ForeColor = Color.Black;
             txtStreetName.Location = new Point(182, 360);
             txtStreetName.Margin = new Padding(3, 4, 3, 4);
             txtStreetName.Name = "txtStreetName";
@@ -295,7 +295,7 @@
             // txtPlace
             // 
             txtPlace.BackColor = Color.White;
-            txtPlace.ForeColor = SystemColors.Window;
+            txtPlace.ForeColor = Color.Black;
             txtPlace.Location = new Point(182, 324);
             txtPlace.Margin = new Padding(3, 4, 3, 4);
             txtPlace.Name = "txtPlace";
@@ -306,7 +306,7 @@
             // txtPhoneNr
             // 
             txtPhoneNr.BackColor = Color.White;
-            txtPhoneNr.ForeColor = SystemColors.Window;
+            txtPhoneNr.ForeColor = Color.Black;
             txtPhoneNr.Location = new Point(182, 273);
             txtPhoneNr.Margin = new Padding(3, 4, 3, 4);
             txtPhoneNr.Name = "txtPhoneNr";
@@ -317,7 +317,7 @@
             // txtEmail
             // 
             txtEmail.BackColor = Color.White;
-            txtEmail.ForeColor = SystemColors.Window;
+            txtEmail.ForeColor = Color.Black;
             txtEmail.Location = new Point(182, 236);
             txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
@@ -328,7 +328,7 @@
             // txtPostalCode
             // 
             txtPostalCode.BackColor = Color.White;
-            txtPostalCode.ForeColor = SystemColors.Window;
+            txtPostalCode.ForeColor = Color.Black;
             txtPostalCode.Location = new Point(182, 469);
             txtPostalCode.Margin = new Padding(3, 4, 3, 4);
             txtPostalCode.Name = "txtPostalCode";
@@ -339,7 +339,7 @@
             // txtFlatNr
             // 
             txtFlatNr.BackColor = Color.White;
-            txtFlatNr.ForeColor = SystemColors.Window;
+            txtFlatNr.ForeColor = Color.Black;
             txtFlatNr.Location = new Point(182, 433);
             txtFlatNr.Margin = new Padding(3, 4, 3, 4);
             txtFlatNr.Name = "txtFlatNr";
@@ -350,7 +350,7 @@
             // txtBirthDate
             // 
             txtBirthDate.BackColor = Color.White;
-            txtBirthDate.ForeColor = SystemColors.Window;
+            txtBirthDate.ForeColor = Color.Black;
             txtBirthDate.Location = new Point(182, 131);
             txtBirthDate.Margin = new Padding(3, 4, 3, 4);
             txtBirthDate.Name = "txtBirthDate";

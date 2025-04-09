@@ -19,7 +19,7 @@ public class PeselValidator
     {
         if (!Regex.IsMatch(pesel, "^\\d{11}$"))
         {
-            MessageBox.Show("Niepoprawny numer PESEL – musi zawierać dokładnie 11 cyfr.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Niepoprawny numer PESEL", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
@@ -27,14 +27,14 @@ public class PeselValidator
             row["PESEL"].ToString() == pesel && 
             row["Login"].ToString() != currentLogin))
         {
-            MessageBox.Show("Numer PESEL już istnieje w systemie.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Niepoprawny numer PESEL", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
         string birthDate = pesel.Substring(0, 6);
         if (!IsValidBirthDate(birthDate))
         {
-            MessageBox.Show("Niepoprawna data urodzenia w numerze PESEL.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Niepoprawny numer PESEL", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
@@ -42,11 +42,10 @@ public class PeselValidator
 
         if (!IsValidControlDigit(pesel))
         {
-            MessageBox.Show("Niepoprawna cyfra kontrolna numeru PESEL.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Niepoprawny numer PESEL", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
-        MessageBox.Show($"PESEL poprawny.\nPłeć: {gender}", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
         return true;
     }
 

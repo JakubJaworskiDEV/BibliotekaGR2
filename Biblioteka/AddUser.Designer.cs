@@ -69,7 +69,7 @@
             AddBtn.BackColor = Color.FromArgb(64, 64, 64);
             AddBtn.ForeColor = Color.White;
             AddBtn.Location = new Point(467, 521);
-            AddBtn.Margin = new Padding(4, 4, 4, 4);
+            AddBtn.Margin = new Padding(4);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(244, 63);
             AddBtn.TabIndex = 0;
@@ -228,7 +228,7 @@
             // txtLogin
             // 
             txtLogin.Location = new Point(31, 57);
-            txtLogin.Margin = new Padding(4, 4, 4, 4);
+            txtLogin.Margin = new Padding(4);
             txtLogin.MaxLength = 18;
             txtLogin.Name = "txtLogin";
             txtLogin.Size = new Size(244, 27);
@@ -237,7 +237,7 @@
             // txtImie
             // 
             txtImie.Location = new Point(31, 121);
-            txtImie.Margin = new Padding(4, 4, 4, 4);
+            txtImie.Margin = new Padding(4);
             txtImie.MaxLength = 20;
             txtImie.Name = "txtImie";
             txtImie.Size = new Size(244, 27);
@@ -246,7 +246,7 @@
             // txtNazwisko
             // 
             txtNazwisko.Location = new Point(31, 193);
-            txtNazwisko.Margin = new Padding(4, 4, 4, 4);
+            txtNazwisko.Margin = new Padding(4);
             txtNazwisko.MaxLength = 60;
             txtNazwisko.Name = "txtNazwisko";
             txtNazwisko.Size = new Size(244, 27);
@@ -255,7 +255,7 @@
             // txtMiejscowosc
             // 
             txtMiejscowosc.Location = new Point(357, 195);
-            txtMiejscowosc.Margin = new Padding(4, 4, 4, 4);
+            txtMiejscowosc.Margin = new Padding(4);
             txtMiejscowosc.MaxLength = 25;
             txtMiejscowosc.Name = "txtMiejscowosc";
             txtMiejscowosc.Size = new Size(244, 27);
@@ -264,7 +264,7 @@
             // txtKodPocztowy
             // 
             txtKodPocztowy.Location = new Point(357, 267);
-            txtKodPocztowy.Margin = new Padding(4, 4, 4, 4);
+            txtKodPocztowy.Margin = new Padding(4);
             txtKodPocztowy.MaxLength = 6;
             txtKodPocztowy.Name = "txtKodPocztowy";
             txtKodPocztowy.Size = new Size(244, 27);
@@ -273,7 +273,7 @@
             // txtNumerPosesji
             // 
             txtNumerPosesji.Location = new Point(616, 411);
-            txtNumerPosesji.Margin = new Padding(4, 4, 4, 4);
+            txtNumerPosesji.Margin = new Padding(4);
             txtNumerPosesji.MaxLength = 10;
             txtNumerPosesji.Name = "txtNumerPosesji";
             txtNumerPosesji.Size = new Size(244, 27);
@@ -282,7 +282,7 @@
             // txtUlica
             // 
             txtUlica.Location = new Point(357, 337);
-            txtUlica.Margin = new Padding(4, 4, 4, 4);
+            txtUlica.Margin = new Padding(4);
             txtUlica.MaxLength = 40;
             txtUlica.Name = "txtUlica";
             txtUlica.Size = new Size(244, 27);
@@ -291,7 +291,7 @@
             // txtNumerLokalu
             // 
             txtNumerLokalu.Location = new Point(357, 411);
-            txtNumerLokalu.Margin = new Padding(4, 4, 4, 4);
+            txtNumerLokalu.Margin = new Padding(4);
             txtNumerLokalu.MaxLength = 10;
             txtNumerLokalu.Name = "txtNumerLokalu";
             txtNumerLokalu.Size = new Size(244, 27);
@@ -300,7 +300,7 @@
             // txtPESEL
             // 
             txtPESEL.Location = new Point(31, 337);
-            txtPESEL.Margin = new Padding(4, 4, 4, 4);
+            txtPESEL.Margin = new Padding(4);
             txtPESEL.MaxLength = 11;
             txtPESEL.Name = "txtPESEL";
             txtPESEL.Size = new Size(244, 27);
@@ -309,7 +309,7 @@
             // txtEmail
             // 
             txtEmail.Location = new Point(355, 49);
-            txtEmail.Margin = new Padding(4, 4, 4, 4);
+            txtEmail.Margin = new Padding(4);
             txtEmail.MaxLength = 255;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(244, 27);
@@ -318,8 +318,8 @@
             // txtTelefon
             // 
             txtTelefon.Location = new Point(357, 121);
-            txtTelefon.Margin = new Padding(4, 4, 4, 4);
-            txtTelefon.MaxLength = 15;
+            txtTelefon.Margin = new Padding(4);
+            txtTelefon.MaxLength = 9;
             txtTelefon.Name = "txtTelefon";
             txtTelefon.Size = new Size(244, 27);
             txtTelefon.TabIndex = 25;
@@ -329,7 +329,7 @@
             cmbPlec.FormattingEnabled = true;
             cmbPlec.Items.AddRange(new object[] { "mężczyzna", "kobieta" });
             cmbPlec.Location = new Point(31, 267);
-            cmbPlec.Margin = new Padding(4, 4, 4, 4);
+            cmbPlec.Margin = new Padding(4);
             cmbPlec.Name = "cmbPlec";
             cmbPlec.Size = new Size(154, 28);
             cmbPlec.TabIndex = 26;
@@ -340,7 +340,7 @@
             ExitBtn.BackColor = Color.FromArgb(64, 64, 64);
             ExitBtn.ForeColor = SystemColors.Control;
             ExitBtn.Location = new Point(753, 521);
-            ExitBtn.Margin = new Padding(4, 4, 4, 4);
+            ExitBtn.Margin = new Padding(4);
             ExitBtn.Name = "ExitBtn";
             ExitBtn.Size = new Size(243, 63);
             ExitBtn.TabIndex = 29;
@@ -351,7 +351,7 @@
             // txtAdres
             // 
             txtAdres.Location = new Point(868, 16);
-            txtAdres.Margin = new Padding(4, 4, 4, 4);
+            txtAdres.Margin = new Padding(4);
             txtAdres.Name = "txtAdres";
             txtAdres.Size = new Size(127, 27);
             txtAdres.TabIndex = 31;
@@ -360,7 +360,7 @@
             // txtstLog
             // 
             txtstLog.Location = new Point(868, 67);
-            txtstLog.Margin = new Padding(4, 4, 4, 4);
+            txtstLog.Margin = new Padding(4);
             txtstLog.Name = "txtstLog";
             txtstLog.Size = new Size(127, 27);
             txtstLog.TabIndex = 32;
@@ -369,7 +369,7 @@
             // txtRodzaj
             // 
             txtRodzaj.Location = new Point(868, 121);
-            txtRodzaj.Margin = new Padding(4, 4, 4, 4);
+            txtRodzaj.Margin = new Padding(4);
             txtRodzaj.Name = "txtRodzaj";
             txtRodzaj.Size = new Size(127, 27);
             txtRodzaj.TabIndex = 33;
@@ -378,7 +378,7 @@
             // txtKsiazka
             // 
             txtKsiazka.Location = new Point(868, 171);
-            txtKsiazka.Margin = new Padding(4, 4, 4, 4);
+            txtKsiazka.Margin = new Padding(4);
             txtKsiazka.Name = "txtKsiazka";
             txtKsiazka.Size = new Size(127, 27);
             txtKsiazka.TabIndex = 34;
@@ -398,9 +398,9 @@
             // DateTimePickers
             // 
             DateTimePickers.Location = new Point(31, 411);
-            DateTimePickers.Margin = new Padding(4, 4, 4, 4);
+            DateTimePickers.Margin = new Padding(4);
             DateTimePickers.Name = "DateTimePickers";
-            DateTimePickers.Size = new Size(256, 27);
+            DateTimePickers.Size = new Size(270, 27);
             DateTimePickers.TabIndex = 37;
             // 
             // AddUser
@@ -445,7 +445,7 @@
             Controls.Add(Login);
             Controls.Add(AddBtn);
             Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "AddUser";
             Text = "AddUser";
             Load += AddUser_Load;
