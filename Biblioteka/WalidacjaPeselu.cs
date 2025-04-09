@@ -7,21 +7,25 @@ using System.Windows.Forms;
 public class PeselValidator
 {
     private DataTable usersTable;
+    private string currentLogin;
 
-    public PeselValidator(DataTable usersTable)
+    public PeselValidator(DataTable usersTable, string currentLogin)
     {
         this.usersTable = usersTable;
+        this.currentLogin = currentLogin;
     }
 
     public bool ValidatePesel(string pesel)
     {
-        if (!Regex.IsMatch(pesel, @"^\d{11}$"))
+        if (!Regex.IsMatch(pesel, "^\\d{11}$"))
         {
             MessageBox.Show("Niepoprawny numer PESEL – musi zawierać dokładnie 11 cyfr.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
-        if (usersTable != null && usersTable.AsEnumerable().Any(row => row["PESEL"].ToString() == pesel))
+        if (usersTable != null && usersTable.AsEnumerable().Any(row => 
+            row["PESEL"].ToString() == pesel && 
+            row["Login"].ToString() != currentLogin))
         {
             MessageBox.Show("Numer PESEL już istnieje w systemie.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;

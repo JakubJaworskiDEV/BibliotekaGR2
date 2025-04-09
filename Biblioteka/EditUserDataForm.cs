@@ -24,15 +24,17 @@ namespace Biblioteka
             InitializeComponent();
             this.connectionString = connectionString;
             this.userProfileForm = userProfileForm;
-            this.peselValidator = new PeselValidator(userData);
+
             if (userData.Rows.Count > 0)
             {
                 userRow = userData.Rows[0];
+                this.peselValidator = new PeselValidator(userData, userRow["Login"].ToString());
                 LoadUserData();
-
-
             }
-            else { MessageBox.Show("Błąd podczas ładowania danych. Nie znaleziono danych użytkownika."); }
+            else
+            {
+                MessageBox.Show("Błąd podczas ładowania danych. Nie znaleziono danych użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadUserData()

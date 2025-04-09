@@ -26,7 +26,7 @@ namespace Biblioteka
             InitializeComponent();
             this.userData = userData;
             this.connectionString = connectionString;
-            this.peselValidator = new PeselValidator(userData);
+            this.peselValidator = new PeselValidator(userData, null);
 
         }
 
