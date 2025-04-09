@@ -56,6 +56,11 @@ namespace Biblioteka
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dataGridViewUser.DataSource = dt;
+                        dataGridViewUser.Columns["Imie"].Width = 170;
+                        dataGridViewUser.Columns["Nazwisko"].Width = 170;
+                        dataGridViewUser.Columns["PESEL"].Width = 170;
+                        dataGridViewUser.Columns["Login"].Width = 170;
+                        dataGridViewUser.Columns["Email"].Width = 170;
                     }
                 }
             }

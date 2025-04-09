@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfileForm));
             btnEditUserData = new Button();
             label5 = new Label();
             label7 = new Label();
@@ -60,263 +61,310 @@
             // 
             // btnEditUserData
             // 
-            btnEditUserData.Location = new Point(183, 453);
+            btnEditUserData.BackColor = Color.FromArgb(64, 64, 64);
+            btnEditUserData.ForeColor = SystemColors.Control;
+            btnEditUserData.Location = new Point(235, 533);
+            btnEditUserData.Margin = new Padding(3, 4, 3, 4);
             btnEditUserData.Name = "btnEditUserData";
-            btnEditUserData.Size = new Size(176, 45);
+            btnEditUserData.Size = new Size(226, 53);
             btnEditUserData.TabIndex = 6;
             btnEditUserData.Text = "Edytuj Dane Użytkownika";
-            btnEditUserData.UseVisualStyleBackColor = true;
+            btnEditUserData.UseVisualStyleBackColor = false;
             btnEditUserData.Click += btnEditUserData_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(80, 18);
+            label5.BackColor = Color.FromArgb(252, 240, 224);
+            label5.Location = new Point(102, 21);
             label5.Name = "label5";
-            label5.Size = new Size(35, 17);
+            label5.Size = new Size(44, 20);
             label5.TabIndex = 12;
             label5.Text = "Imię:";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(49, 49);
+            label7.BackColor = Color.FromArgb(252, 240, 224);
+            label7.Location = new Point(63, 57);
             label7.Name = "label7";
-            label7.Size = new Size(66, 17);
+            label7.Size = new Size(80, 20);
             label7.TabIndex = 14;
             label7.Text = "Nazwisko:";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(70, 142);
+            label10.BackColor = Color.FromArgb(252, 240, 224);
+            label10.Location = new Point(90, 167);
             label10.Name = "label10";
-            label10.Size = new Size(45, 17);
+            label10.Size = new Size(54, 20);
             label10.TabIndex = 16;
             label10.Text = "PESEL:";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(73, 200);
+            label14.BackColor = Color.FromArgb(252, 240, 224);
+            label14.Location = new Point(93, 235);
             label14.Name = "label14";
-            label14.Size = new Size(42, 17);
+            label14.Size = new Size(51, 20);
             label14.TabIndex = 20;
             label14.Text = "Email:";
             // 
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(36, 283);
+            label16.BackColor = Color.FromArgb(252, 240, 224);
+            label16.Location = new Point(46, 333);
             label16.Name = "label16";
-            label16.Size = new Size(85, 17);
+            label16.Size = new Size(101, 20);
             label16.TabIndex = 22;
             label16.Text = "Miejscowość:";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(72, 170);
+            label18.BackColor = Color.FromArgb(252, 240, 224);
+            label18.Location = new Point(92, 200);
             label18.Name = "label18";
-            label18.Size = new Size(43, 17);
+            label18.Size = new Size(52, 20);
             label18.TabIndex = 24;
             label18.Text = "Login:";
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(62, 235);
+            label20.BackColor = Color.FromArgb(252, 240, 224);
+            label20.Location = new Point(80, 276);
             label20.Name = "label20";
-            label20.Size = new Size(53, 17);
+            label20.Size = new Size(65, 20);
             label20.TabIndex = 26;
             label20.Text = "Telefon:";
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(42, 309);
+            label24.BackColor = Color.FromArgb(252, 240, 224);
+            label24.Location = new Point(54, 364);
             label24.Name = "label24";
-            label24.Size = new Size(79, 17);
+            label24.Size = new Size(96, 20);
             label24.TabIndex = 30;
             label24.Text = "Nazwa ulicy:";
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(21, 340);
+            label22.BackColor = Color.FromArgb(252, 240, 224);
+            label22.Location = new Point(27, 400);
             label22.Name = "label22";
-            label22.Size = new Size(104, 17);
+            label22.Size = new Size(127, 20);
             label22.TabIndex = 32;
             label22.Text = "Numer budynku:";
             // 
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(7, 368);
+            label26.BackColor = Color.FromArgb(252, 240, 224);
+            label26.Location = new Point(9, 433);
             label26.Name = "label26";
-            label26.Size = new Size(118, 17);
+            label26.Size = new Size(143, 20);
             label26.TabIndex = 34;
             label26.Text = "Numer mieszkania:";
             // 
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(27, 399);
+            label28.BackColor = Color.FromArgb(252, 240, 224);
+            label28.Location = new Point(35, 469);
             label28.Name = "label28";
-            label28.Size = new Size(94, 17);
+            label28.Size = new Size(112, 20);
             label28.TabIndex = 36;
             label28.Text = "Kod pocztowy:";
             // 
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(15, 111);
+            label30.BackColor = Color.FromArgb(252, 240, 224);
+            label30.Location = new Point(19, 131);
             label30.Name = "label30";
-            label30.Size = new Size(100, 17);
+            label30.Size = new Size(119, 20);
             label30.TabIndex = 38;
             label30.Text = "Data urodzenia:";
             // 
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(81, 80);
+            label32.BackColor = Color.FromArgb(252, 240, 224);
+            label32.Location = new Point(105, 95);
             label32.Name = "label32";
-            label32.Size = new Size(34, 17);
+            label32.Size = new Size(42, 20);
             label32.TabIndex = 40;
             label32.Text = "Płeć:";
             // 
             // btnBackToList
             // 
-            btnBackToList.Location = new Point(12, 453);
+            btnBackToList.BackColor = Color.FromArgb(64, 64, 64);
+            btnBackToList.ForeColor = SystemColors.Control;
+            btnBackToList.Location = new Point(16, 533);
+            btnBackToList.Margin = new Padding(3, 4, 3, 4);
             btnBackToList.Name = "btnBackToList";
-            btnBackToList.Size = new Size(114, 42);
+            btnBackToList.Size = new Size(146, 49);
             btnBackToList.TabIndex = 42;
             btnBackToList.Text = "Powrót";
-            btnBackToList.UseVisualStyleBackColor = true;
+            btnBackToList.UseVisualStyleBackColor = false;
             btnBackToList.Click += btnBackToList_Click;
             // 
             // txtName
             // 
+            txtName.BackColor = Color.White;
             txtName.ForeColor = SystemColors.Window;
-            txtName.Location = new Point(142, 15);
+            txtName.Location = new Point(182, 17);
+            txtName.Margin = new Padding(3, 4, 3, 4);
             txtName.Name = "txtName";
             txtName.ReadOnly = true;
-            txtName.Size = new Size(217, 25);
+            txtName.Size = new Size(277, 27);
             txtName.TabIndex = 43;
             // 
             // txtSurname
             // 
+            txtSurname.BackColor = Color.White;
             txtSurname.ForeColor = SystemColors.Window;
-            txtSurname.Location = new Point(142, 46);
+            txtSurname.Location = new Point(182, 55);
+            txtSurname.Margin = new Padding(3, 4, 3, 4);
             txtSurname.Name = "txtSurname";
             txtSurname.ReadOnly = true;
-            txtSurname.Size = new Size(217, 25);
+            txtSurname.Size = new Size(277, 27);
             txtSurname.TabIndex = 44;
             // 
             // txtGender
             // 
+            txtGender.BackColor = Color.White;
             txtGender.ForeColor = SystemColors.Window;
-            txtGender.Location = new Point(142, 77);
+            txtGender.Location = new Point(182, 91);
+            txtGender.Margin = new Padding(3, 4, 3, 4);
             txtGender.Name = "txtGender";
             txtGender.ReadOnly = true;
-            txtGender.Size = new Size(217, 25);
+            txtGender.Size = new Size(277, 27);
             txtGender.TabIndex = 45;
             // 
             // txtPesel
             // 
+            txtPesel.BackColor = Color.White;
             txtPesel.ForeColor = SystemColors.Window;
-            txtPesel.Location = new Point(142, 139);
+            txtPesel.Location = new Point(182, 164);
+            txtPesel.Margin = new Padding(3, 4, 3, 4);
             txtPesel.Name = "txtPesel";
             txtPesel.ReadOnly = true;
-            txtPesel.Size = new Size(217, 25);
+            txtPesel.Size = new Size(277, 27);
             txtPesel.TabIndex = 47;
             // 
             // txtLogin
             // 
+            txtLogin.BackColor = Color.White;
             txtLogin.ForeColor = SystemColors.Window;
-            txtLogin.Location = new Point(142, 170);
+            txtLogin.Location = new Point(182, 200);
+            txtLogin.Margin = new Padding(3, 4, 3, 4);
             txtLogin.Name = "txtLogin";
             txtLogin.ReadOnly = true;
-            txtLogin.Size = new Size(217, 25);
+            txtLogin.Size = new Size(277, 27);
             txtLogin.TabIndex = 48;
             // 
             // txtBldNr
             // 
+            txtBldNr.BackColor = Color.White;
             txtBldNr.ForeColor = SystemColors.Window;
-            txtBldNr.Location = new Point(142, 337);
+            txtBldNr.Location = new Point(182, 396);
+            txtBldNr.Margin = new Padding(3, 4, 3, 4);
             txtBldNr.Name = "txtBldNr";
             txtBldNr.ReadOnly = true;
-            txtBldNr.Size = new Size(217, 25);
+            txtBldNr.Size = new Size(277, 27);
             txtBldNr.TabIndex = 54;
             // 
             // txtStreetName
             // 
+            txtStreetName.BackColor = Color.White;
             txtStreetName.ForeColor = SystemColors.Window;
-            txtStreetName.Location = new Point(142, 306);
+            txtStreetName.Location = new Point(182, 360);
+            txtStreetName.Margin = new Padding(3, 4, 3, 4);
             txtStreetName.Name = "txtStreetName";
             txtStreetName.ReadOnly = true;
-            txtStreetName.Size = new Size(217, 25);
+            txtStreetName.Size = new Size(277, 27);
             txtStreetName.TabIndex = 53;
             // 
             // txtPlace
             // 
+            txtPlace.BackColor = Color.White;
             txtPlace.ForeColor = SystemColors.Window;
-            txtPlace.Location = new Point(142, 275);
+            txtPlace.Location = new Point(182, 324);
+            txtPlace.Margin = new Padding(3, 4, 3, 4);
             txtPlace.Name = "txtPlace";
             txtPlace.ReadOnly = true;
-            txtPlace.Size = new Size(217, 25);
+            txtPlace.Size = new Size(277, 27);
             txtPlace.TabIndex = 52;
             // 
             // txtPhoneNr
             // 
+            txtPhoneNr.BackColor = Color.White;
             txtPhoneNr.ForeColor = SystemColors.Window;
-            txtPhoneNr.Location = new Point(142, 232);
+            txtPhoneNr.Location = new Point(182, 273);
+            txtPhoneNr.Margin = new Padding(3, 4, 3, 4);
             txtPhoneNr.Name = "txtPhoneNr";
             txtPhoneNr.ReadOnly = true;
-            txtPhoneNr.Size = new Size(217, 25);
+            txtPhoneNr.Size = new Size(277, 27);
             txtPhoneNr.TabIndex = 50;
             // 
             // txtEmail
             // 
+            txtEmail.BackColor = Color.White;
             txtEmail.ForeColor = SystemColors.Window;
-            txtEmail.Location = new Point(142, 201);
+            txtEmail.Location = new Point(182, 236);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
-            txtEmail.Size = new Size(217, 25);
+            txtEmail.Size = new Size(277, 27);
             txtEmail.TabIndex = 49;
             // 
             // txtPostalCode
             // 
+            txtPostalCode.BackColor = Color.White;
             txtPostalCode.ForeColor = SystemColors.Window;
-            txtPostalCode.Location = new Point(142, 399);
+            txtPostalCode.Location = new Point(182, 469);
+            txtPostalCode.Margin = new Padding(3, 4, 3, 4);
             txtPostalCode.Name = "txtPostalCode";
             txtPostalCode.ReadOnly = true;
-            txtPostalCode.Size = new Size(217, 25);
+            txtPostalCode.Size = new Size(277, 27);
             txtPostalCode.TabIndex = 56;
             // 
             // txtFlatNr
             // 
+            txtFlatNr.BackColor = Color.White;
             txtFlatNr.ForeColor = SystemColors.Window;
-            txtFlatNr.Location = new Point(142, 368);
+            txtFlatNr.Location = new Point(182, 433);
+            txtFlatNr.Margin = new Padding(3, 4, 3, 4);
             txtFlatNr.Name = "txtFlatNr";
             txtFlatNr.ReadOnly = true;
-            txtFlatNr.Size = new Size(217, 25);
+            txtFlatNr.Size = new Size(277, 27);
             txtFlatNr.TabIndex = 55;
             // 
             // txtBirthDate
             // 
+            txtBirthDate.BackColor = Color.White;
             txtBirthDate.ForeColor = SystemColors.Window;
-            txtBirthDate.Location = new Point(142, 111);
+            txtBirthDate.Location = new Point(182, 131);
+            txtBirthDate.Margin = new Padding(3, 4, 3, 4);
             txtBirthDate.Name = "txtBirthDate";
             txtBirthDate.ReadOnly = true;
-            txtBirthDate.Size = new Size(217, 25);
+            txtBirthDate.Size = new Size(277, 27);
             txtBirthDate.TabIndex = 57;
             // 
             // UserProfileForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(371, 511);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Center;
+            ClientSize = new Size(477, 601);
             Controls.Add(txtBirthDate);
             Controls.Add(txtPostalCode);
             Controls.Add(txtFlatNr);
@@ -345,6 +393,8 @@
             Controls.Add(label7);
             Controls.Add(label5);
             Controls.Add(btnEditUserData);
+            Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "UserProfileForm";
             Text = "UserProfileForm";
             Load += UserProfileForm_Load;
