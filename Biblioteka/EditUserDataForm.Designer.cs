@@ -178,6 +178,7 @@
             // 
             // cmbEditGender
             // 
+            cmbEditGender.Enabled = false;
             cmbEditGender.FormattingEnabled = true;
             cmbEditGender.Items.AddRange(new object[] { "Mężczyzna", "Kobieta" });
             cmbEditGender.Location = new Point(215, 253);

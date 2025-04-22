@@ -155,9 +155,10 @@
             street.Location = new Point(357, 313);
             street.Margin = new Padding(4, 0, 4, 0);
             street.Name = "street";
-            street.Size = new Size(91, 20);
+            street.Size = new Size(84, 20);
             street.TabIndex = 7;
-            street.Text = "Podaj ulicę*";
+            street.Text = "Podaj ulicę";
+            street.Click += street_Click;
             // 
             // apartmentNumber
             // 
@@ -166,9 +167,9 @@
             apartmentNumber.Location = new Point(357, 387);
             apartmentNumber.Margin = new Padding(4, 0, 4, 0);
             apartmentNumber.Name = "apartmentNumber";
-            apartmentNumber.Size = new Size(151, 20);
+            apartmentNumber.Size = new Size(144, 20);
             apartmentNumber.TabIndex = 8;
-            apartmentNumber.Text = "Podaj numer lokalu*";
+            apartmentNumber.Text = "Podaj numer lokalu";
             // 
             // PESEL
             // 

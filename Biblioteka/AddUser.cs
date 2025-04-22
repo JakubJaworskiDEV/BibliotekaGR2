@@ -73,9 +73,9 @@ namespace Biblioteka
 
             if (!peselValidator.ValidatePesel(pesel))
             {
-            return;
+                return;
             }
-            
+
             if (DateTimePickers.Value > DateTime.Now)
             {
                 MessageBox.Show("Niepoprawna data urodzenia");
@@ -201,6 +201,11 @@ namespace Biblioteka
         }
 
         private void propertyNumber_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void street_Click(object sender, EventArgs e)
         {
 
         }
