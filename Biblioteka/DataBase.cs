@@ -61,6 +61,7 @@ namespace Biblioteka
                         dataGridViewUser.Columns["PESEL"].Width = 170;
                         dataGridViewUser.Columns["Login"].Width = 170;
                         dataGridViewUser.Columns["Email"].Width = 170;
+                        
                     }
                 }
             }
@@ -320,6 +321,12 @@ namespace Biblioteka
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPrivilagesShow_Click(object sender, EventArgs e)
+        {
+            PrivilegesForm privilegesForm = new PrivilegesForm(connectionString);
+            privilegesForm.ShowDialog();
         }
     }
 }

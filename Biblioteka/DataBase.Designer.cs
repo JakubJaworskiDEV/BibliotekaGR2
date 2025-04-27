@@ -47,6 +47,7 @@
             chkEmail = new CheckBox();
             chkLogin = new CheckBox();
             label1 = new Label();
+            btnPrivilagesShow = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
             SuspendLayout();
             // 
@@ -247,6 +248,16 @@
             label1.Text = "Wybierz Kryterium Wyszukiwania";
             label1.Click += label1_Click;
             // 
+            // btnPrivilagesShow
+            // 
+            btnPrivilagesShow.Location = new Point(947, 138);
+            btnPrivilagesShow.Name = "btnPrivilagesShow";
+            btnPrivilagesShow.Size = new Size(261, 38);
+            btnPrivilagesShow.TabIndex = 23;
+            btnPrivilagesShow.Text = "Pokaż Liste Uprawnień";
+            btnPrivilagesShow.UseVisualStyleBackColor = true;
+            btnPrivilagesShow.Click += btnPrivilagesShow_Click;
+            // 
             // DataBase
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -255,6 +266,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1254, 747);
+            Controls.Add(btnPrivilagesShow);
             Controls.Add(label1);
             Controls.Add(chkLogin);
             Controls.Add(chkEmail);
@@ -295,5 +307,6 @@
         private CheckBox chkEmail;
         private CheckBox chkLogin;
         private Label label1;
+        private Button btnPrivilagesShow;
     }
 }
