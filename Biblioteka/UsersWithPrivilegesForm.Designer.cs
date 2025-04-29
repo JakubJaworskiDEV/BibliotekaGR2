@@ -29,22 +29,34 @@
         private void InitializeComponent()
         {
             dgvUsers = new DataGridView();
+            btnUsrWPrivFormClose = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
             SuspendLayout();
             // 
             // dgvUsers
             // 
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Location = new Point(59, 72);
+            dgvUsers.Location = new Point(59, 82);
             dgvUsers.Name = "dgvUsers";
-            dgvUsers.Size = new Size(630, 327);
+            dgvUsers.Size = new Size(630, 371);
             dgvUsers.TabIndex = 0;
+            // 
+            // btnUsrWPrivFormClose
+            // 
+            btnUsrWPrivFormClose.Location = new Point(59, 12);
+            btnUsrWPrivFormClose.Name = "btnUsrWPrivFormClose";
+            btnUsrWPrivFormClose.Size = new Size(84, 37);
+            btnUsrWPrivFormClose.TabIndex = 1;
+            btnUsrWPrivFormClose.Text = "Powrót";
+            btnUsrWPrivFormClose.UseVisualStyleBackColor = true;
+            btnUsrWPrivFormClose.Click += btnUsrWPrivFormClose_Click;
             // 
             // UsersWithPrivilegesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 510);
+            Controls.Add(btnUsrWPrivFormClose);
             Controls.Add(dgvUsers);
             Name = "UsersWithPrivilegesForm";
             Text = "UsersWithPrivilegesForm";
@@ -55,5 +67,6 @@
         #endregion
 
         private DataGridView dgvUsers;
+        private Button btnUsrWPrivFormClose;
     }
 }

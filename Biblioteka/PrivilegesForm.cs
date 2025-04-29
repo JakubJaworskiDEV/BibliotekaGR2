@@ -98,5 +98,10 @@ namespace Biblioteka
             UsersWithPrivilegesForm usersForm = new UsersWithPrivilegesForm(connectionString, selectedPrivileges);
             usersForm.ShowDialog();
         }
+
+        private void btnPrivFormClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

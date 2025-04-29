@@ -30,32 +30,44 @@
         {
             dgvPrivileges = new DataGridView();
             btnShowUsers = new Button();
+            btnPrivFormClose = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPrivileges).BeginInit();
             SuspendLayout();
             // 
             // dgvPrivileges
             // 
             dgvPrivileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrivileges.Location = new Point(91, 170);
+            dgvPrivileges.Location = new Point(91, 193);
             dgvPrivileges.Name = "dgvPrivileges";
-            dgvPrivileges.Size = new Size(555, 185);
+            dgvPrivileges.Size = new Size(555, 210);
             dgvPrivileges.TabIndex = 0;
             // 
             // btnShowUsers
             // 
-            btnShowUsers.Location = new Point(614, 21);
+            btnShowUsers.Location = new Point(614, 24);
             btnShowUsers.Name = "btnShowUsers";
-            btnShowUsers.Size = new Size(75, 23);
+            btnShowUsers.Size = new Size(75, 26);
             btnShowUsers.TabIndex = 1;
             btnShowUsers.Text = "Pokaż";
             btnShowUsers.UseVisualStyleBackColor = true;
             btnShowUsers.Click += btnShowUsers_Click;
             // 
+            // btnPrivFormClose
+            // 
+            btnPrivFormClose.Location = new Point(31, 27);
+            btnPrivFormClose.Name = "btnPrivFormClose";
+            btnPrivFormClose.Size = new Size(82, 37);
+            btnPrivFormClose.TabIndex = 2;
+            btnPrivFormClose.Text = "Powrót";
+            btnPrivFormClose.UseVisualStyleBackColor = true;
+            btnPrivFormClose.Click += btnPrivFormClose_Click;
+            // 
             // PrivilegesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 510);
+            Controls.Add(btnPrivFormClose);
             Controls.Add(btnShowUsers);
             Controls.Add(dgvPrivileges);
             Name = "PrivilegesForm";
@@ -68,5 +80,6 @@
 
         private DataGridView dgvPrivileges;
         private Button btnShowUsers;
+        private Button btnPrivFormClose;
     }
 }

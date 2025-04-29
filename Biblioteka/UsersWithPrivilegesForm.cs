@@ -54,5 +54,10 @@ namespace Biblioteka
                 MessageBox.Show($"Błąd podczas ładowania użytkowników: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnUsrWPrivFormClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
