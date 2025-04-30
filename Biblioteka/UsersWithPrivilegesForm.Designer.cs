@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersWithPrivilegesForm));
             dgvUsers = new DataGridView();
             btnUsrWPrivFormClose = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsers).BeginInit();
@@ -35,27 +36,33 @@
             // 
             // dgvUsers
             // 
+            dgvUsers.BackgroundColor = Color.FromArgb(255, 224, 192);
             dgvUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsers.Location = new Point(59, 82);
+            dgvUsers.GridColor = Color.FromArgb(255, 224, 192);
+            dgvUsers.Location = new Point(59, 72);
             dgvUsers.Name = "dgvUsers";
-            dgvUsers.Size = new Size(630, 371);
+            dgvUsers.Size = new Size(630, 327);
             dgvUsers.TabIndex = 0;
             // 
             // btnUsrWPrivFormClose
             // 
-            btnUsrWPrivFormClose.Location = new Point(59, 12);
+            btnUsrWPrivFormClose.BackColor = Color.FromArgb(64, 64, 64);
+            btnUsrWPrivFormClose.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnUsrWPrivFormClose.ForeColor = SystemColors.Control;
+            btnUsrWPrivFormClose.Location = new Point(59, 11);
             btnUsrWPrivFormClose.Name = "btnUsrWPrivFormClose";
-            btnUsrWPrivFormClose.Size = new Size(84, 37);
+            btnUsrWPrivFormClose.Size = new Size(84, 33);
             btnUsrWPrivFormClose.TabIndex = 1;
             btnUsrWPrivFormClose.Text = "Powrót";
-            btnUsrWPrivFormClose.UseVisualStyleBackColor = true;
+            btnUsrWPrivFormClose.UseVisualStyleBackColor = false;
             btnUsrWPrivFormClose.Click += btnUsrWPrivFormClose_Click;
             // 
             // UsersWithPrivilegesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 510);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(800, 450);
             Controls.Add(btnUsrWPrivFormClose);
             Controls.Add(dgvUsers);
             Name = "UsersWithPrivilegesForm";

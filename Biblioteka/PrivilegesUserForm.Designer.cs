@@ -67,7 +67,7 @@
             button1.Name = "button1";
             button1.Size = new Size(107, 42);
             button1.TabIndex = 2;
-            button1.Text = "Zamknij";
+            button1.Text = "Powrót";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
