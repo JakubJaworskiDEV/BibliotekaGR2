@@ -36,6 +36,7 @@ namespace Biblioteka
                     MessageBox.Show("Połączono z bazą danych!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadUsers();
                     AddProfileButtonColumn();
+                    AddPrivilegesButtonColumn();
                 }
             }
             catch (Exception ex)
@@ -115,12 +116,29 @@ namespace Biblioteka
 
                 ShowUserProfile(login, pesel, nazwisko);
             }
-
+            if (e.ColumnIndex == dataGridViewUser.Columns["PrivilegesButton"].Index && e.RowIndex >= 0)
+            {
+                string login = dataGridViewUser.Rows[e.RowIndex].Cells["Login"].Value.ToString();
+                PrivilegesUserForm form = new PrivilegesUserForm(connectionString, login);
+                //sprawdzanie czy status aktywności jest = 0 w bazie danych - jeżeli tak to tylko wyświetlamy komunikat
+                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string checkStatusQuery = "SELECT Status_akt FROM Uzytkownik WHERE Login = @login";
+                    using (SQLiteCommand command = new SQLiteCommand(checkStatusQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@login", login);
+                        object result = command.ExecuteScalar();
+                        if (result != null && Convert.ToInt32(result) == 0)
+                        {
+                            MessageBox.Show("Użytkownik jest nieaktywny.");
+                            return;
+                        }
+                    }
+                }
+                form.ShowDialog();
+            }
             if (e.RowIndex < 0) return;
-
-            
-
-            
         }
 
         private void ShowUserProfile(string login, string pesel, string nazwisko)

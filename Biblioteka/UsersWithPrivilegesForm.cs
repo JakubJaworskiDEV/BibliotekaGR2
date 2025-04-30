@@ -37,7 +37,7 @@ namespace Biblioteka
                         FROM Uzytkownik u
                         JOIN Uprawnienia_Uzytkownik uu ON u.Uzytkownik_id = uu.Uzytkownik_ID
                         JOIN Uprawnienia up ON uu.Uprawnienia_ID = up.Uprawnienia_ID
-                        WHERE up.Nazwa IN ({privilegeSubquery})
+                        WHERE up.Nazwa IN ({privilegeSubquery}) AND u.Status_akt = 1
                         GROUP BY u.Uzytkownik_id
                         HAVING COUNT(DISTINCT up.Nazwa) = {privileges.Count};";
 

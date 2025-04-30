@@ -29,22 +29,34 @@
         private void InitializeComponent()
         {
             dvgUserPrivilages = new DataGridView();
+            btnEditPrivilages = new Button();
             ((System.ComponentModel.ISupportInitialize)dvgUserPrivilages).BeginInit();
             SuspendLayout();
             // 
             // dvgUserPrivilages
             // 
             dvgUserPrivilages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dvgUserPrivilages.Location = new Point(65, 44);
+            dvgUserPrivilages.Location = new Point(65, 80);
             dvgUserPrivilages.Name = "dvgUserPrivilages";
             dvgUserPrivilages.Size = new Size(625, 319);
             dvgUserPrivilages.TabIndex = 0;
+            // 
+            // btnEditPrivilages
+            // 
+            btnEditPrivilages.Location = new Point(508, 12);
+            btnEditPrivilages.Name = "btnEditPrivilages";
+            btnEditPrivilages.Size = new Size(182, 36);
+            btnEditPrivilages.TabIndex = 1;
+            btnEditPrivilages.Text = "Edytuj Uprawnienia";
+            btnEditPrivilages.UseVisualStyleBackColor = true;
+            btnEditPrivilages.Click += btnEditPrivilages_Click_1;
             // 
             // PrivilegesUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnEditPrivilages);
             Controls.Add(dvgUserPrivilages);
             Name = "PrivilegesUserForm";
             Text = "Form1";
@@ -55,5 +67,6 @@
         #endregion
 
         private DataGridView dvgUserPrivilages;
+        private Button btnEditPrivilages;
     }
 }
