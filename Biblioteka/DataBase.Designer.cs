@@ -90,7 +90,7 @@
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewUser.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewUser.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(255, 224, 192);
-            dataGridViewUser.Size = new Size(1232, 533);
+            dataGridViewUser.Size = new Size(1280, 533);
             dataGridViewUser.TabIndex = 0;
             // 
             // btnSearchUser
@@ -265,7 +265,7 @@
             BackColor = SystemColors.Control;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1254, 747);
+            ClientSize = new Size(1302, 747);
             Controls.Add(btnPrivilagesShow);
             Controls.Add(label1);
             Controls.Add(chkLogin);

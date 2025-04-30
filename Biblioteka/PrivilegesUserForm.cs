@@ -68,7 +68,7 @@ namespace Biblioteka
 
         private void btnEditPrivilages_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private int GetUserIdByLogin(string login)
@@ -84,7 +84,7 @@ namespace Biblioteka
 
         private void btnPrivFormClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+
         }
 
         private void ConfigureDataGridView()
@@ -169,6 +169,16 @@ namespace Biblioteka
                 transaction.Rollback();
                 MessageBox.Show($"Błąd podczas zapisywania uprawnień: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PrivilegesUserForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

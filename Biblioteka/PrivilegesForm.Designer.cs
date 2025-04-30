@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrivilegesForm));
             dgvPrivileges = new DataGridView();
             btnShowUsers = new Button();
             btnPrivFormClose = new Button();
@@ -36,37 +37,46 @@
             // 
             // dgvPrivileges
             // 
+            dgvPrivileges.BackgroundColor = Color.FromArgb(255, 224, 192);
             dgvPrivileges.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPrivileges.Location = new Point(91, 193);
+            dgvPrivileges.GridColor = Color.FromArgb(255, 224, 192);
+            dgvPrivileges.Location = new Point(91, 170);
             dgvPrivileges.Name = "dgvPrivileges";
-            dgvPrivileges.Size = new Size(555, 210);
+            dgvPrivileges.Size = new Size(555, 185);
             dgvPrivileges.TabIndex = 0;
             // 
             // btnShowUsers
             // 
-            btnShowUsers.Location = new Point(614, 24);
+            btnShowUsers.BackColor = Color.FromArgb(64, 64, 64);
+            btnShowUsers.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnShowUsers.ForeColor = SystemColors.Control;
+            btnShowUsers.Location = new Point(614, 21);
             btnShowUsers.Name = "btnShowUsers";
-            btnShowUsers.Size = new Size(75, 26);
+            btnShowUsers.Size = new Size(75, 36);
             btnShowUsers.TabIndex = 1;
             btnShowUsers.Text = "Pokaż";
-            btnShowUsers.UseVisualStyleBackColor = true;
+            btnShowUsers.UseVisualStyleBackColor = false;
             btnShowUsers.Click += btnShowUsers_Click;
             // 
             // btnPrivFormClose
             // 
-            btnPrivFormClose.Location = new Point(31, 27);
+            btnPrivFormClose.BackColor = Color.FromArgb(64, 64, 64);
+            btnPrivFormClose.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnPrivFormClose.ForeColor = SystemColors.Control;
+            btnPrivFormClose.Location = new Point(32, 18);
             btnPrivFormClose.Name = "btnPrivFormClose";
-            btnPrivFormClose.Size = new Size(82, 37);
+            btnPrivFormClose.Size = new Size(92, 43);
             btnPrivFormClose.TabIndex = 2;
             btnPrivFormClose.Text = "Powrót";
-            btnPrivFormClose.UseVisualStyleBackColor = true;
+            btnPrivFormClose.UseVisualStyleBackColor = false;
             btnPrivFormClose.Click += btnPrivFormClose_Click;
             // 
             // PrivilegesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 510);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(800, 450);
             Controls.Add(btnPrivFormClose);
             Controls.Add(btnShowUsers);
             Controls.Add(dgvPrivileges);
