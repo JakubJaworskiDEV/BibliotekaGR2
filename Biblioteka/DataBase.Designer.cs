@@ -74,7 +74,7 @@
             dataGridViewUser.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewUser.EnableHeadersVisualStyles = false;
             dataGridViewUser.GridColor = Color.FromArgb(255, 224, 192);
-            dataGridViewUser.Location = new Point(42, 183);
+            dataGridViewUser.Location = new Point(11, 183);
             dataGridViewUser.Margin = new Padding(2, 3, 2, 3);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -90,7 +90,7 @@
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewUser.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewUser.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(255, 224, 192);
-            dataGridViewUser.Size = new Size(1114, 533);
+            dataGridViewUser.Size = new Size(1232, 533);
             dataGridViewUser.TabIndex = 0;
             // 
             // btnSearchUser

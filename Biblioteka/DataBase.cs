@@ -10,11 +10,13 @@ namespace Biblioteka
         private string dbPath = @"..\..\..\..\BazaDanychProjekt.db";
         private string connectionString;
         private DataTable userData;
+        private string _connectionString;
+        private string _login;
 
         public DataBase()
         {
             InitializeComponent();
-            
+
             connectionString = $"Data Source={dbPath};Version=3;";
         }
 
@@ -61,7 +63,7 @@ namespace Biblioteka
                         dataGridViewUser.Columns["PESEL"].Width = 170;
                         dataGridViewUser.Columns["Login"].Width = 170;
                         dataGridViewUser.Columns["Email"].Width = 170;
-                        
+
                     }
                 }
             }
@@ -83,6 +85,7 @@ namespace Biblioteka
 
             dataGridViewUser.Columns.Add(profileButton);
             dataGridViewUser.CellClick += DataGridViewUser_CellClick;
+
         }
 
         private void DataGridViewUser_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -112,6 +115,12 @@ namespace Biblioteka
 
                 ShowUserProfile(login, pesel, nazwisko);
             }
+
+            if (e.RowIndex < 0) return;
+
+            
+
+            
         }
 
         private void ShowUserProfile(string login, string pesel, string nazwisko)
@@ -328,5 +337,26 @@ namespace Biblioteka
             PrivilegesForm privilegesForm = new PrivilegesForm(connectionString);
             privilegesForm.ShowDialog();
         }
+
+        private void AddPrivilegesButtonColumn()
+        {
+            if (!dataGridViewUser.Columns.Contains("PrivilegesButton"))
+            {
+                DataGridViewButtonColumn privilegesButton = new DataGridViewButtonColumn();
+                privilegesButton.Name = "PrivilegesButton";
+                privilegesButton.HeaderText = "Uprawnienia";
+                privilegesButton.Text = "Pokaż uprawnienia";
+                privilegesButton.UseColumnTextForButtonValue = true;
+                dataGridViewUser.Columns.Add(privilegesButton);
+            }
+
+            
+            dataGridViewUser.CellClick -= DataGridViewUser_CellClick;
+            dataGridViewUser.CellClick += DataGridViewUser_CellClick;
+        }
+
+        
+
+
     }
 }
