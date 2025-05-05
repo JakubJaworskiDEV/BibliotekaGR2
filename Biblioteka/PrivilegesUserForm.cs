@@ -123,6 +123,30 @@ namespace Biblioteka
 
         private void btnEditPrivilages_Click_1(object sender, EventArgs e)
         {
+            HashSet<int> privilegesToAssign = new();
+            foreach (DataGridViewRow row in dvgUserPrivilages.Rows)
+            {
+                if (row.Cells["IsSelected"].Value != null && Convert.ToBoolean(row.Cells["IsSelected"].Value))
+                {
+                    string privName = row.Cells["PrivilegeName"].Value.ToString();
+                    if (privilegeNameToIdMap.TryGetValue(privName, out int privId))
+                        privilegesToAssign.Add(privId);
+                }
+            }
+
+            if (privilegesToAssign.Count == 0)
+            {
+                MessageBox.Show("Użytkownik musi mieć przypisane przynajmniej jedno uprawnienie.");
+                return;
+            }
+
+            HashSet<int> userPrivilegesBefore = GetUserPrivileges();
+            if (privilegesToAssign.SetEquals(userPrivilegesBefore))
+            {
+                MessageBox.Show("Nie dokonano żadnych zmian w uprawnieniach.");
+                return;
+            }
+
             int userId = GetUserIdByLogin(userLogin);
             if (userId == -1)
             {
@@ -147,17 +171,10 @@ namespace Biblioteka
                 insertCmd.Parameters.AddWithValue("@userId", userId);
                 var paramPrivId = insertCmd.Parameters.Add("@privId", DbType.Int32);
 
-                foreach (DataGridViewRow row in dvgUserPrivilages.Rows)
+                foreach (int privId in privilegesToAssign)
                 {
-                    if (row.Cells["IsSelected"].Value != null && Convert.ToBoolean(row.Cells["IsSelected"].Value))
-                    {
-                        string privName = row.Cells["PrivilegeName"].Value.ToString();
-                        if (privilegeNameToIdMap.TryGetValue(privName, out int privId))
-                        {
-                            paramPrivId.Value = privId;
-                            insertCmd.ExecuteNonQuery();
-                        }
-                    }
+                    paramPrivId.Value = privId;
+                    insertCmd.ExecuteNonQuery();
                 }
 
                 transaction.Commit();
@@ -167,7 +184,7 @@ namespace Biblioteka
             catch (Exception ex)
             {
                 transaction.Rollback();
-                MessageBox.Show($"Błąd podczas zapisywania uprawnień: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Błąd podczas zapisywania uprawnień: {ex.Message}");
             }
         }
 
