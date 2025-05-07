@@ -250,12 +250,14 @@
             // 
             // btnPrivilagesShow
             // 
+            btnPrivilagesShow.BackColor = Color.FromArgb(64, 64, 64);
+            btnPrivilagesShow.ForeColor = SystemColors.Control;
             btnPrivilagesShow.Location = new Point(947, 138);
             btnPrivilagesShow.Name = "btnPrivilagesShow";
             btnPrivilagesShow.Size = new Size(261, 38);
             btnPrivilagesShow.TabIndex = 23;
             btnPrivilagesShow.Text = "Pokaż Liste Uprawnień";
-            btnPrivilagesShow.UseVisualStyleBackColor = true;
+            btnPrivilagesShow.UseVisualStyleBackColor = false;
             btnPrivilagesShow.Click += btnPrivilagesShow_Click;
             // 
             // DataBase

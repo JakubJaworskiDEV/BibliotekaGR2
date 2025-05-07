@@ -64,6 +64,7 @@ namespace Biblioteka
                         dataGridViewUser.Columns["PESEL"].Width = 170;
                         dataGridViewUser.Columns["Login"].Width = 170;
                         dataGridViewUser.Columns["Email"].Width = 170;
+                        
 
                     }
                 }
@@ -354,6 +355,8 @@ namespace Biblioteka
         {
             PrivilegesForm privilegesForm = new PrivilegesForm(connectionString);
             privilegesForm.ShowDialog();
+
+            
         }
 
         private void AddPrivilegesButtonColumn()
@@ -366,6 +369,7 @@ namespace Biblioteka
                 privilegesButton.Text = "Pokaż uprawnienia";
                 privilegesButton.UseColumnTextForButtonValue = true;
                 dataGridViewUser.Columns.Add(privilegesButton);
+                dataGridViewUser.Columns["PrivilegesButton"].Width = 170;
             }
 
             

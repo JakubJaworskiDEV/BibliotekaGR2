@@ -124,5 +124,10 @@ namespace Biblioteka
             chkLoginPriv.Checked = false;
             LoadUsersWithPrivileges();
         }
+
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrivilegesUserForm));
             dvgUserPrivilages = new DataGridView();
             btnEditPrivilages = new Button();
@@ -37,12 +41,41 @@
             // 
             // dvgUserPrivilages
             // 
+            dvgUserPrivilages.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dvgUserPrivilages.BackgroundColor = Color.FromArgb(255, 224, 192);
+            dvgUserPrivilages.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 192, 128);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dvgUserPrivilages.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dvgUserPrivilages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 224, 192);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dvgUserPrivilages.DefaultCellStyle = dataGridViewCellStyle2;
+            dvgUserPrivilages.EnableHeadersVisualStyles = false;
             dvgUserPrivilages.GridColor = Color.FromArgb(255, 224, 192);
             dvgUserPrivilages.Location = new Point(65, 80);
             dvgUserPrivilages.Name = "dvgUserPrivilages";
-            dvgUserPrivilages.Size = new Size(625, 319);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 224, 192);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dvgUserPrivilages.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 224, 192);
+            dvgUserPrivilages.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dvgUserPrivilages.Size = new Size(960, 507);
             dvgUserPrivilages.TabIndex = 0;
             // 
             // btnEditPrivilages
@@ -50,7 +83,7 @@
             btnEditPrivilages.BackColor = Color.FromArgb(64, 64, 64);
             btnEditPrivilages.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnEditPrivilages.ForeColor = SystemColors.Control;
-            btnEditPrivilages.Location = new Point(508, 12);
+            btnEditPrivilages.Location = new Point(843, 18);
             btnEditPrivilages.Name = "btnEditPrivilages";
             btnEditPrivilages.Size = new Size(182, 36);
             btnEditPrivilages.TabIndex = 1;
@@ -76,7 +109,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1127, 675);
             Controls.Add(button1);
             Controls.Add(btnEditPrivilages);
             Controls.Add(dvgUserPrivilages);
