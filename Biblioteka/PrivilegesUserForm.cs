@@ -119,6 +119,8 @@ namespace Biblioteka
             dvgUserPrivilages.Columns.Add(nameColumn);
             dvgUserPrivilages.Columns.Add(descriptionColumn);
             dvgUserPrivilages.Columns.Add(checkboxColumn);
+            dvgUserPrivilages.Columns["IsSelected"].Width = 80;
+            dvgUserPrivilages.Columns["PrivilegeName"].Width = 350;
         }
 
         private void btnEditPrivilages_Click_1(object sender, EventArgs e)

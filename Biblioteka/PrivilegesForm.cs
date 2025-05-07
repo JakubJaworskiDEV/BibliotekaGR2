@@ -48,6 +48,8 @@ namespace Biblioteka
             dgvPrivileges.Columns.Add(nameColumn);
             dgvPrivileges.Columns.Add(descriptionColumn);
             dgvPrivileges.Columns.Add(checkboxColumn);
+            dgvPrivileges.Columns["IsSelected"].Width = 80;
+            dgvPrivileges.Columns["PrivilegeName"].Width = 350;
         }
 
         private void LoadPrivileges()

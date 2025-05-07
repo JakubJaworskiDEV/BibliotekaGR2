@@ -63,7 +63,7 @@
             dvgUserPrivilages.DefaultCellStyle = dataGridViewCellStyle2;
             dvgUserPrivilages.EnableHeadersVisualStyles = false;
             dvgUserPrivilages.GridColor = Color.FromArgb(255, 224, 192);
-            dvgUserPrivilages.Location = new Point(65, 80);
+            dvgUserPrivilages.Location = new Point(49, 80);
             dvgUserPrivilages.Name = "dvgUserPrivilages";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 224, 192);
@@ -75,7 +75,7 @@
             dvgUserPrivilages.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 224, 192);
             dvgUserPrivilages.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dvgUserPrivilages.Size = new Size(960, 507);
+            dvgUserPrivilages.Size = new Size(1100, 579);
             dvgUserPrivilages.TabIndex = 0;
             // 
             // btnEditPrivilages
@@ -83,11 +83,11 @@
             btnEditPrivilages.BackColor = Color.FromArgb(64, 64, 64);
             btnEditPrivilages.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnEditPrivilages.ForeColor = SystemColors.Control;
-            btnEditPrivilages.Location = new Point(843, 18);
+            btnEditPrivilages.Location = new Point(904, 18);
             btnEditPrivilages.Name = "btnEditPrivilages";
-            btnEditPrivilages.Size = new Size(182, 36);
+            btnEditPrivilages.Size = new Size(245, 36);
             btnEditPrivilages.TabIndex = 1;
-            btnEditPrivilages.Text = "Edytuj Uprawnienia";
+            btnEditPrivilages.Text = "Zatwierdz edycję uprawnień";
             btnEditPrivilages.UseVisualStyleBackColor = false;
             btnEditPrivilages.Click += btnEditPrivilages_Click_1;
             // 
@@ -109,7 +109,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1127, 675);
+            ClientSize = new Size(1215, 730);
             Controls.Add(button1);
             Controls.Add(btnEditPrivilages);
             Controls.Add(dvgUserPrivilages);

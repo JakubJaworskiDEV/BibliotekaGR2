@@ -75,7 +75,7 @@
             dgvPrivileges.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 224, 192);
             dgvPrivileges.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dgvPrivileges.Size = new Size(1044, 541);
+            dgvPrivileges.Size = new Size(1103, 588);
             dgvPrivileges.TabIndex = 0;
             // 
             // btnShowUsers
@@ -87,7 +87,7 @@
             btnShowUsers.Name = "btnShowUsers";
             btnShowUsers.Size = new Size(391, 36);
             btnShowUsers.TabIndex = 1;
-            btnShowUsers.Text = "Pokaż użytkowników o konkretnych uprawnieniach";
+            btnShowUsers.Text = "Pokaż użytkowników o wybranych uprawnieniach";
             btnShowUsers.UseVisualStyleBackColor = false;
             btnShowUsers.Click += btnShowUsers_Click;
             // 
@@ -109,7 +109,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1191, 756);
+            ClientSize = new Size(1237, 793);
             Controls.Add(btnPrivFormClose);
             Controls.Add(btnShowUsers);
             Controls.Add(dgvPrivileges);
