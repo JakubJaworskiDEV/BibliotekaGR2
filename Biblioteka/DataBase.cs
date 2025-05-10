@@ -12,16 +12,17 @@ namespace Biblioteka
         private DataTable userData;
         private string _connectionString;
         private string _login;
-
+        
         public DataBase()
         {
             InitializeComponent();
-
+            
             connectionString = $"Data Source={dbPath};Version=3;";
         }
 
         private void DataBase_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 if (!System.IO.File.Exists(dbPath))
