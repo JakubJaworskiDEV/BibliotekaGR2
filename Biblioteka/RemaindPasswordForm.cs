@@ -9,11 +9,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace Biblioteka
 {
     public partial class RemaindPasswordForm : Form
     {
+        private string connectionString = "Data Source=..\\..\\..\\..\\BazaDanychProjekt.db;Version=3;";
         public RemaindPasswordForm()
         {
             InitializeComponent();
@@ -60,8 +62,8 @@ namespace Biblioteka
 
         private void SendPasswordToEmail(string recipientEmail, string newPassword)
         {
-            string fromEmail = "twojemail@gmail.com";
-            string fromPassword = "haslo_aplikacji";
+            string fromEmail = ""; //t6156097@gmail.com
+            string fromPassword = ""; //WojtekXD2
 
             try
             {
@@ -74,6 +76,10 @@ namespace Biblioteka
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.Credentials = new NetworkCredential(fromEmail, fromPassword);
                 smtp.EnableSsl = true;
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com";
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(fromEmail, fromPassword);
                 smtp.Send(message);
 
                 MessageBox.Show("Hasło zostało wysłane na e-mail.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -84,6 +90,55 @@ namespace Biblioteka
             }
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string login = LoginRemind.Text.Trim();
+            string email = EmailPassword.Text.Trim();
+
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Niepoprawne Dane Logowania");
+                return;
+            }
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT Email FROM Uzytkownik WHERE Login = @login AND Email = @mail";
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@login", login);
+                        cmd.Parameters.AddWithValue("@mail", email);
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            string newPassword = GenerateSecurePassword();
+
+                            string updateQuery = "UPDATE Uzytkownik SET Haslo = @haslo WHERE Login = @login";
+                            using (SQLiteCommand updateCmd = new SQLiteCommand(updateQuery, conn))
+                            {
+                                updateCmd.Parameters.AddWithValue("@haslo", newPassword);
+                                updateCmd.Parameters.AddWithValue("@login", login);
+                                updateCmd.ExecuteNonQuery();
+                            }
+
+                            SendPasswordToEmail(email, newPassword);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Niepoprawne Dane Logowania");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd: " + ex.Message);
+            }
         }
     }
 }

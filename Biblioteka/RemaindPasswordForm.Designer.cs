@@ -60,6 +60,7 @@
             button1.TabIndex = 4;
             button1.Text = "Wyślij nowe hasło";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // ExitButtonRemindPassword
             // 

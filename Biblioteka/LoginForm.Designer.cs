@@ -45,6 +45,7 @@
             LoginButton.TabIndex = 0;
             LoginButton.Text = "Zaloguj";
             LoginButton.UseVisualStyleBackColor = true;
+            LoginButton.Click += LoginButton_Click;
             // 
             // RemindPassword
             // 
@@ -54,6 +55,7 @@
             RemindPassword.TabIndex = 1;
             RemindPassword.Text = "Przypomnij moje hasło";
             RemindPassword.UseVisualStyleBackColor = true;
+            RemindPassword.Click += RemindPassword_Click;
             // 
             // Login
             // 
