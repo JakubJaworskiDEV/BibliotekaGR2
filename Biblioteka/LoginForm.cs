@@ -51,6 +51,8 @@ namespace Biblioteka
                     if (count == 1)
                     {
                         Hide();
+                        LoginTextBox.Text = "";
+                        PasswordTextBox.Text = "";
                         DataBase dataBaseForm = new DataBase(this);
                         dataBaseForm.FormClosed += (s, args) => Close();
                         dataBaseForm.Show();
