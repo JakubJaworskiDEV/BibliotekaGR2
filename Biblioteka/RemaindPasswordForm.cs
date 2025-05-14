@@ -15,10 +15,14 @@ namespace Biblioteka
 {
     public partial class RemaindPasswordForm : Form
     {
+
+        
         private string connectionString = "Data Source=..\\..\\..\\..\\BazaDanychProjekt.db;Version=3;";
-        public RemaindPasswordForm()
+        private Form loginForm;
+        public RemaindPasswordForm(Form loginForm)
         {
             InitializeComponent();
+            this.loginForm = loginForm;
         }
 
         private string GenerateSecurePassword(int length = 12)
@@ -139,6 +143,18 @@ namespace Biblioteka
             {
                 MessageBox.Show("Błąd: " + ex.Message);
             }
+        }
+
+        private void ExitButtonRemindPassword_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

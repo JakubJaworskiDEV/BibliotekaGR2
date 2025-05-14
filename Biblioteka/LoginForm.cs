@@ -14,6 +14,7 @@ namespace Biblioteka
     public partial class LoginForm : Form
     {
         private string connectionString = "Data Source=..\\..\\..\\..\\BazaDanychProjekt.db;Version=3;";
+        private Form loginForm;
         public LoginForm()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace Biblioteka
                     if (count == 1)
                     {
                         Hide();
-                        DataBase dataBaseForm = new DataBase();
+                        DataBase dataBaseForm = new DataBase(this);
                         dataBaseForm.FormClosed += (s, args) => Close();
                         dataBaseForm.Show();
                     }
@@ -65,8 +66,14 @@ namespace Biblioteka
         private void RemindPassword_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RemaindPasswordForm remindForm = new RemaindPasswordForm();
+            RemaindPasswordForm remindForm = new RemaindPasswordForm(this);
             remindForm.Show();
+        }
+
+        private void LoginExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.ExitThread();
         }
     }
 }

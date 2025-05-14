@@ -12,17 +12,18 @@ namespace Biblioteka
         private DataTable userData;
         private string _connectionString;
         private string _login;
-        
-        public DataBase()
+        private Form loginForm;
+        public DataBase(Form loginForm)
         {
             InitializeComponent();
-            
+
             connectionString = $"Data Source={dbPath};Version=3;";
+            this.loginForm = loginForm;
         }
 
         private void DataBase_Load(object sender, EventArgs e)
         {
-            
+
             try
             {
                 if (!System.IO.File.Exists(dbPath))
@@ -65,7 +66,7 @@ namespace Biblioteka
                         dataGridViewUser.Columns["PESEL"].Width = 170;
                         dataGridViewUser.Columns["Login"].Width = 170;
                         dataGridViewUser.Columns["Email"].Width = 170;
-                        
+
 
                     }
                 }
@@ -357,7 +358,7 @@ namespace Biblioteka
             PrivilegesForm privilegesForm = new PrivilegesForm(connectionString);
             privilegesForm.ShowDialog();
 
-            
+
         }
 
         private void AddPrivilegesButtonColumn()
@@ -373,13 +374,15 @@ namespace Biblioteka
                 dataGridViewUser.Columns["PrivilegesButton"].Width = 170;
             }
 
-            
+
             dataGridViewUser.CellClick -= DataGridViewUser_CellClick;
             dataGridViewUser.CellClick += DataGridViewUser_CellClick;
         }
 
-        
-
-
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            loginForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -62,7 +62,7 @@
             // 
             btnSaveEditUserData.BackColor = Color.FromArgb(64, 64, 64);
             btnSaveEditUserData.ForeColor = SystemColors.Control;
-            btnSaveEditUserData.Location = new Point(467, 605);
+            btnSaveEditUserData.Location = new Point(440, 565);
             btnSaveEditUserData.Margin = new Padding(3, 4, 3, 4);
             btnSaveEditUserData.Name = "btnSaveEditUserData";
             btnSaveEditUserData.Size = new Size(249, 57);
@@ -75,7 +75,7 @@
             // 
             btnEiditUserDataAbort.BackColor = Color.FromArgb(64, 64, 64);
             btnEiditUserDataAbort.ForeColor = SystemColors.Control;
-            btnEiditUserDataAbort.Location = new Point(303, 605);
+            btnEiditUserDataAbort.Location = new Point(276, 565);
             btnEiditUserDataAbort.Margin = new Padding(3, 4, 3, 4);
             btnEiditUserDataAbort.Name = "btnEiditUserDataAbort";
             btnEiditUserDataAbort.Size = new Size(156, 57);
@@ -325,7 +325,7 @@
             // 
             btnForgetUser.BackColor = Color.FromArgb(64, 64, 64);
             btnForgetUser.ForeColor = SystemColors.Control;
-            btnForgetUser.Location = new Point(46, 605);
+            btnForgetUser.Location = new Point(19, 565);
             btnForgetUser.Margin = new Padding(3, 4, 3, 4);
             btnForgetUser.Name = "btnForgetUser";
             btnForgetUser.Size = new Size(186, 57);
@@ -340,7 +340,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(750, 703);
+            ClientSize = new Size(750, 649);
             Controls.Add(btnForgetUser);
             Controls.Add(dtpEditBirthDate);
             Controls.Add(label12);

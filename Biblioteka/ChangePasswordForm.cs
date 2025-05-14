@@ -16,5 +16,12 @@ namespace Biblioteka
         {
             InitializeComponent();
         }
+
+        private void btnBackToLogin_Click(object sender, EventArgs e)
+        {
+          this.Close();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+        }
     }
 }

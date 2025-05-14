@@ -12,7 +12,10 @@ namespace Biblioteka
 {
     public partial class UserProfileForm : Form
     {
-        public UserProfileForm(DataTable userData)
+        private string userLogin;
+        private DataTable userData;
+        private string connectionString;
+        public UserProfileForm(DataTable userData, string connectionString)
         {
             InitializeComponent();
             this.userData = userData;
@@ -38,6 +41,8 @@ namespace Biblioteka
                 DateTime parsed;
                 DateTime.TryParse(row["Data_ur"].ToString(), out parsed);
                 txtBirthDate.Text = parsed.ToString("dd.MM.yyyy");
+
+                userLogin = row["Login"].ToString();
 
                 if (Convert.ToInt32($"{row["Plec"]}") == 0)
                 {
@@ -69,6 +74,14 @@ namespace Biblioteka
         private void lblUserEmail_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnChangeUserPasswd_Click(object sender, EventArgs e)
+        {
+            string login = userData.Rows[0]["Login"].ToString();
+            EditUserPasswordForm userPasswdForm = new EditUserPasswordForm(connectionString, login, userData);
+            userPasswdForm.Show();
+            this.Hide();
         }
     }
 }

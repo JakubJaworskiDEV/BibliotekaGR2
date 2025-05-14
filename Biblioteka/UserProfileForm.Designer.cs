@@ -57,13 +57,14 @@
             txtPostalCode = new TextBox();
             txtFlatNr = new TextBox();
             txtBirthDate = new TextBox();
+            BtnChangeUserPasswd = new Button();
             SuspendLayout();
             // 
             // btnEditUserData
             // 
             btnEditUserData.BackColor = Color.FromArgb(64, 64, 64);
             btnEditUserData.ForeColor = SystemColors.Control;
-            btnEditUserData.Location = new Point(235, 533);
+            btnEditUserData.Location = new Point(239, 574);
             btnEditUserData.Margin = new Padding(3, 4, 3, 4);
             btnEditUserData.Name = "btnEditUserData";
             btnEditUserData.Size = new Size(226, 53);
@@ -206,7 +207,7 @@
             // 
             btnBackToList.BackColor = Color.FromArgb(64, 64, 64);
             btnBackToList.ForeColor = SystemColors.Control;
-            btnBackToList.Location = new Point(16, 533);
+            btnBackToList.Location = new Point(27, 574);
             btnBackToList.Margin = new Padding(3, 4, 3, 4);
             btnBackToList.Name = "btnBackToList";
             btnBackToList.Size = new Size(146, 49);
@@ -358,13 +359,26 @@
             txtBirthDate.Size = new Size(277, 27);
             txtBirthDate.TabIndex = 57;
             // 
+            // BtnChangeUserPasswd
+            // 
+            BtnChangeUserPasswd.BackColor = Color.RosyBrown;
+            BtnChangeUserPasswd.ForeColor = Color.AliceBlue;
+            BtnChangeUserPasswd.Location = new Point(182, 513);
+            BtnChangeUserPasswd.Name = "BtnChangeUserPasswd";
+            BtnChangeUserPasswd.Size = new Size(220, 37);
+            BtnChangeUserPasswd.TabIndex = 58;
+            BtnChangeUserPasswd.Text = "Zmień hasło";
+            BtnChangeUserPasswd.UseVisualStyleBackColor = false;
+            BtnChangeUserPasswd.Click += BtnChangeUserPasswd_Click;
+            // 
             // UserProfileForm
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(477, 601);
+            ClientSize = new Size(477, 648);
+            Controls.Add(BtnChangeUserPasswd);
             Controls.Add(txtBirthDate);
             Controls.Add(txtPostalCode);
             Controls.Add(txtFlatNr);
@@ -431,5 +445,6 @@
         private TextBox txtPostalCode;
         private TextBox txtFlatNr;
         private TextBox txtBirthDate;
+        private Button BtnChangeUserPasswd;
     }
 }

@@ -39,24 +39,25 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(227, 118);
+            label1.Location = new Point(150, 133);
             label1.Name = "label1";
-            label1.Size = new Size(69, 15);
+            label1.Size = new Size(79, 17);
             label1.TabIndex = 0;
-            label1.Text = "Podaj email";
+            label1.Text = "Podaj email:";
+            label1.Click += label1_Click;
             // 
             // EmailPassword
             // 
-            EmailPassword.Location = new Point(227, 146);
+            EmailPassword.Location = new Point(150, 153);
             EmailPassword.Name = "EmailPassword";
-            EmailPassword.Size = new Size(100, 23);
+            EmailPassword.Size = new Size(260, 25);
             EmailPassword.TabIndex = 2;
             // 
             // button1
             // 
-            button1.Location = new Point(256, 242);
+            button1.Location = new Point(184, 297);
             button1.Name = "button1";
-            button1.Size = new Size(202, 66);
+            button1.Size = new Size(202, 75);
             button1.TabIndex = 4;
             button1.Text = "Wyślij nowe hasło";
             button1.UseVisualStyleBackColor = true;
@@ -64,34 +65,35 @@
             // 
             // ExitButtonRemindPassword
             // 
-            ExitButtonRemindPassword.Location = new Point(33, 21);
+            ExitButtonRemindPassword.Location = new Point(12, 12);
             ExitButtonRemindPassword.Name = "ExitButtonRemindPassword";
-            ExitButtonRemindPassword.Size = new Size(75, 23);
+            ExitButtonRemindPassword.Size = new Size(107, 53);
             ExitButtonRemindPassword.TabIndex = 5;
             ExitButtonRemindPassword.Text = "Wyjdź";
             ExitButtonRemindPassword.UseVisualStyleBackColor = true;
+            ExitButtonRemindPassword.Click += ExitButtonRemindPassword_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(227, 172);
+            label3.Location = new Point(150, 193);
             label3.Name = "label3";
-            label3.Size = new Size(67, 15);
+            label3.Size = new Size(77, 17);
             label3.TabIndex = 6;
-            label3.Text = "Podaj login";
+            label3.Text = "Podaj login:";
             // 
             // LoginRemind
             // 
-            LoginRemind.Location = new Point(227, 190);
+            LoginRemind.Location = new Point(150, 213);
             LoginRemind.Name = "LoginRemind";
-            LoginRemind.Size = new Size(100, 23);
+            LoginRemind.Size = new Size(260, 25);
             LoginRemind.TabIndex = 7;
             // 
             // RemaindPasswordForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(581, 510);
             Controls.Add(LoginRemind);
             Controls.Add(label3);
             Controls.Add(ExitButtonRemindPassword);

@@ -48,6 +48,7 @@
             chkLogin = new CheckBox();
             label1 = new Label();
             btnPrivilagesShow = new Button();
+            BtnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
             SuspendLayout();
             // 
@@ -97,10 +98,10 @@
             // 
             btnSearchUser.BackColor = Color.FromArgb(64, 64, 64);
             btnSearchUser.ForeColor = SystemColors.Control;
-            btnSearchUser.Location = new Point(75, 53);
+            btnSearchUser.Location = new Point(78, 89);
             btnSearchUser.Margin = new Padding(3, 4, 3, 4);
             btnSearchUser.Name = "btnSearchUser";
-            btnSearchUser.Size = new Size(152, 31);
+            btnSearchUser.Size = new Size(149, 31);
             btnSearchUser.TabIndex = 3;
             btnSearchUser.Text = "Wyszukaj";
             btnSearchUser.UseVisualStyleBackColor = false;
@@ -110,7 +111,7 @@
             // 
             btnResetSearch.BackColor = Color.FromArgb(64, 64, 64);
             btnResetSearch.ForeColor = SystemColors.Control;
-            btnResetSearch.Location = new Point(78, 95);
+            btnResetSearch.Location = new Point(78, 131);
             btnResetSearch.Margin = new Padding(3, 4, 3, 4);
             btnResetSearch.Name = "btnResetSearch";
             btnResetSearch.Size = new Size(151, 31);
@@ -260,6 +261,16 @@
             btnPrivilagesShow.UseVisualStyleBackColor = false;
             btnPrivilagesShow.Click += btnPrivilagesShow_Click;
             // 
+            // BtnLogout
+            // 
+            BtnLogout.Location = new Point(78, 24);
+            BtnLogout.Name = "BtnLogout";
+            BtnLogout.Size = new Size(114, 31);
+            BtnLogout.TabIndex = 24;
+            BtnLogout.Text = "Wyloguj";
+            BtnLogout.UseVisualStyleBackColor = true;
+            BtnLogout.Click += BtnLogout_Click;
+            // 
             // DataBase
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -268,6 +279,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1302, 747);
+            Controls.Add(BtnLogout);
             Controls.Add(btnPrivilagesShow);
             Controls.Add(label1);
             Controls.Add(chkLogin);
@@ -310,5 +322,6 @@
         private CheckBox chkLogin;
         private Label label1;
         private Button btnPrivilagesShow;
+        private Button BtnLogout;
     }
 }
