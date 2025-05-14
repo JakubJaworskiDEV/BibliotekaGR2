@@ -47,16 +47,6 @@ namespace Biblioteka
 
             }
         }
-        private DataTable userData;
-        private string connectionString;
-
-        public UserProfileForm(DataTable userData, string connectionString)
-        {
-            InitializeComponent();
-            this.userData = userData;
-            this.connectionString = connectionString;
-            LoadUserData(userData);
-        }
 
 
         private void UserProfileForm_Load(object sender, EventArgs e)
