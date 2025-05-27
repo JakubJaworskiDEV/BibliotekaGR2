@@ -66,8 +66,11 @@ namespace Biblioteka
 
         private void SendPasswordToEmail(string recipientEmail, string newPassword)
         {
-            string fromEmail = "matt.thekomandoo@gmail.com"; //t6156097@gmail.com
-            string fromPassword = "fcnc kwxy rqjk ibsw "; //WojtekXD2
+            string fromEmail = "no-reply@yourapp.local"; // dowolny lokalny email
+            string smtpHost = "sandbox.smtp.mailtrap.io"; // z panelu
+            int smtpPort = 587;
+            string smtpUsername = "ffbb67dc884509"; // z Mailtrap
+            string smtpPassword = "82e29ddc432a0f";  // z Mailtrap
 
             try
             {
@@ -77,23 +80,21 @@ namespace Biblioteka
                 message.Subject = "Nowe hasło";
                 message.Body = $"Twoje nowe hasło to: {newPassword}";
 
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                smtp.Credentials = new NetworkCredential(fromEmail, fromPassword);
+                SmtpClient smtp = new SmtpClient(smtpHost, smtpPort);
+                smtp.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                 smtp.EnableSsl = true;
-                smtp.Port = 587;
-                smtp.Host = "smtp.gmail.com";
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(fromEmail, fromPassword);
                 smtp.Send(message);
 
-                MessageBox.Show("Hasło zostało wysłane na e-mail.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hasło zostało wysłane na e-mail (Mailtrap).", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.Hide();
+                loginForm.Show();
+                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Błąd wysyłania e-maila: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
