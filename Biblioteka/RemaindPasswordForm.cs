@@ -66,8 +66,8 @@ namespace Biblioteka
 
         private void SendPasswordToEmail(string recipientEmail, string newPassword)
         {
-            string fromEmail = ""; //t6156097@gmail.com
-            string fromPassword = ""; //WojtekXD2
+            string fromEmail = "matt.thekomandoo@gmail.com"; //t6156097@gmail.com
+            string fromPassword = "fcnc kwxy rqjk ibsw "; //WojtekXD2
 
             try
             {
