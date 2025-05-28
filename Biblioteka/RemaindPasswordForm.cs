@@ -36,19 +36,16 @@ namespace Biblioteka
             StringBuilder password = new StringBuilder();
             Random rnd = new Random();
 
-            // Dodaj przynajmniej jeden znak z każdej kategorii
             password.Append(upper[rnd.Next(upper.Length)]);
             password.Append(lower[rnd.Next(lower.Length)]);
             password.Append(digits[rnd.Next(digits.Length)]);
             password.Append(special[rnd.Next(special.Length)]);
 
-            // Dodaj pozostałe znaki
             for (int i = password.Length; i < length; i++)
             {
                 password.Append(allChars[rnd.Next(allChars.Length)]);
             }
 
-            // Wymieszaj hasło
             return Shuffle(password.ToString(), rnd);
         }
 
@@ -66,11 +63,11 @@ namespace Biblioteka
 
         private void SendPasswordToEmail(string recipientEmail, string newPassword)
         {
-            string fromEmail = "no-reply@yourapp.local"; // dowolny lokalny email
-            string smtpHost = "sandbox.smtp.mailtrap.io"; // z panelu
+            string fromEmail = "no-reply@yourapp.local";
+            string smtpHost = "sandbox.smtp.mailtrap.io";
             int smtpPort = 587;
-            string smtpUsername = "ffbb67dc884509"; // z Mailtrap
-            string smtpPassword = "82e29ddc432a0f";  // z Mailtrap
+            string smtpUsername = "ffbb67dc884509"; // username z mailtrapa
+            string smtpPassword = "82e29ddc432a0f";  // password z mailtrapa
 
             try
             {
@@ -107,12 +104,13 @@ namespace Biblioteka
                 MessageBox.Show("Niepoprawne Dane Logowania");
                 return;
             }
+
             try
             {
                 using (SQLiteConnection conn = new SQLiteConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT Email FROM Uzytkownik WHERE Login = @login AND Email = @mail";
+                    string query = "SELECT Uzytkownik_id FROM Uzytkownik WHERE Login = @login AND Email = @mail";
                     using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@login", login);
@@ -123,7 +121,7 @@ namespace Biblioteka
                         {
                             string newPassword = GenerateSecurePassword();
 
-                            string updateQuery = "UPDATE Uzytkownik SET Haslo = @haslo WHERE Login = @login";
+                            string updateQuery = "UPDATE Uzytkownik SET Haslo = @haslo, Reset = 1 WHERE Login = @login";
                             using (SQLiteCommand updateCmd = new SQLiteCommand(updateQuery, conn))
                             {
                                 updateCmd.Parameters.AddWithValue("@haslo", newPassword);

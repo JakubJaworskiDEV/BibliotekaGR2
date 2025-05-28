@@ -33,33 +33,48 @@ namespace Biblioteka
 
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Niepoprawne Dane Logowania");
+                MessageBox.Show("Wprowadź login i hasło.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT COUNT(*) FROM Uzytkownik WHERE Login = @login AND Haslo = @password AND Status_akt = 1";
-
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                string query = "SELECT Haslo, Reset FROM Uzytkownik WHERE Login = @login";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@login", login);
-                    command.Parameters.AddWithValue("@password", password);
-                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    cmd.Parameters.AddWithValue("@login", login);
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string storedPassword = reader["Haslo"].ToString();
+                            bool mustReset = Convert.ToBoolean(reader["Reset"]);
 
-                    if (count == 1)
-                    {
-                        Hide();
-                        LoginTextBox.Text = "";
-                        PasswordTextBox.Text = "";
-                        DataBase dataBaseForm = new DataBase(this);
-                        dataBaseForm.FormClosed += (s, args) => Close();
-                        dataBaseForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Niepoprawne Dane Logowania");
+                            if (password == storedPassword)
+                            {
+                                if (mustReset)
+                                {
+                                    this.Hide();
+                                    ChangePasswordForm changePasswordForm = new ChangePasswordForm(connectionString, login, loginForm);
+                                    changePasswordForm.Show();
+                                }
+                                else
+                                {
+                                    this.Hide();
+                                    DataBase dbForm = new DataBase(this);
+                                    dbForm.Show();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nieprawidłowe hasło.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
