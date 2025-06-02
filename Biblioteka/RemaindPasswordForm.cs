@@ -66,8 +66,8 @@ namespace Biblioteka
             string fromEmail = "no-reply@yourapp.local";
             string smtpHost = "sandbox.smtp.mailtrap.io";
             int smtpPort = 587;
-            string smtpUsername = "ffbb67dc884509"; // username z mailtrapa
-            string smtpPassword = "82e29ddc432a0f";  // password z mailtrapa
+            string smtpUsername = "b0b6c59255e62c"; // username z mailtrapa
+            string smtpPassword = "8ae9ca0f9bbb35";  // password z mailtrapa
 
             try
             {
@@ -82,7 +82,7 @@ namespace Biblioteka
                 smtp.EnableSsl = true;
                 smtp.Send(message);
 
-                MessageBox.Show("Hasło zostało wysłane na e-mail (Mailtrap).", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Hasło zostało wysłane na e-mail.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.Hide();
                 loginForm.Show();

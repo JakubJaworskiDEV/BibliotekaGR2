@@ -94,19 +94,19 @@ namespace Biblioteka
 
             if (newPassword != confirmPassword)
             {
-                MessageBox.Show("Hasła nie są zgodne.");
+                MessageBox.Show("Hasła muszą być identyczne.");
                 return;
             }
 
             if (!IsPasswordValid(newPassword))
             {
-                MessageBox.Show("Hasło nie spełnia wymaganych kryteriów.");
+                MessageBox.Show("Hasło musi spełniać następujące wymagania: \r\n\r\nmieć długość od 8 do 15 znaków, \r\n\r\nzawierać co najmniej jedną małą literę, \r\n\r\nzawierać co najmniej jedną wielką literę, \r\n\r\nzawierać co najmniej jedną cyfrę, \r\n\r\nzawierać co najmniej jeden znak specjalny spośród: -, _, !, *, #, $, &.");
                 return;
             }
 
             if (IsPasswordPreviouslyUsed(newPassword))
             {
-                MessageBox.Show("Nowe hasło nie może być jednym z trzech ostatnio używanych.");
+                MessageBox.Show("Hasło nie może być identyczne z jednym z trzech ostatnio używanych haseł tego użytkownika.");
                 return;
             }
 
@@ -183,7 +183,7 @@ namespace Biblioteka
 
                 MessageBox.Show("Hasło zostało zaktualizowane.");
                 this.Hide();
-                DataBase dbForm = new DataBase(this);
+                var dbForm = new DataBase(loginForm);
                 dbForm.Show();
                 this.Close();
             }

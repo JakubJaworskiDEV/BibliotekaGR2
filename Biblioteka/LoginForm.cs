@@ -15,6 +15,8 @@ namespace Biblioteka
     {
         private string connectionString = "Data Source=..\\..\\..\\..\\BazaDanychProjekt.db;Version=3;";
         private Form loginForm;
+        private Dictionary<string, int> loginAttempts = new();
+        private Dictionary<string, DateTime> blockedUsers = new();
         public LoginForm()
         {
             InitializeComponent();
@@ -40,7 +42,8 @@ namespace Biblioteka
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT Haslo, Reset FROM Uzytkownik WHERE Login = @login";
+
+                string query = "SELECT Haslo, Reset, Blokada, DataBlokady FROM Uzytkownik WHERE Login = @login";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@login", login);
@@ -48,32 +51,71 @@ namespace Biblioteka
                     {
                         if (reader.Read())
                         {
+                            bool isBlocked = Convert.ToBoolean(reader["Blokada"]);
                             string storedPassword = reader["Haslo"].ToString();
                             bool mustReset = Convert.ToBoolean(reader["Reset"]);
 
+                            if (isBlocked)
+                            {
+                                if (DateTime.TryParse(reader["DataBlokady"]?.ToString(), out DateTime blockTime))
+                                {
+                                    if ((DateTime.Now - blockTime).TotalMinutes < 1)
+                                    {
+                                        MessageBox.Show("Konto jest zablokowane. Spróbuj ponownie za minutę.", "Zablokowano", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        loginAttempts[login] = 0;
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        string unblock = "UPDATE Uzytkownik SET Blokada = 0, DataBlokady = NULL WHERE Login = @login";
+                                        using var unCmd = new SQLiteCommand(unblock, connection);
+                                        unCmd.Parameters.AddWithValue("@login", login);
+                                        unCmd.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+
                             if (password == storedPassword)
                             {
+                                loginAttempts[login] = 0;
+
                                 if (mustReset)
                                 {
                                     this.Hide();
-                                    ChangePasswordForm changePasswordForm = new ChangePasswordForm(connectionString, login, loginForm);
-                                    changePasswordForm.Show();
+                                    new ChangePasswordForm(connectionString, login, this).Show();
                                 }
                                 else
                                 {
                                     this.Hide();
-                                    DataBase dbForm = new DataBase(this);
-                                    dbForm.Show();
+                                    new DataBase(this).Show();
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Nieprawidłowe hasło.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (!loginAttempts.ContainsKey(login))
+                                    loginAttempts[login] = 0;
+
+                                loginAttempts[login]++;
+
+                                if (loginAttempts[login] >= 3)
+                                {
+                                    string blockQuery = "UPDATE Uzytkownik SET Blokada = 1, DataBlokady = @czas WHERE Login = @login";
+                                    using var blockCmd = new SQLiteCommand(blockQuery, connection);
+                                    blockCmd.Parameters.AddWithValue("@login", login);
+                                    blockCmd.Parameters.AddWithValue("@czas", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                    blockCmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Konto zostało zablokowane", "Zablokowano", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Niepoprawne Dane Logowania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Nie znaleziono użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Niepoprawne Dane Logowania.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
