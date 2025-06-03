@@ -183,7 +183,7 @@ namespace Biblioteka
 
                 MessageBox.Show("Hasło zostało zaktualizowane.");
                 this.Hide();
-                var dbForm = new DataBase(loginForm);
+                var dbForm = new DataBase(loginForm, login);
                 dbForm.Show();
                 this.Close();
             }

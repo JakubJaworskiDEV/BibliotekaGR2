@@ -49,6 +49,7 @@
             label1 = new Label();
             btnPrivilagesShow = new Button();
             BtnLogout = new Button();
+            btnEditLoggedYser = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
             SuspendLayout();
             // 
@@ -271,6 +272,16 @@
             BtnLogout.UseVisualStyleBackColor = true;
             BtnLogout.Click += BtnLogout_Click;
             // 
+            // btnEditLoggedYser
+            // 
+            btnEditLoggedYser.Location = new Point(760, 66);
+            btnEditLoggedYser.Name = "btnEditLoggedYser";
+            btnEditLoggedYser.Size = new Size(130, 54);
+            btnEditLoggedYser.TabIndex = 25;
+            btnEditLoggedYser.Text = "Moje Dane";
+            btnEditLoggedYser.UseVisualStyleBackColor = true;
+            btnEditLoggedYser.Click += btnEditLoggedYser_Click;
+            // 
             // DataBase
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -279,6 +290,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1302, 747);
+            Controls.Add(btnEditLoggedYser);
             Controls.Add(BtnLogout);
             Controls.Add(btnPrivilagesShow);
             Controls.Add(label1);
@@ -323,5 +335,6 @@
         private Label label1;
         private Button btnPrivilagesShow;
         private Button BtnLogout;
+        private Button btnEditLoggedYser;
     }
 }

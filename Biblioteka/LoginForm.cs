@@ -87,7 +87,7 @@ namespace Biblioteka
                                 else
                                 {
                                     this.Hide();
-                                    new DataBase(this).Show();
+                                    new DataBase(this, login).Show();
                                 }
                             }
                             else

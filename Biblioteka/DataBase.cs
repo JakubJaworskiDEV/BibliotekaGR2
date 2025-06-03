@@ -13,7 +13,9 @@ namespace Biblioteka
         private string _connectionString;
         private string _login;
         private Form loginForm;
-        public DataBase(Form loginForm)
+        private string currentUserLogin;
+
+        public DataBase(Form loginForm, string login)
         {
             InitializeComponent();
 
@@ -383,6 +385,26 @@ namespace Biblioteka
         {
             loginForm.Show();
             this.Hide();
+        }
+
+        private void btnEditLoggedYser_Click(object sender, EventArgs e)
+        {
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Uzytkownik WHERE Login = @login";
+                using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
+                {
+                    adapter.SelectCommand.Parameters.AddWithValue("@login", currentUserLogin);
+                    DataTable userData = new DataTable();
+                    adapter.Fill(userData);
+
+                    UserDisplayData displayForm = new UserDisplayData(userData, connectionString);
+                    displayForm.Show(); // lub Show() jeśli chcesz niezależne okno
+
+                }
+            }
         }
     }
 }
