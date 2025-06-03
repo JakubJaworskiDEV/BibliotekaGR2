@@ -18,6 +18,8 @@ namespace Biblioteka
         private string userLogin;
         private Form loginForm;
         private string login;
+        public bool ShouldLogout { get; private set; } = false;
+
 
         public ChangePasswordForm(string connectionString, string login, Form loginForm)
         {
@@ -76,9 +78,9 @@ namespace Biblioteka
 
         private void btnBackToLogin_Click(object sender, EventArgs e)
         {
+
             this.Close();
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
+            loginForm?.Show();
         }
 
         private void ChangePassword_Click(object sender, EventArgs e)
@@ -181,11 +183,13 @@ namespace Biblioteka
                     command.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Hasło zostało zaktualizowane.");
-                this.Hide();
-                var dbForm = new DataBase(loginForm, login);
-                dbForm.Show();
+
+                MessageBox.Show("Hasło zostało zaktualizowane. Zostaniesz wylogowany.");
+                ShouldLogout = true;
                 this.Close();
+
+
+
             }
             catch (Exception ex)
             {

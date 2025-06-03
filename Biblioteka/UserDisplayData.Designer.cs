@@ -63,6 +63,7 @@
             // 
             txtName.Location = new Point(186, 66);
             txtName.Name = "txtName";
+            txtName.ReadOnly = true;
             txtName.Size = new Size(280, 25);
             txtName.TabIndex = 0;
             // 
@@ -70,6 +71,7 @@
             // 
             txtSurname.Location = new Point(186, 99);
             txtSurname.Name = "txtSurname";
+            txtSurname.ReadOnly = true;
             txtSurname.Size = new Size(280, 25);
             txtSurname.TabIndex = 1;
             // 
@@ -77,6 +79,7 @@
             // 
             txtPlace.Location = new Point(186, 156);
             txtPlace.Name = "txtPlace";
+            txtPlace.ReadOnly = true;
             txtPlace.Size = new Size(280, 25);
             txtPlace.TabIndex = 2;
             // 
@@ -84,6 +87,7 @@
             // 
             txtPostalCode.Location = new Point(186, 191);
             txtPostalCode.Name = "txtPostalCode";
+            txtPostalCode.ReadOnly = true;
             txtPostalCode.Size = new Size(280, 25);
             txtPostalCode.TabIndex = 3;
             // 
@@ -91,6 +95,7 @@
             // 
             txtStreet.Location = new Point(186, 222);
             txtStreet.Name = "txtStreet";
+            txtStreet.ReadOnly = true;
             txtStreet.Size = new Size(280, 25);
             txtStreet.TabIndex = 4;
             // 
@@ -98,6 +103,7 @@
             // 
             txtBldNr.Location = new Point(186, 253);
             txtBldNr.Name = "txtBldNr";
+            txtBldNr.ReadOnly = true;
             txtBldNr.Size = new Size(280, 25);
             txtBldNr.TabIndex = 5;
             // 
@@ -105,6 +111,7 @@
             // 
             txtFlatNr.Location = new Point(186, 283);
             txtFlatNr.Name = "txtFlatNr";
+            txtFlatNr.ReadOnly = true;
             txtFlatNr.Size = new Size(280, 25);
             txtFlatNr.TabIndex = 6;
             // 
@@ -112,6 +119,7 @@
             // 
             txtPesel.Location = new Point(186, 355);
             txtPesel.Name = "txtPesel";
+            txtPesel.ReadOnly = true;
             txtPesel.Size = new Size(280, 25);
             txtPesel.TabIndex = 7;
             // 
@@ -119,6 +127,7 @@
             // 
             txtGender.Location = new Point(186, 320);
             txtGender.Name = "txtGender";
+            txtGender.ReadOnly = true;
             txtGender.Size = new Size(280, 25);
             txtGender.TabIndex = 8;
             // 
@@ -126,6 +135,7 @@
             // 
             txtEmail.Location = new Point(186, 427);
             txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(280, 25);
             txtEmail.TabIndex = 10;
             // 
@@ -133,6 +143,7 @@
             // 
             txtPhone.Location = new Point(186, 459);
             txtPhone.Name = "txtPhone";
+            txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(280, 25);
             txtPhone.TabIndex = 11;
             // 
@@ -140,6 +151,7 @@
             // 
             txtLogin.Location = new Point(186, 26);
             txtLogin.Name = "txtLogin";
+            txtLogin.ReadOnly = true;
             txtLogin.Size = new Size(280, 25);
             txtLogin.TabIndex = 13;
             // 

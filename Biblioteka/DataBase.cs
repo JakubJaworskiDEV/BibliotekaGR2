@@ -21,6 +21,7 @@ namespace Biblioteka
 
             connectionString = $"Data Source={dbPath};Version=3;";
             this.loginForm = loginForm;
+            this.currentUserLogin = login;
         }
 
         private void DataBase_Load(object sender, EventArgs e)
@@ -392,16 +393,34 @@ namespace Biblioteka
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
+                
                 connection.Open();
-                string query = "SELECT * FROM Uzytkownik WHERE Login = @login";
+                string query = @"SELECT 
+                        Uzytkownik.Uzytkownik_id, 
+                        Uzytkownik.Imie, 
+                        Uzytkownik.Nazwisko, 
+                        Uzytkownik.PESEL, 
+                        Uzytkownik.Login,
+                        Uzytkownik.Email,
+                        Uzytkownik.Data_ur, 
+                        Uzytkownik.Plec, 
+                        Uzytkownik.Nr_tel,
+                        Uzytkownik.Adres,
+                        Adres_zamieszkania.Kod_pocztowy,
+                        Adres_zamieszkania.Miejscowosc, 
+                        Adres_zamieszkania.Ulica, 
+                        Adres_zamieszkania.Nr_posesji, 
+                        Adres_zamieszkania.Nr_lokalu FROM Uzytkownik INNER JOIN Adres_zamieszkania ON Uzytkownik.Adres = Adres_zamieszkania.Adres_id  
+                        WHERE Login = @login";
                 using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection))
                 {
                     adapter.SelectCommand.Parameters.AddWithValue("@login", currentUserLogin);
                     DataTable userData = new DataTable();
                     adapter.Fill(userData);
 
-                    UserDisplayData displayForm = new UserDisplayData(userData, connectionString);
-                    displayForm.Show(); // lub Show() jeśli chcesz niezależne okno
+                    UserDisplayData displayForm = new UserDisplayData(userData, connectionString, this);
+                    this.Hide();
+                    displayForm.Show();
 
                 }
             }

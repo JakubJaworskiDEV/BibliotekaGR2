@@ -276,7 +276,7 @@ namespace Biblioteka
                     {
                         string loginCurrent = userRow["Login"].ToString();
 
-                        // Parametr do WHERE
+                       
                         command.Parameters.AddWithValue("@LoginCurrent", loginCurrent);
 
                         // Hashowane dane użytkownika

@@ -16,13 +16,15 @@ namespace Biblioteka
 
         private DataTable userData;
         private string connectionString;
+        private Form parentform;
 
-        public UserDisplayData(DataTable userData, string connectionString)
+        public UserDisplayData(DataTable userData, string connectionString, Form parentForm)
         {
             InitializeComponent();
 
             this.userData = userData;
             this.connectionString = connectionString;
+            this.parentform = parentForm;
             LoadUserData();
 
         }
@@ -52,11 +54,31 @@ namespace Biblioteka
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            parentform.Show();
         }
 
         private void btnMenagePassword_Click(object sender, EventArgs e)
         {
+            string userLogin = txtLogin.Text;
+
+            if (string.IsNullOrEmpty(userLogin))
+            {
+                MessageBox.Show("Nie można określić użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm(connectionString, userLogin, this);
+            this.Hide();
+            changePasswordForm.ShowDialog();
+
+            if (changePasswordForm.ShouldLogout)
+            {
+                this.Close(); // zamyka UserDisplayData
+                parentform.Close(); // zamyka DataBase
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show(); // pokazuje ekran logowania
+            }
 
         }
     }

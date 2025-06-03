@@ -34,13 +34,14 @@
             NewPassword = new TextBox();
             AgainNewPassword = new TextBox();
             btnBackToLogin = new Button();
+            label3 = new Label();
             SuspendLayout();
             // 
             // ChangePassword
             // 
-            ChangePassword.Location = new Point(339, 299);
+            ChangePassword.Location = new Point(256, 299);
             ChangePassword.Name = "ChangePassword";
-            ChangePassword.Size = new Size(185, 44);
+            ChangePassword.Size = new Size(185, 50);
             ChangePassword.TabIndex = 0;
             ChangePassword.Text = "Zmień hasło";
             ChangePassword.UseVisualStyleBackColor = true;
@@ -49,50 +50,60 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(213, 105);
+            label1.Location = new Point(134, 81);
             label1.Name = "label1";
-            label1.Size = new Size(103, 15);
+            label1.Size = new Size(114, 17);
             label1.TabIndex = 1;
             label1.Text = "Podaj nowe hasło:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(213, 171);
+            label2.Location = new Point(134, 156);
             label2.Name = "label2";
-            label2.Size = new Size(125, 15);
+            label2.Size = new Size(138, 17);
             label2.TabIndex = 2;
             label2.Text = "Potwierdź nowe hasło:";
             // 
             // NewPassword
             // 
-            NewPassword.Location = new Point(213, 123);
+            NewPassword.Location = new Point(134, 101);
             NewPassword.Name = "NewPassword";
-            NewPassword.Size = new Size(232, 23);
+            NewPassword.Size = new Size(252, 25);
             NewPassword.TabIndex = 3;
             // 
             // AgainNewPassword
             // 
-            AgainNewPassword.Location = new Point(213, 189);
+            AgainNewPassword.Location = new Point(134, 176);
             AgainNewPassword.Name = "AgainNewPassword";
-            AgainNewPassword.Size = new Size(232, 23);
+            AgainNewPassword.Size = new Size(252, 25);
             AgainNewPassword.TabIndex = 4;
             // 
             // btnBackToLogin
             // 
-            btnBackToLogin.Location = new Point(134, 299);
+            btnBackToLogin.Location = new Point(51, 299);
             btnBackToLogin.Name = "btnBackToLogin";
-            btnBackToLogin.Size = new Size(185, 44);
+            btnBackToLogin.Size = new Size(185, 50);
             btnBackToLogin.TabIndex = 5;
             btnBackToLogin.Text = "Anuluj";
             btnBackToLogin.UseVisualStyleBackColor = true;
             btnBackToLogin.Click += btnBackToLogin_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(51, 231);
+            label3.Name = "label3";
+            label3.Size = new Size(399, 34);
+            label3.TabIndex = 7;
+            label3.Text = "* Hasło musi mieć od 8 do 15 znaków i zawierać co najmniej jedną \r\nwielką literę, małą literę, cyfrę oraz znak specjalny (- _ ! * # $ &).";
+            // 
             // ChangePasswordForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(656, 359);
+            ClientSize = new Size(508, 380);
+            Controls.Add(label3);
             Controls.Add(btnBackToLogin);
             Controls.Add(AgainNewPassword);
             Controls.Add(NewPassword);
@@ -113,5 +124,6 @@
         private TextBox NewPassword;
         private TextBox AgainNewPassword;
         private Button btnBackToLogin;
+        private Label label3;
     }
 }
