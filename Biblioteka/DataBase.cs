@@ -15,13 +15,13 @@ namespace Biblioteka
         private Form loginForm;
         private string currentUserLogin;
 
-        public DataBase(Form loginForm, string login)
+        public DataBase(Form loginForm, string userLogin)
         {
             InitializeComponent();
 
             connectionString = $"Data Source={dbPath};Version=3;";
             this.loginForm = loginForm;
-            this.currentUserLogin = login;
+            this.currentUserLogin = userLogin;
         }
 
         private void DataBase_Load(object sender, EventArgs e)

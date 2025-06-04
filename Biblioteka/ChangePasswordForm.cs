@@ -184,9 +184,10 @@ namespace Biblioteka
                 }
 
 
-                MessageBox.Show("Hasło zostało zaktualizowane. Zostaniesz wylogowany.");
-                ShouldLogout = true;
-                this.Close();
+                MessageBox.Show("Hasło zostało zaktualizowane.");
+                this.Hide();
+                var dbForm = new DataBase(loginForm, userLogin);
+                dbForm.Show();
 
 
 
