@@ -384,8 +384,13 @@ namespace Biblioteka
 
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            loginForm.Show();
-            this.Hide();
+            var result = MessageBox.Show("Czy na pewno chcesz się wylogować?", "Potwierdzenie", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                loginForm.Show();
+                this.Hide();
+            }
         }
 
         private void btnEditLoggedYser_Click(object sender, EventArgs e)
