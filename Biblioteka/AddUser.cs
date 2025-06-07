@@ -127,9 +127,10 @@ namespace Biblioteka
                     }
 
                     string insertUserQuery = @"
-                     INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt, Adres, Rodzaj, Ksiazka) 
-                     VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_log, 1, @Adres, @Rodzaj, @Ksiazka);
-                     SELECT last_insert_rowid();";
+                     INSERT INTO Uzytkownik (Login, Imie, Nazwisko, PESEL, Data_ur, Plec, Email, Nr_tel, Status_log, Status_akt, Adres, Rodzaj, Ksiazka, Reset, Blokada) 
+                     VALUES (@Login, @Imie, @Nazwisko, @PESEL, @Data_ur, @Plec, @Email, @Nr_tel, @Status_log, 1, @Adres, @Rodzaj, @Ksiazka, 0, 0);
+                        SELECT last_insert_rowid();";
+
 
                     using (SQLiteCommand insertUserCmd = new SQLiteCommand(insertUserQuery, conn))
                     {
@@ -145,7 +146,15 @@ namespace Biblioteka
                         insertUserCmd.Parameters.AddWithValue("@Adres", adresId);
                         insertUserCmd.Parameters.AddWithValue("@Rodzaj", rodzaj);
                         insertUserCmd.Parameters.AddWithValue("@Ksiazka", ksiazka);
-                        insertUserCmd.ExecuteScalar();
+                        long userId = (long)insertUserCmd.ExecuteScalar();
+
+                        string insertPrivilegeQuery = "INSERT INTO Uprawnienia_Uzytkownik (Uprawnienia_ID, Uzytkownik_ID) VALUES (4, @userId)";
+                        using (SQLiteCommand privilegeCmd = new SQLiteCommand(insertPrivilegeQuery, conn))
+                        {
+                            privilegeCmd.Parameters.AddWithValue("@userId", userId);
+                            privilegeCmd.ExecuteNonQuery();
+                        }
+
                     }
 
 
