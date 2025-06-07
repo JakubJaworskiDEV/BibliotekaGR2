@@ -343,7 +343,7 @@
             Controls.Add(txtSurname);
             Controls.Add(txtName);
             Name = "UserDisplayData";
-            Text = "UserDisplayData";
+            Text = "Moje dane";
             ResumeLayout(false);
             PerformLayout();
         }

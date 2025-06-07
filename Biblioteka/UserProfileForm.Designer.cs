@@ -410,7 +410,7 @@
             Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             Margin = new Padding(3, 4, 3, 4);
             Name = "UserProfileForm";
-            Text = "UserProfileForm";
+            Text = "Dane użytkownika";
             Load += UserProfileForm_Load;
             ResumeLayout(false);
             PerformLayout();

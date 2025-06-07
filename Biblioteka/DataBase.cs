@@ -89,6 +89,7 @@ namespace Biblioteka
             profileButton.HeaderText = "Profil";
             profileButton.Text = "Pokaż profil";
             profileButton.UseColumnTextForButtonValue = true;
+            profileButton.MinimumWidth = 170;
 
             dataGridViewUser.Columns.Add(profileButton);
             dataGridViewUser.CellClick += DataGridViewUser_CellClick;

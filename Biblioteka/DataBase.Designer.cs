@@ -55,6 +55,8 @@
             // 
             // dataGridViewUser
             // 
+            dataGridViewUser.AllowUserToAddRows = false;
+            dataGridViewUser.AllowUserToDeleteRows = false;
             dataGridViewUser.BackgroundColor = Color.FromArgb(255, 224, 192);
             dataGridViewUser.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -92,7 +94,7 @@
             dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewUser.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewUser.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(255, 224, 192);
-            dataGridViewUser.Size = new Size(1280, 533);
+            dataGridViewUser.Size = new Size(1371, 533);
             dataGridViewUser.TabIndex = 0;
             // 
             // btnSearchUser
@@ -125,7 +127,7 @@
             // 
             AddUser.BackColor = Color.FromArgb(64, 64, 64);
             AddUser.ForeColor = SystemColors.Control;
-            AddUser.Location = new Point(946, 24);
+            AddUser.Location = new Point(1120, 13);
             AddUser.Margin = new Padding(3, 4, 3, 4);
             AddUser.Name = "AddUser";
             AddUser.Size = new Size(262, 48);
@@ -138,7 +140,7 @@
             // 
             btnShowNonActiveUsers.BackColor = Color.FromArgb(64, 64, 64);
             btnShowNonActiveUsers.ForeColor = SystemColors.Control;
-            btnShowNonActiveUsers.Location = new Point(946, 80);
+            btnShowNonActiveUsers.Location = new Point(1120, 69);
             btnShowNonActiveUsers.Margin = new Padding(3, 4, 3, 4);
             btnShowNonActiveUsers.Name = "btnShowNonActiveUsers";
             btnShowNonActiveUsers.Size = new Size(262, 48);
@@ -254,7 +256,7 @@
             // 
             btnPrivilagesShow.BackColor = Color.FromArgb(64, 64, 64);
             btnPrivilagesShow.ForeColor = SystemColors.Control;
-            btnPrivilagesShow.Location = new Point(947, 138);
+            btnPrivilagesShow.Location = new Point(1121, 127);
             btnPrivilagesShow.Name = "btnPrivilagesShow";
             btnPrivilagesShow.Size = new Size(261, 38);
             btnPrivilagesShow.TabIndex = 23;
@@ -274,7 +276,7 @@
             // 
             // btnEditLoggedYser
             // 
-            btnEditLoggedYser.Location = new Point(760, 66);
+            btnEditLoggedYser.Location = new Point(924, 106);
             btnEditLoggedYser.Name = "btnEditLoggedYser";
             btnEditLoggedYser.Size = new Size(130, 54);
             btnEditLoggedYser.TabIndex = 25;
@@ -289,7 +291,7 @@
             BackColor = SystemColors.Control;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1302, 747);
+            ClientSize = new Size(1398, 747);
             Controls.Add(btnEditLoggedYser);
             Controls.Add(BtnLogout);
             Controls.Add(btnPrivilagesShow);
